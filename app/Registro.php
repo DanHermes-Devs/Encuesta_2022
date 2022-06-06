@@ -10,6 +10,8 @@ class Registro extends Model
     use HasFactory;
     protected $table = 'registros';
     protected $fillable = [
+        'sexo',
+        'estado_civil',
         'edad',
         'antiguedad',
         'estudios',

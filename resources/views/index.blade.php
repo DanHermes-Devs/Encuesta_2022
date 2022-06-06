@@ -1,4 +1,5 @@
 @extends('layouts.app')
+<link rel="stylesheet" href="{{ asset('css/waitMe.min.css') }}">
 <style>
     body {
         background: url({{ asset('images/bg.jpg') }});
@@ -92,7 +93,7 @@
                 </div>
     
                 <section class="box-typical mt-5">
-                    <form method="POST" action="#" enctype="multipart/form-data">    
+                    <form method="POST" id="form-step1" enctype="multipart/form-data">    
                         @csrf
                         @method('post')
                         <div class="tab-personal" id="step_1">
@@ -167,6 +168,8 @@
 @endsection
 
 @section('scripts')
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ asset('js/waitMe.min.js') }}"></script>
     @parent
     <script>
         function cambiarSeccion(valor, idBoton) {
@@ -182,6 +185,54 @@
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
+            });
+
+            $('#form-step1').submit(function(e) {
+                e.preventDefault();
+                var form = $(this);
+                var formData = new FormData(form[0]);
+                $.ajax({
+                    url: '/registroDatos',
+                    type: 'POST',
+                    data: formData,
+                    dataType: 'json',
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    beforeSend: function() {
+                        $('#step_21').waitMe({
+                            text: 'Registrando...',
+                        })
+                    },
+                    success: function(data) {
+                        if(data.status == 201){
+                            Swal.fire({
+                                title: '¡Bien hecho!',
+                                text: 'El registro se hizo correctamente',
+                                type: 'success',
+                                confirmButtonText: 'Continuar'
+                            }).then((result) => {
+                                if (result.value) {
+                                    cambiarSeccion('step_1', 'step1');
+                                }
+                            });
+                        }else{
+                            Swal.fire({
+                                title: '¡Error!',
+                                text: 'El registro no se hizo correctamente',
+                                type: 'error',
+                                confirmButtonText: 'Continuar'
+                            }).then((result) => {
+                                if (result.value) {
+                                    cambiarSeccion('step_1', 'step1');
+                                }
+                            });
+                        }
+                    },
+                    complete: function() {
+                        $('#step_21').waitMe('hide');
+                    }
+                });
             });
 
             // $("input[name='item_65']").change(function(evento){

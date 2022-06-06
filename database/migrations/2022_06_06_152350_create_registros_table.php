@@ -15,7 +15,6 @@ class CreateRegistrosTable extends Migration
     {
         Schema::create('registros', function (Blueprint $table) {
             $table->id();
-            $table->text('fecha')->nullable();
             $table->text('sexo')->nullable();
             $table->text('estado_civil')->nullable();
             $table->text('edad')->nullable();

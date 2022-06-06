@@ -17,6 +17,8 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::post('/registroDatos', 'RegistroController@registroDatos')->name('registro.datos');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

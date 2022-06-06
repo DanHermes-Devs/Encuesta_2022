@@ -16,6 +16,11 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     
+    {{-- waitme --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/waitme/1.0.8/waitMe.min.css">
+
+    {{-- waimte js --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waitme/1.0.8/waitMe.min.js"></script>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
