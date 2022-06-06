@@ -3,57 +3,107 @@
     nav.navbar.navbar-expand-md.navbar-light.bg-white.shadow-sm {
         display: none;
     }
+
+    thead.thead-dark {
+        color: #fff;
+        background-color: #343a40;
+        border-color: #454d55;
+        vertical-align: bottom;
+        border-bottom: 2px solid #dee2e6;
+        text-align: center;
+    }
+
 </style>
 <link rel="stylesheet" href="{{ asset('css/waitMe.min.css') }}">
 @section('content')
-<div class="container-fluid bg-white mt-5">
-    <div class="row justify-content-center">
-        <div class="col-12">
+    <div class="container bg-white mt-5 p-5">
+        <div class="row justify-content-center">
             @php
                 $cookieGlobal = $_COOKIE['cookieCalificaciones'];
                 $registroID = App\Registro::where('token', $cookieGlobal)->first();
             @endphp
+            <div class="col-12 mb-5">
+                <h2>Resultados</h2>
 
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Resultados</h3>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="alert alert-info">
-                                <p>Sexo: <span>{{ $registroID->sexo }}</span></p>
-                                <p>Estado civil: <span>{{ $registroID->estado_civil }}</span></p>
-                                <p>Edad en años: <span>{{ $registroID->edad }}</span></p>
-                                <p>Antigüedad en puesto actual: <span>{{ $registroID->antiguedad }}</span></p>
-                                <p>Estudios: <span>{{ $registroID->estudios }}</span></p>
-                                <p>Tipo de puesto: <span>{{ $registroID->tipo_puesto }}</span></p>
-                                <p>Área: <span>{{ $registroID->area }}</span></p>
-                                <p>Tipo de contratación: <span>{{ $registroID->tipo_contratacion }}</span></p>
-                                <p>Jornada de trabajo: <span>{{ $registroID->jornada_trabajo }}</span></p>
-                                <p>Rotación de turnos: <span>{{ $registroID->rotacion_turnos }}</span></p>
-                                <p>Experiencia Laboral: <span>{{ $registroID->experiencia_laboral }}</span></p>
-                                <p>1.- ¿El espacio donde trabajo me permite realizar mis actividades de manera segura e higiénica?: 
-                                    @if ($registroID->item_1 == '0')
-                                        <span>Siempre</span>
-                                    @elseif ($registroID->item_1 == '1')
-                                        <span>Casi siempre</span>
-                                    @elseif ($registroID->item_1 == '2')
-                                        <span>Algunas veces</span>
-                                    @elseif ($registroID->item_1 == '3')    
-                                        <span>Casi nunca</span>
-                                    @elseif ($registroID->item_1 == '4')
-                                        <span>Nunca</span>
-                                    @endif
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <h4 class="font-weight-bold">información general</h4>
+            </div>
+
+            <div class="col-12 col-md-3">
+                <p class="mb-3">
+                    <b>Sexo:</b>
+                    <br>
+                    {{ $registroID->sexo }}
+                </p>
+
+                <p class="mb-3">
+                    <b>Estado civil:</b>
+                    <br>
+                    {{ $registroID->estado_civil }}
+                </p>
+
+                <p class="mb-3">
+                    <b>Edad en años:</b>
+                    <br>
+                    {{ $registroID->edad }}
+                </p>
+            </div>
+
+            <div class="col-12 col-md-3">
+                <p class="mb-3">
+                    <b>Antigüedad en puesto actual:</b>
+                    <br>
+                    {{ $registroID->antiguedad }}
+                </p>
+
+                <p class="mb-3">
+                    <b>Estudios:</b>
+                    <br>
+                    {{ $registroID->estudios }}
+                </p>
+
+                <p class="mb-3">
+                    <b>Tipo de puesto:</b>
+                    <br>
+                    {{ $registroID->tipo_puesto }}
+                </p>
+            </div>
+
+
+            <div class="col-12 col-md-3">
+                <p class="mb-3">
+                    <b>Área:</b>
+                    <br>
+                    {{ $registroID->area }}
+                </p>
+
+                <p class="mb-3">
+                    <b>Tipo de contratación:</b>
+                    <br>
+                    {{ $registroID->tipo_contratacion }}
+                </p>
+
+                <p class="mb-3">
+                    <b>Jornada de trabajo:</b>
+                    <br>
+                    {{ $registroID->jornada_trabajo }}
+                </p>
+            </div>
+
+            <div class="col-12 col-md-3">
+                <p class="mb-3">
+                    <b>Rotación de turnos:</b>
+                    <br>
+                    {{ $registroID->rotacion_turnos }}
+                </p>
+
+                <p class="mb-3">
+                    <b>Experiencia Laboral:</b>
+                    <br>
+                    {{ $registroID->tipo_contratacion }}
+                </p>
             </div>
         </div>
     </div>
-</div>
 @endsection
 
 @section('scripts')
