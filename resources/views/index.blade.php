@@ -7,6 +7,16 @@
         background-size: cover;
         background-attachment: fixed;
     }
+
+    label {
+        font-size: 1rem;
+        font-weight: bold;
+        color: #6200ea;
+    }
+    label.form-check-label {
+        color: #000;
+        font-weight: normal;
+    }
     .font-color-tab {
         background: #e6e6e6;
         font-weight: bold;
@@ -45,6 +55,7 @@
         text-decoration: none;
         transition-duration: 0.3s;
         font-weight: 400;
+        margin-top: 2rem;
     }
 
     .btn_atras {
@@ -58,6 +69,7 @@
         text-decoration: none;
         transition-duration: 0.3s;
         font-weight: 400;
+        margin-top: 2rem;
     }
 </style>
 @section('content')
@@ -159,6 +171,7 @@
                         <div class="tab-personal" id="step_21" style="display: none">
                             @include('steps.step21')
                         </div>
+                        <input type="hidden" name="token" value="{{ Str::uuid()->toString(); }}">
                     </form>
                 </section>
             </div>
@@ -208,23 +221,25 @@
                         if(data.status == 201){
                             Swal.fire({
                                 title: '¡Bien hecho!',
+                                icon: 'success',
                                 text: 'El registro se hizo correctamente',
                                 type: 'success',
                                 confirmButtonText: 'Continuar'
                             }).then((result) => {
                                 if (result.value) {
-                                    cambiarSeccion('step_1', 'step1');
+                                    window.location.href = '/';
                                 }
                             });
                         }else{
                             Swal.fire({
                                 title: '¡Error!',
+                                icon: 'error',
                                 text: 'El registro no se hizo correctamente',
                                 type: 'error',
                                 confirmButtonText: 'Continuar'
                             }).then((result) => {
                                 if (result.value) {
-                                    cambiarSeccion('step_1', 'step1');
+                                    window.location.href = '/';
                                 }
                             });
                         }

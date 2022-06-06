@@ -15,6 +15,7 @@ class CreateRegistrosTable extends Migration
     {
         Schema::create('registros', function (Blueprint $table) {
             $table->id();
+            $table->text('token');
             $table->text('sexo')->nullable();
             $table->text('estado_civil')->nullable();
             $table->text('edad')->nullable();
