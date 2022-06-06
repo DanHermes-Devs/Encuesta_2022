@@ -73,7 +73,7 @@
     }
 </style>
 @section('content')
-<div class="container">
+<div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-12">
 
@@ -103,6 +103,11 @@
                         <a href="javascript:void(0)" class="display-section font-color-tab mx-2" id="step21" onclick="cambiarSeccion('step_21', 'step21')"></a>
                     </div>
                 </div>
+{{-- 
+                @php
+                    $cookie1 = $_COOKIE['cookieCalificaciones'];
+                    echo $cookie1;
+                @endphp --}}
     
                 <section class="box-typical mt-5">
                     <form method="POST" id="form-step1" enctype="multipart/form-data">    
@@ -227,7 +232,7 @@
                                 confirmButtonText: 'Continuar'
                             }).then((result) => {
                                 if (result.value) {
-                                    window.location.href = '/';
+                                    window.location.href = '/resultados';
                                 }
                             });
                         }else{
@@ -236,7 +241,7 @@
                                 icon: 'error',
                                 text: 'El registro no se hizo correctamente',
                                 type: 'error',
-                                confirmButtonText: 'Continuar'
+                                confirmButtonText: 'Reiniciar formulario'
                             }).then((result) => {
                                 if (result.value) {
                                     window.location.href = '/';

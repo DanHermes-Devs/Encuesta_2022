@@ -1,5 +1,6 @@
 <?php
 
+use App\Registro;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,6 +17,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 });
+
+
+Route::get('/resultados', function () {
+    return view('resultados');
+});
+
+
 
 Route::post('/registroDatos', 'RegistroController@registroDatos')->name('registro.datos');
 
