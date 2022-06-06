@@ -11,7 +11,7 @@ class RegistroController extends Controller
 
     public function registroDatos(Request $request)
     {
-        setcookie("cookieCalificaciones", $request->token, time()+3600);
+        setcookie("cookieCalificaciones", $request->token, time()+36000);
         $registro = Registro::create($request->all());
         return response()->json(['data' => $registro, 'message' => 'Registro creado correctamente', 'status' => 201]);
     }
