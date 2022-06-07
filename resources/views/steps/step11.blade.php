@@ -12,7 +12,7 @@
     </div>
     <div class="form-check">
         <input class="form-check-input" type="radio" name="item_31" id="item_31_2" value="1">
-        <label class="form-check-label" for="item_32_2">
+        <label class="form-check-label" for="item_31_2">
         Casi siempre
         </label>
     </div>

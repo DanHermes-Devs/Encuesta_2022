@@ -45,12 +45,12 @@
     <select class="form-control" id="antiguedad" name="antiguedad">
         <option value="x">--Elige una opción--</option>
         <option value="Menos de 18 años">Menos de 1 año</option>
-        <option value="18-25 años">1-5 años</option>
-        <option value="26-30 años">6-10 años</option>
-        <option value="31-35 años">11-15 años</option>
-        <option value="36-40 años">16-20 años</option>
-        <option value="41-45 años">21-25 años</option>
-        <option value="Más de 70 años">Más de 25 años</option>
+        <option value="1-5 años">1-5 años</option>
+        <option value="6-10 años">6-10 años</option>
+        <option value="11-15 años">11-15 años</option>
+        <option value="16-20 años">16-20 años</option>
+        <option value="21-25 años">21-25 años</option>
+        <option value="Más de 25 años">Más de 25 años</option>
     </select>
 </div>
 

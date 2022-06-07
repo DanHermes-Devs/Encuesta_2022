@@ -16,5 +16,16 @@ class RegistroController extends Controller
         return response()->json(['data' => $registro, 'message' => 'Registro creado correctamente', 'status' => 201]);
     }
 
+    public function resultados($token)
+    {
+        // $registro = Registro::find($token);
+        $registro = Registro::where('token', $token)->first();
+        if ($registro) {
+            // return response()->json(['data' => $registro, 'message' => 'Registro encontrado', 'status' => 200]);
+            return view('resultados', compact('registro'));
+        } else {
+            return response()->json(['data' => $registro, 'message' => 'Registro no encontrado', 'status' => 404]);
+        }
+    }
     
 }

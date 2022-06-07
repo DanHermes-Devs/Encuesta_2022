@@ -26,6 +26,19 @@
         border-radius: 1rem;
     }
 
+    .card_steps .alert-warning {
+        color: #000000;
+        background-color: #fff;
+        border-color: #fff;
+        font-size: 20px;
+    }
+    .subtitulo {
+        font-size: 17.5px;
+        color: #222;
+        font-weight: bold;
+    }
+
+
     .font-color-tab-selected {
         font-weight: bold;
         background: #6645eb;
@@ -223,23 +236,24 @@
                         })
                     },
                     success: function(data) {
+                        console.log(data.data.token);
                         if(data.status == 201){
                             Swal.fire({
-                                title: '¡Bien hecho!',
+                                title: '¡Gracias por tu tiempo!',
                                 icon: 'success',
-                                text: 'El registro se hizo correctamente',
+                                text: 'Tus respuestas se almacenaron correctamente',
                                 type: 'success',
-                                confirmButtonText: 'Continuar'
+                                confirmButtonText: 'Ver resultados'
                             }).then((result) => {
                                 if (result.value) {
-                                    window.location.href = '/resultados';
+                                    window.location.href = `/resultados/${data.data.token}`;
                                 }
                             });
                         }else{
                             Swal.fire({
                                 title: '¡Error!',
                                 icon: 'error',
-                                text: 'El registro no se hizo correctamente',
+                                text: 'Tus respuestas no se almacenaron',
                                 type: 'error',
                                 confirmButtonText: 'Reiniciar formulario'
                             }).then((result) => {

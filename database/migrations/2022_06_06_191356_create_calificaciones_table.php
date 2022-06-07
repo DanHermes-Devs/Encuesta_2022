@@ -22,6 +22,8 @@ class CreateCalificacionesTable extends Migration
             $table->text('c_cat_3')->nullable();
             $table->text('c_cat_4')->nullable();
             $table->text('c_cat_5')->nullable();
+            $table->text('c_cat_6')->nullable();
+            $table->text('c_cat_7')->nullable();
             $table->text('c_dominio_1')->nullable();
             $table->text('c_dominio_2')->nullable();
             $table->text('c_dominio_3')->nullable();

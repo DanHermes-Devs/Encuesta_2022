@@ -19,9 +19,11 @@ Route::get('/', function () {
 });
 
 
-Route::get('/resultados', function () {
-    return view('resultados');
-});
+// Route::get('/resultados/{id}', function () {
+//     return view('resultados');
+// });
+
+Route::get('/resultados/{token}', 'RegistroController@resultados')->name('resultados');
 
 
 
