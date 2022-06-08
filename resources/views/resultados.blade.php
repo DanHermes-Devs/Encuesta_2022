@@ -248,10 +248,10 @@
             <table class="table table-stripped table-bordered w-100">
                 <thead class="thead-dark">
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Calificaciones</th>
-                        <th scope="col">Puntaje</th>
-                        <th scope="col">Resultado</th>
+                        <th scope="col" class="text-center">#</th>
+                        <th scope="col" class="text-center">Calificaciones</th>
+                        <th scope="col" class="text-center">Puntaje</th>
+                        <th scope="col" class="text-center">Resultado</th>
                     </tr>
                 </thead>
 
@@ -1498,7 +1498,16 @@
 
     <script>
         $(function () {
-            $('.table').DataTable();
+            $('.table').DataTable({
+                searching: false,
+                language: {
+                    url: 'https://cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json'
+                },
+                lengthMenu: [
+                    [25, 50, -1],
+                    ['25', '50', 'Todos']
+                ],
+            });
         });
     </script>
 @endsection

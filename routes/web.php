@@ -27,4 +27,6 @@ Route::post('/registroDatos', 'RegistroController@registroDatos')->name('registr
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/admin', 'HomeController@index')->name('admin');
+});

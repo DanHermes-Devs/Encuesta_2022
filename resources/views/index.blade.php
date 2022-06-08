@@ -249,10 +249,11 @@
                                 icon: 'success',
                                 text: 'Tus respuestas se almacenaron correctamente',
                                 type: 'success',
-                                confirmButtonText: 'Ver resultados'
+                                confirmButtonText: 'Continuar',
                             }).then((result) => {
                                 if (result.value) {
-                                    window.location.href = `/resultados/${data.data.token}`;
+                                    // window.location.href = `/resultados/${data.data.token}`;
+                                    window.location.href = `/`;
                                 }
                             });
                         }else{
