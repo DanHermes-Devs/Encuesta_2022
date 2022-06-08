@@ -14,7 +14,7 @@ class CalificacionesController extends Controller
      */
     public function index()
     {
-        //
+        return view('graficas');
     }
 
     /**

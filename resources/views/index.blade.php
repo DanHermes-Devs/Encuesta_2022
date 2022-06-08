@@ -84,6 +84,11 @@
         font-weight: 400;
         margin-top: 2rem;
     }
+
+    #radio_input_1,
+    #radio_input_2{
+        display: none;
+    }
 </style>
 @section('content')
 <div class="container mt-5">
@@ -211,6 +216,7 @@
             $('#' + valor).show();
         }
 
+
         $(function() {
             $.ajaxSetup({
                 headers: {
@@ -269,35 +275,25 @@
                 });
             });
 
-            // $("input[name='item_65']").change(function(evento){
-            //     var valor = $(this).val();
+            $("input[name='item_jefe']").change(function(){
+                var valor = $(this).val();
                 
-            //     if(valor == 'Siempre'){
-            //         $("#respuesta_si_1").css("display", "block");
-            //     }else{
-            //         $("#respuesta_si_1").css("display", "none");
-            //     }
-            // });
-
-            // $("input[name='item_70']").change(function(evento){
-            //     var valor = $(this).val();
+                if(valor == 'Sí'){
+                    $("#radio_input_1").css("display", "block");
+                }else{
+                    $("#radio_input_1").css("display", "none");
+                }
+            });
+            
+            $("input[name='item_sc']").change(function(){
+                var valor = $(this).val();
                 
-            //     if(valor == 'Siempre'){
-            //         $("#respuesta_si_2").css("display", "block");
-            //     }else{
-            //         $("#respuesta_si_2").css("display", "none");
-            //     }
-            // });
-
-            // $("input[name='item_71']").change(function(evento){
-            //     var valor = $(this).val();
-                
-            //     if(valor == 'Siempre'){
-            //         $("#respuesta_si_3").css("display", "block");
-            //     }else{
-            //         $("#respuesta_si_3").css("display", "none");
-            //     }
-            // });
+                if(valor == 'Sí'){
+                    $("#radio_input_2").css("display", "block");
+                }else{
+                    $("#radio_input_2").css("display", "none");
+                }
+            });
         })
     </script>
 @endsection

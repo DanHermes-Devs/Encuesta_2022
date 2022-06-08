@@ -18,12 +18,8 @@ Route::get('/', function () {
     return view('index');
 });
 
-
-// Route::get('/resultados/{id}', function () {
-//     return view('resultados');
-// });
-
 Route::get('/resultados/{token}', 'RegistroController@resultados')->name('resultados');
+Route::get('/graficas', 'CalificacionesController@index')->name('Calificaciones');
 
 
 
