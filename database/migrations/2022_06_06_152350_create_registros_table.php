@@ -15,6 +15,8 @@ class CreateRegistrosTable extends Migration
     {
         Schema::create('registros', function (Blueprint $table) {
             $table->id();
+            // Registrar correo electronico
+            $table->string('email')->unique()->nullable();
             $table->text('token');
             $table->text('sexo')->nullable();
             $table->text('estado_civil')->nullable();

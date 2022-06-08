@@ -54,6 +54,7 @@
     </select>
 </div>
 
-<div class="d-flex justify-content-end">
+<div class="d-flex justify-content-between">
+    <button type="button" class="btn_atras" onclick="cambiarSeccion('step_Two', 'stepTwo')">Atras</button>
     <button type="button" class="btn_siguiente" onclick="cambiarSeccion('step_2', 'step2')">Siguiente</button>
 </div>

@@ -97,8 +97,10 @@
 
             <div class="card_steps">
                 <div class="row">
-                    <div class="w-100" style="display: flex;">
-                        <a href="javascript:void(0)" class="display-section font-color-tab font-color-tab-selected mx-2" id="step1" onclick="cambiarSeccion('step_1', 'step1')"></a>
+                    <div class="w-100" style="display: flex;" id="stepsBar">
+                        <a href="javascript:void(0)" class="display-section font-color-tab font-color-tab-selected mx-2" id="stepOne" onclick="cambiarSeccion('step_One', 'stepOne')"></a>
+                        <a href="javascript:void(0)" class="display-section font-color-tab mx-2" id="stepTwo" onclick="cambiarSeccion('step_Two', 'stepTwo')"></a>
+                        <a href="javascript:void(0)" class="display-section font-color-tab mx-2" id="step1" onclick="cambiarSeccion('step_1', 'step1')"></a>
                         <a href="javascript:void(0)" class="display-section font-color-tab mx-2" id="step2" onclick="cambiarSeccion('step_2', 'step2')"></a>
                         <a href="javascript:void(0)" class="display-section font-color-tab mx-2" id="step3" onclick="cambiarSeccion('step_3', 'step3')"></a>
                         <a href="javascript:void(0)" class="display-section font-color-tab mx-2" id="step4" onclick="cambiarSeccion('step_4', 'step4')"></a>
@@ -131,7 +133,13 @@
                     <form method="POST" id="form-step1" enctype="multipart/form-data">    
                         @csrf
                         @method('post')
-                        <div class="tab-personal" id="step_1">
+                        <div class="tab-personal" id="step_One">
+                            @include('steps.stepOne')
+                        </div>
+                        <div class="tab-personal" id="step_Two" style="display: none">
+                            @include('steps.stepTwo')
+                        </div>
+                        <div class="tab-personal" id="step_1" style="display: none">
                             @include('steps.step1')
                         </div>
                         <div class="tab-personal" id="step_2" style="display: none">

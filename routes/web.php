@@ -28,5 +28,12 @@ Route::post('/registroDatos', 'RegistroController@registroDatos')->name('registr
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
+    // Rutas para el dashboard
     Route::get('/admin', 'HomeController@index')->name('admin');
+
+    // Rutas para empresas
+    Route::get('/empresas', 'EmpresasController@index')->name('empresas');
+
+    // Rutas para reportes
+    Route::get('/reportes', 'ReportesController@index')->name('reportes');
 });

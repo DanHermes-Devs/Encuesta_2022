@@ -48,14 +48,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     @endif
                 @else
                     <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" href="#">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                            data-toggle="dropdown" href="#">
                             {{ Auth::user()->name }}
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
-                                                document.getElementById('logout-form').submit();">
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                    document.getElementById('logout-form').submit();">
                                 {{ __('Cerrar sesión') }}
                             </a>
 
@@ -72,10 +72,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="index3.html" class="brand-link">
-                <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-                    style="opacity: .8">
-                <span class="brand-text font-weight-light">AdminLTE 3</span>
+            <a href="{{ route('admin') }}" class="brand-link">
+                {{-- <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+                    style="opacity: .8"> --}}
+                <span class="brand-text font-weight-light">Encuestas</span>
             </a>
 
             <!-- Sidebar -->
@@ -84,7 +84,59 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="true">
-                        
+
+                        {{-- Link a empresas --}}
+                        <li class="nav-item">
+                            <a href="{{ route('empresas') }}" class="nav-link">
+                                <i class="nav-icon fas fa-microchip"></i>
+                                <p>Empresas</p>
+                            </a>
+                        </li>
+                        {{-- Fin Link a empresas --}}
+
+                        {{-- Link a Reportes --}}
+                        <li class="nav-item">
+                            <a href="/docs/3.2/index.html" class="nav-link">
+                                <i class="nav-icon fas fa-microchip"></i>
+                                <p>Reportes</p>
+                            </a>
+                        </li>
+                        {{-- Fin Link a Reportes --}}
+
+                        {{-- Link a Graficas --}}
+                        <li class="nav-item">
+                            <a href="/docs/3.2/index.html" class="nav-link">
+                                <i class="nav-icon fas fa-microchip"></i>
+                                <p>Graficas</p>
+                            </a>
+                        </li>
+                        {{-- Fin Link a Graficas --}}
+
+                        {{-- Link a aviso de Configuracion del sitio --}}
+                        <li class="nav-item">
+                            <a href="/docs/3.2/javascript" class="nav-link">
+                                <i class="nav-icon fas fa-code"></i>
+                                <p>
+                                    Configuraciones
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="/docs/3.2/javascript/layout.html" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Configuración del sitio</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/docs/3.2/javascript/layout.html" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Aviso de privacidad</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        {{-- Fin Link a aviso de Configuracion del sitio --}}
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
@@ -97,7 +149,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Main Footer -->
         <footer class="main-footer">
             <!-- Default to the left -->
-            <strong>Copyright &copy; {{ date('Y'); }} <a href="https://wearetrafika.com/">Träfika | encuestas</a>.</strong> All rights reserved.
+            <strong>Copyright &copy; {{ date('Y') }} <a href="https://wearetrafika.com/">Träfika |
+                    encuestas</a>.</strong> All rights reserved.
         </footer>
         <!-- REQUIRED SCRIPTS -->
     </div>
