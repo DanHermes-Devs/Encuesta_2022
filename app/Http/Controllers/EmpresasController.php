@@ -14,7 +14,7 @@ class EmpresasController extends Controller
      */
     public function index()
     {
-        return view('admin.empresas');
+        return view('admin.empresas.index');
     }
 
     /**

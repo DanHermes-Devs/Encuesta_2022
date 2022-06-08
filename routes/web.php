@@ -36,4 +36,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Rutas para reportes
     Route::get('/reportes', 'ReportesController@index')->name('reportes');
+    
+    // Rutas para graficas
+    Route::get('/graficas', 'GraficasController@index')->name('graficas');
 });

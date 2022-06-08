@@ -55,7 +55,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                    document.getElementById('logout-form').submit();">
+                                                        document.getElementById('logout-form').submit();">
                                 {{ __('Cerrar sesión') }}
                             </a>
 
@@ -85,10 +85,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="true">
 
+                        {{-- Link a Dashboard --}}
+                        <li class="nav-item">
+                            <a href="{{ route('admin') }}" class="nav-link">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>Dashboard</p>
+                            </a>
+                        </li>
+                        {{-- Fin Link a Dashboard --}}
+
                         {{-- Link a empresas --}}
                         <li class="nav-item">
                             <a href="{{ route('empresas') }}" class="nav-link">
-                                <i class="nav-icon fas fa-microchip"></i>
+                                <i class="nav-icon fas fa-id-card"></i>
                                 <p>Empresas</p>
                             </a>
                         </li>
@@ -96,8 +105,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                         {{-- Link a Reportes --}}
                         <li class="nav-item">
-                            <a href="/docs/3.2/index.html" class="nav-link">
-                                <i class="nav-icon fas fa-microchip"></i>
+                            <a href="{{ route('reportes') }}" class="nav-link">
+                                <i class="nav-icon fas fa-file-contract"></i>
                                 <p>Reportes</p>
                             </a>
                         </li>
@@ -105,8 +114,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                         {{-- Link a Graficas --}}
                         <li class="nav-item">
-                            <a href="/docs/3.2/index.html" class="nav-link">
-                                <i class="nav-icon fas fa-microchip"></i>
+                            <a href="{{ route('graficas') }}" class="nav-link">
+                                <i class="nav-icon fab fa-think-peaks"></i>
                                 <p>Graficas</p>
                             </a>
                         </li>
@@ -114,8 +123,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                         {{-- Link a aviso de Configuracion del sitio --}}
                         <li class="nav-item">
-                            <a href="/docs/3.2/javascript" class="nav-link">
-                                <i class="nav-icon fas fa-code"></i>
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-cog"></i>
                                 <p>
                                     Configuraciones
                                     <i class="right fas fa-angle-left"></i>
@@ -143,9 +152,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </div>
             <!-- /.sidebar -->
         </aside>
+
         <div class="content-wrapper">
+            <div class="content-header">
+                <div class="container-fluid"></div>
+            </div>
             @yield('content')
         </div>
+
         <!-- Main Footer -->
         <footer class="main-footer">
             <!-- Default to the left -->
