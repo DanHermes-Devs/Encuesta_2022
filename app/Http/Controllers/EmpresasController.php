@@ -14,6 +14,20 @@ class EmpresasController extends Controller
      */
     public function index()
     {
+        if(request()->ajax())
+        {
+            $empresas = Empresas::all();
+            return DataTables()->of($empresas)
+                ->addColumn('action', function($empresas){
+                    $button = '<button type="button" name="edit" id="'.$empresas->id.'" class="edit btn btn-primary btn-sm">Editar</button>';
+                    $button .= '&nbsp;&nbsp;';
+                    $button .= '<button type="button" name="delete" id="'.$empresas->id.'" class="delete btn btn-danger btn-sm">Eliminar</button>';
+                    return $button;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+
         return view('admin.empresas.index');
     }
 

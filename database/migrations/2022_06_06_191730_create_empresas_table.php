@@ -15,7 +15,11 @@ class CreateEmpresasTable extends Migration
     {
         Schema::create('empresas', function (Blueprint $table) {
             $table->id();
+            $table->text('token')->nullable();
             $table->text('nombre')->nullable();
+            $table->text('logo')->nullable();
+            $table->text('imagen_fondo')->nullable();
+            $table->text('colores_principales')->nullable();
             $table->text('descripcion')->nullable();
             $table->text('activo')->nullable();
             $table->timestamps();

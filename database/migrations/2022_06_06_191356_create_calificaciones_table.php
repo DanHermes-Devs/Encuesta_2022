@@ -16,6 +16,7 @@ class CreateCalificacionesTable extends Migration
         Schema::create('calificaciones', function (Blueprint $table) {
             $table->id();
             $table->text('id_registro')->nullable();
+            $table->text('id_empresa')->nullable();
             $table->text('c_final')->nullable();
             $table->text('c_cat_1')->nullable();
             $table->text('c_cat_2')->nullable();
