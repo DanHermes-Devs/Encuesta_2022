@@ -56,8 +56,7 @@ class EmpresasController extends Controller
             'token' => 'required',
             'nombre' => 'required',
             'logo' => 'required|image',
-            // 'imagen_fondo' => 'required|image',
-            // 'colores_principales' => 'required',
+            'imagen_fondo' => 'required|image',
             'descripcion' => 'required',
         ]);
 
@@ -67,9 +66,11 @@ class EmpresasController extends Controller
             $logo = $request->logo->store('logos', 'public');
             $img_1 = Image::make(public_path("storage/{$logo}"))->fit(300, 300);
             $img_1->save();
+
             $img_fondo = $request->imagen_fondo->store('imagenes_fondo', 'public');
             $img_2 = Image::make(public_path("storage/{$img_fondo}"))->fit(1920, 1080);
             $img_2->save();
+
             $empresas = new Empresas;
             $empresas->token = $request->token;
             $empresas->nombre = $request->nombre;
@@ -77,7 +78,7 @@ class EmpresasController extends Controller
             $empresas->imagen_fondo = $img_fondo;
             $empresas->colores_principales = $request->colores_principales;
             $empresas->descripcion = $request->descripcion;
-            $empresas->activo = 1;
+            $empresas->activo = $request->activo;
             $empresas->save();
             return response()->json(['message' => 'Empresa creada correctamente.', 'empresa' => $empresas, 'status' => 'success']);
         }

@@ -1,4 +1,6 @@
 @extends('admin.layouts.app')
+{{-- waitme --}}
+<link rel="stylesheet" href="{{ asset('css/waitMe.min.css') }}">
 @section('content')
     <div class="content">
         <div class="container-fluid">
@@ -55,14 +57,14 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="logo">Imagen de fondo</label>
+                                    <label for="logo">Imagen de fondo <small class="text-red">(Requerido)</small></label>
                                     <input type="file" class="form-control" id="imagen_fondo" name="imagen_fondo"
                                         placeholder="Imagen de fondo">
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="logo">Color principal</label>
+                                    <label for="logo">Color principal <small class="text-red">(Requerido)</small></label>
                                     <input type="color" class="form-control" id="colores_principales"
                                         name="colores_principales" placeholder="Color principal">
                                 </div>
@@ -73,11 +75,20 @@
                                     <textarea class="form-control" id="descripcion" name="descripcion" placeholder="Descripción"></textarea>
                                 </div>
                             </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="logo">Activo <small class="text-red">(Requerido)</small></label>
+                                    <select class="form-control" id="activo" name="activo">
+                                        <option value="1">Si</option>
+                                        <option value="0">No</option>
+                                    </select>
+                                </div>
+                            </div>
                             <input type="hidden" class="form-control" name="token" id="token" value="{{ Str::uuid() }}">
                         </div>
                         <div class="modal-footer px-0">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-                            <button type="submit" class="btn btn-success">Guardar empresa</button>
+                            <button type="submit" class="btn btn-success guardarEmpresa">Guardar empresa</button>
                         </div>
                     </form>
                 </div>
@@ -90,7 +101,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+    <script src="{{ asset('js/waitMe.min.js') }}"></script>
     <script>
         $(document).ready(function() {
             $('.table').DataTable({
@@ -172,6 +183,10 @@
                     data: formData,
                     contentType: false,
                     processData: false,
+                    beforeSend: function() {
+                        // Waitme
+                        $('.guardarEmpresa').waitMe();
+                    },
                     success: function(data) {
                         $('#addEmpresa').modal('hide');
                         $('#form_add_empresa')[0].reset();
@@ -189,6 +204,9 @@
                                 if (result.value) {
                                     $('.table').DataTable().ajax.reload();
                                 }
+
+                                // waitme
+                                $('.guardarEmpresa').waitMe('hide');
                             });
                         } else {
                             Swal.fire({

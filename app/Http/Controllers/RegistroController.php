@@ -11,7 +11,8 @@ class RegistroController extends Controller
 {
 
     public function index($token){
-        $empresa = Empresas::where('token', $token)->first();
+        // Empresa activa
+        $empresa = Empresas::where('token', $token)->where('activo', 1)->first();
         return view('index', compact('empresa'));
     }
 

@@ -1,0 +1,1 @@
+<h2>Empresa no encontrada</h2>
