@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="{{ asset('css/waitMe.min.css') }}">
 <style>
     body {
-        background: url({{ asset('images/bg.jpg') }});
+        background: url({{Request::root()}}/storage/{{$empresa->imagen_fondo ?? asset('img/bg.jpg')}}) no-repeat center center fixed;
         background-repeat: no-repeat;
         background-size: cover;
         background-attachment: fixed;

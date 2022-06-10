@@ -21,9 +21,9 @@ class EmpresasController extends Controller
             $empresas = Empresas::all();
             return DataTables()->of($empresas)
                 ->addColumn('action', function($empresas){
-                    $button = '<button type="button" name="edit" id="'.$empresas->id.'" class="edit btn btn-primary btn-sm">Editar</button>';
+                    $button = '<button type="button" name="edit" data-id="'.$empresas->id.'" class="edit btn btn-warning btn-sm"><i class="fas fa-edit"></i></button>';
                     $button .= '&nbsp;&nbsp;';
-                    $button .= '<button type="button" name="delete" id="'.$empresas->id.'" class="delete btn btn-danger btn-sm">Eliminar</button>';
+                    $button .= '<button type="button" name="delete" data-id="'.$empresas->id.'" class="delete btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>';
                     return $button;
                 })
                 ->rawColumns(['action'])
@@ -124,8 +124,10 @@ class EmpresasController extends Controller
      * @param  \App\Empresas  $empresas
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Empresas $empresas)
+    public function destroy($id)
     {
-        //
+        $empresas = Empresas::find($id);
+        $empresas->delete();
+        return response()->json(['message' => 'Empresa eliminada correctamente.', 'status' => 'success']);
     }
 }

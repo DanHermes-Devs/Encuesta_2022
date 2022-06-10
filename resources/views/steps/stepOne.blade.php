@@ -6,12 +6,14 @@
 <div class="titulo text-center">
     <div class="row">
         <div class="col-12 col-md-6 mx-auto">
-            <img src="https://logodownload.org/wp-content/uploads/2020/01/grupo-bimbo-logo.png" class="img-fluid w-25" alt="Logo de la empresa">
-            <h2 class="mt-4">¡Bienvenido!</h2>
-            <div class="form-group">
-                <label for="email_registro">Para comenzar, ingresa tu correo electrónico</label>
-                <input type="email" class="form-control" name="email_registro" id="email_registro" placeholder="Correo electrónico">
-                <small>Una vez que ingreses tu correo electrónico, se habilitará el botón para comenzar la encuesta</small>
+            <div>
+                <img src="{{Request::root()}}/storage/{{$empresa->logo}}" class="img-fluid w-50" alt="Logo de la empresa">
+                <h2 class="mt-4">¡Bienvenido a {{$empresa->nombre}}!</h2>
+                <p>A continuación encontraras una serie de reactivos en la que no existen respuestas buenas ni malas, solo son respuestas que hacen alusión a la experiencia que tienes dentro de trabajo, recuerda contestar lo primero que se te venga a la mente,  considerando las condiciones ambientales de su centro de trabajo.</p>
+            </div>
+            <div class="form-group mt-3 alert alert-info text-left">
+                <small class="mb-5">Para poder contestar los cuestionarios será importante agregues tu correo institucional. Recuerda que los datos obtenidos en los cuestionarios son confidenciales.</small>
+                <input type="email" class="form-control mt-3" name="email_registro" id="email_registro" placeholder="Correo electrónico">
                 <div class="d-flex justify-content-center">
                     <button type="button" class="btn_siguiente" id="comenzarEncuesta" style="display: none;" onclick="cambiarSeccion('step_Two', 'stepTwo')">Comenzar encuesta</button>
                 </div>

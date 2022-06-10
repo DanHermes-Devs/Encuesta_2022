@@ -2,12 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Empresas;
 use App\Registro;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class RegistroController extends Controller
 {
+
+    public function index($token){
+        $empresa = Empresas::where('token', $token)->first();
+        return view('index', compact('empresa'));
+    }
 
     public function registroDatos(Request $request)
     {
