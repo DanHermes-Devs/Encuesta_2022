@@ -33,6 +33,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Rutas para empresas
     Route::get('/empresas', 'EmpresasController@index')->name('empresas');
+    Route::post('/empresas/store', 'EmpresasController@store')->name('empresas.store');
 
     // Rutas para reportes
     Route::get('/reportes', 'ReportesController@index')->name('reportes');
