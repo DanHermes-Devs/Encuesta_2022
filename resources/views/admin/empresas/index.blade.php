@@ -11,13 +11,13 @@
                 <table class="table table-stripped">
                     <thead>
                         <tr>
-                            <td>Nombre</td>
+                            <td width="20%">Nombre</td>
                             <td>Logo</td>
                             <td>Imagen fondo</td>
                             <td>Colores principales</td>
                             <td>Descripción</td>
                             <td>Activo</td>
-                            <td>Acciones</td>
+                            <td width="10%">Acciones</td>
                         </tr>
                     </thead>
                 </table>
@@ -113,12 +113,12 @@
                 },
                 {
                     targets: 1, render: function(data, type, row){
-                        return `<img src="http://encuesta_2022.test/storage/${row.logo}" width="50" height="50">`
+                        return `<img src="http://encuesta_2022.test/storage/${row.logo}" class="img-fluid w-25">`
                     }
                 },
                 {
                     targets: 2, render: function(data, type, row){
-                        return `<img src="http://encuesta_2022.test/storage/${row.imagen_fondo}" width="50" height="50">`
+                        return `<img src="http://encuesta_2022.test/storage/${row.imagen_fondo}" class="img-fluid w-25">`
                     }
                 },
             ],
@@ -171,6 +171,7 @@
                             type: 'error',
                             confirmButtonText: 'Aceptar'
                         });
+                    }
                 },
                 error: function(data){
                     console.log(data);
