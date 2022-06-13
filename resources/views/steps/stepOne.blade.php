@@ -13,7 +13,7 @@
             </div>
             <div class="form-group mt-3 alert alert-info text-left">
                 <small class="mb-5">Para poder contestar los cuestionarios será importante agregues tu correo institucional. Recuerda que los datos obtenidos en los cuestionarios son confidenciales.</small>
-                <input type="email" class="form-control mt-3" name="email_registro" id="email_registro" placeholder="Correo electrónico">
+                <input type="email" class="form-control mt-3" name="email" id="email" placeholder="Correo electrónico">
                 <div class="d-flex justify-content-center">
                     <button type="button" class="btn_siguiente" id="comenzarEncuesta" style="display: none;" onclick="cambiarSeccion('step_Two', 'stepTwo')">Comenzar encuesta</button>
                 </div>
@@ -24,8 +24,8 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    $("#email_registro").keyup(function(){
-        var email = $("#email_registro").val();
+    $("#email").keyup(function(){
+        var email = $("#email").val();
         if(email.includes(".com") && email.includes("@")){
             $("#comenzarEncuesta").show();
         }else{

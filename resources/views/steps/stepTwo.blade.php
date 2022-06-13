@@ -1,4 +1,7 @@
-<h2>Hola desde step two</h2>
+
+<h2>
+    Marca la respuesta que consideres más apropiada de acuerdo a lo que se te pide.
+</h2>
 
 <div class="d-flex justify-content-between">
     <button type="button" class="btn_atras" onclick="cambiarSeccion('step_One', 'stepOne')">Atras</button>

@@ -6,18 +6,15 @@
     <div class="container-fluid">
         <div class="card p-4">
             <div class="row justify-content-between">
-                <h2>Reportes</h2>
+                <h2>Registros</h2>
             </div>
             <div class="mt-5">
                 <table class="table table-stripped">
                     <thead>
                         <tr>
-                            <td width="20%">Nombre</td>
-                            <td>Logo</td>
-                            <td>Imagen fondo</td>
-                            <td>Colores principales</td>
-                            <td>Descripción</td>
-                            <td>Activo</td>
+                            <td width="20%">Empresa</td>
+                            <td>Correo</td>
+                            <td>Resultados</td>
                             <td width="10%">Acciones</td>
                         </tr>
                     </thead>
@@ -40,30 +37,18 @@
                 serverSide: true,
                 responsive: true,
                 autoWidth: false,
-                ajax: '{{ route('empresas') }}',
+                ajax: '{{ route('registro.index') }}',
                 columns: [{
-                        data: 'nombre',
-                        name: 'nombre'
+                        data: 'id_empresa',
+                        name: 'id_empresa'
                     },
                     {
-                        data: 'logo',
-                        name: 'logo'
+                        data: 'email',
+                        name: 'email'
                     },
                     {
-                        data: 'imagen_fondo',
-                        name: 'imagen_fondo'
-                    },
-                    {
-                        data: 'colores_principales',
-                        name: 'colores_principales'
-                    },
-                    {
-                        data: 'descripcion',
-                        name: 'descripcion'
-                    },
-                    {
-                        data: 'activo',
-                        name: 'activo'
+                        data: 'token',
+                        name: 'token'
                     },
                     {
                         data: 'action',
@@ -76,18 +61,6 @@
                         targets: 0,
                         render: function(data, type, row) {
                             return `<a href="empresa/${row.token}">${row.nombre}</a>`
-                        }
-                    },
-                    {
-                        targets: 1,
-                        render: function(data, type, row) {
-                            return `<img src="http://encuesta_2022.test/storage/${row.logo}" class="img-fluid w-25">`
-                        }
-                    },
-                    {
-                        targets: 2,
-                        render: function(data, type, row) {
-                            return `<img src="http://encuesta_2022.test/storage/${row.imagen_fondo}" class="img-fluid w-25">`
                         }
                     },
                 ],

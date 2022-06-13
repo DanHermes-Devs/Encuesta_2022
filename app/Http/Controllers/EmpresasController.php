@@ -21,9 +21,11 @@ class EmpresasController extends Controller
             $empresas = Empresas::all();
             return DataTables()->of($empresas)
                 ->addColumn('action', function($empresas){
-                    $button = '<button type="button" name="edit" data-id="'.$empresas->id.'" class="edit btn btn-warning btn-sm"><i class="fas fa-edit"></i></button>';
+                    $button = '<button type="button" name="edit" data-id="'.$empresas->id.'" title="Editar empresa" class="edit btn btn-warning btn-sm"><i class="fas fa-edit"></i></button>';
                     $button .= '&nbsp;&nbsp;';
-                    $button .= '<button type="button" name="delete" data-id="'.$empresas->id.'" class="delete btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>';
+                    $button .= '<button type="button" name="delete" data-id="'.$empresas->id.'" title="Eliminar empresa" class="delete btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>';
+                    $button .= '&nbsp;&nbsp;';
+                    $button .= '<a href="'.'/empresa/'.$empresas->token.'" target="_blank" title="Ver empresa" class="btn btn-success btn-sm"><i class="fas fa-eye"></i></a>';
                     return $button;
                 })
                 ->rawColumns(['action'])

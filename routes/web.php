@@ -27,6 +27,9 @@ Route::group(['middleware' => 'auth'], function () {
     // Rutas para el dashboard
     Route::get('/admin', 'HomeController@index')->name('admin');
 
+    // Rutas para registros
+    Route::get('/registros', 'RegistroController@registroAdmin')->name('registro.index');
+
     // Rutas para empresas
     Route::get('/empresas', 'EmpresasController@index')->name('empresas');
     Route::post('/empresas/store', 'EmpresasController@store')->name('empresas.store');

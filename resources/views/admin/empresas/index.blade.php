@@ -13,7 +13,7 @@
                     <table class="table table-stripped">
                         <thead>
                             <tr>
-                                <td width="20%">Nombre</td>
+                                <td width="20%">Nombre de la empresa</td>
                                 <td>Logo</td>
                                 <td>Imagen fondo</td>
                                 <td>Colores principales</td>
@@ -52,14 +52,20 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="logo">Logo <small class="text-red">(Requerido)</small></label>
-                                    <input type="file" class="form-control" id="logo" name="logo" placeholder="Logo">
+                                    {{-- Solo aceptar jpg y png --}}
+                                    <input type="file" class="form-control" id="logo" name="logo"
+                                        accept="image/png, image/jpeg">
+                                    <small>Tamaño máximo: 2MB</small>
+                                    <small>Formato: jpg o png</small>
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="logo">Imagen de fondo <small class="text-red">(Requerido)</small></label>
                                     <input type="file" class="form-control" id="imagen_fondo" name="imagen_fondo"
-                                        placeholder="Imagen de fondo">
+                                        accept="image/png, image/jpeg">
+                                    <small>Tamaño máximo: 2MB</small>
+                                    <small>Formato: jpg o png</small>
                                 </div>
                             </div>
                             <div class="col-md-12">
@@ -84,7 +90,8 @@
                                     </select>
                                 </div>
                             </div>
-                            <input type="hidden" class="form-control" name="token" id="token" value="{{ Str::uuid() }}">
+                            {{-- <input type="hidden" class="form-control" name="token" id="token" value="{{ Str::uuid() }}"> --}}
+                            <input type="hidden" class="form-control" name="token" id="token" value="">
                         </div>
                         <div class="modal-footer px-0">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
@@ -144,7 +151,7 @@
                 columnDefs: [{
                         targets: 0,
                         render: function(data, type, row) {
-                            return `<a href="empresa/${row.token}">${row.nombre}</a>`
+                            return `<a href="empresa/${row.token}">${row.nombre}</a>`;
                         }
                     },
                     {
@@ -165,6 +172,14 @@
                 }
             });
 
+            const generateId = () => Math.random().toString(36).substr(2, 8) + '-' + Math.random().toString(36).substr(2, 4) + '-' + Math.random().toString(36).substr(2, 4) + '-' + Math.random().toString(36).substr(2, 4) + '-' + Math.random().toString(36).substr(2, 12);
+            // asignar uuid al campo token
+            $('#token').val(generateId());
+            
+            // Actualizar token cada 5 segundos
+            setInterval(() => {
+                $('#token').val(generateId());
+            }, 10000);
             // Mandamos los datos por ajax
             $.ajaxSetup({
                 headers: {

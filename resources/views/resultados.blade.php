@@ -161,6 +161,65 @@
 
                 // Inestabilidad laboral
                 $Iestabilidad = $Cfinal->item_53+$Cfinal->item_54;
+
+                // Token empresa
+                $tokenEmpresa = $registroID->id_empresa;
+
+                // Token usuario
+                $tokenUsuario = $registroID->token;
+
+                // Crear registro de las calificaciones en la base de datos
+                $calificaciones = new Calificaciones;
+                $calificaciones->id_registro = $tokenUsuario;
+                $calificaciones->id_empresa = $tokenEmpresa;
+                $calificaciones->c_final = $calificacionFinal;
+
+                // Categorias
+                $calificaciones->c_cat_1 = $Atrabajo;
+                $calificaciones->c_cat_2 = $Fpropios;
+                $calificaciones->c_cat_3 = $Otiempo;
+                $calificaciones->c_cat_4 = $Lrelaciones;
+                $calificaciones->c_cat_5 = $Eorganizacional;
+                $calificaciones->c_cat_6 = $Caracteristicas;
+                $calificaciones->c_cat_7 = $Rsociales;
+
+                // Dominio
+                $calificaciones->c_dominio_1 = $Cambiente;
+                $calificaciones->c_dominio_2 = $Ctrabajo;
+                $calificaciones->c_dominio_3 = $Fcontrol;
+                $calificaciones->c_dominio_4 = $Jtrabajo;
+                $calificaciones->c_dominio_5 = $Irelacion;
+                $calificaciones->c_dominio_6 = $Liderazgo;
+                $calificaciones->c_dominio_7 = $Rtrabajo;
+                $calificaciones->c_dominio_8 = $Violencia;
+                $calificaciones->c_dominio_9 = $Rdesempeño;
+                $calificaciones->c_dominio_10 = $Ipertenencia;
+
+                // Dimension
+                $calificaciones->c_dimension_1 = $Cpeligrosas;
+                $calificaciones->c_dimension_2 = $Cdeficientes;
+                $calificaciones->c_dimension_3 = $Tpeligrosos;
+                $calificaciones->c_dimension_4 = $Ccuantitativa;
+                $calificaciones->c_dimension_5 = $Rtrabajoacelerado;
+                $calificaciones->c_dimension_6 = $Cmental;
+                $calificaciones->c_dimension_7 = $Cpsicologica;
+                $calificaciones->c_dimension_8 = $Calta;
+                $calificaciones->c_dimension_9 = $Ccontradictorias;
+                $calificaciones->c_dimension_10 = $Fcontrolautonomia;
+                $calificaciones->c_dimension_11 = $Ldesarrollo;
+                $calificaciones->c_dimension_12 = $Iparticipacion;
+                $calificaciones->c_dimension_13 = $Lcapacitacion;
+                $calificaciones->c_dimension_14 = $Jextensas;
+                $calificaciones->c_dimension_15 = $Itrabajofuera;
+                $calificaciones->c_dimension_16 = $Iresponsabilidades;
+                $calificaciones->c_dimension_17 = $Eclaridad;
+                $calificaciones->c_dimension_20 = $Drelaciones;
+                $calificaciones->c_dimension_21 = $ViolenciaLaboral;
+                $calificaciones->c_dimension_22 = $Eretroalimentacion;
+                $calificaciones->c_dimension_23 = $Ereconocimiento;
+                $calificaciones->c_dimension_24 = $Lpertenencia;
+                $calificaciones->c_dimension_25 = $Iestabilidad;
+
             @endphp
             <div class="col-12 mb-5">
                 <h2>Resultados</h2>
@@ -169,6 +228,10 @@
             </div>
 
             <div class="col-12 col-md-3">
+                <p  class="mb-3">
+                    <b>Correo electrónico:</b>
+                    {{$registroID->email}}
+                </p>
                 <p class="mb-3">
                     <b>Sexo:</b>
                     <br>
@@ -180,15 +243,14 @@
                     <br>
                     {{ $registroID->estado_civil }}
                 </p>
+            </div>
 
+            <div class="col-12 col-md-3">
                 <p class="mb-3">
                     <b>Edad en años:</b>
                     <br>
                     {{ $registroID->edad }}
                 </p>
-            </div>
-
-            <div class="col-12 col-md-3">
                 <p class="mb-3">
                     <b>Antigüedad en puesto actual:</b>
                     <br>
@@ -200,16 +262,15 @@
                     <br>
                     {{ $registroID->estudios }}
                 </p>
+            </div>
 
+
+            <div class="col-12 col-md-3">
                 <p class="mb-3">
                     <b>Tipo de puesto:</b>
                     <br>
                     {{ $registroID->tipo_puesto }}
                 </p>
-            </div>
-
-
-            <div class="col-12 col-md-3">
                 <p class="mb-3">
                     <b>Área:</b>
                     <br>
@@ -221,15 +282,14 @@
                     <br>
                     {{ $registroID->tipo_contratacion }}
                 </p>
+            </div>
 
+            <div class="col-12 col-md-3">
                 <p class="mb-3">
                     <b>Jornada de trabajo:</b>
                     <br>
                     {{ $registroID->jornada_trabajo }}
                 </p>
-            </div>
-
-            <div class="col-12 col-md-3">
                 <p class="mb-3">
                     <b>Rotación de turnos:</b>
                     <br>

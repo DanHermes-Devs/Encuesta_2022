@@ -151,7 +151,7 @@
                                     onclick="cambiarSeccion('step_21', 'step21')"></a>
                             </div>
                         </div>
-                        <section class="box-typical mt-5">
+                        <section class="box-typical">
                             <form method="POST" id="form-step1" enctype="multipart/form-data">
                                 @csrf
                                 @method('post')
@@ -225,6 +225,7 @@
                                     @include('steps.step21')
                                 </div>
                                 <input type="hidden" name="token" value="{{ Str::uuid()->toString() }}">
+                                <input type="hidden" name="id_empresa" id="id_empresa" value="{{$token}}">
                             </form>
                         </section>
                     </div>
@@ -242,6 +243,7 @@
 @endsection
 
 @section('scripts')
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="{{ asset('js/waitMe.min.js') }}"></script>
     @parent

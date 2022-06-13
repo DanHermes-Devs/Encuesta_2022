@@ -58,8 +58,6 @@ class CreateCalificacionesTable extends Migration
             $table->text('c_dimension_21')->nullable();
             $table->text('c_dimension_22')->nullable();
             $table->text('c_dimension_23')->nullable();
-            $table->text('c_dimension_24')->nullable();
-            $table->text('c_dimension_25')->nullable();
             $table->timestamps();
         });
     }
