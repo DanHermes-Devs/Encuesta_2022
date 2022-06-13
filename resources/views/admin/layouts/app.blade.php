@@ -114,18 +114,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                         {{-- Link a Reportes --}}
                         <li class="nav-item">
-                            <a href="{{ route('reportes') }}" class="nav-link">
-                                <i class="nav-icon fas fa-file-contract"></i>
-                                <p>Reportes</p>
-                            </a>
-                        </li>
-                        {{-- Fin Link a Reportes --}}
-
-                        {{-- Link a Reportes --}}
-                        <li class="nav-item">
                             <a href="{{ route('registro.index') }}" class="nav-link">
                                 <i class="nav-icon fas fa-file-contract"></i>
-                                <p>Registros</p>
+                                <p>Reportes</p>
                             </a>
                         </li>
                         {{-- Fin Link a Reportes --}}

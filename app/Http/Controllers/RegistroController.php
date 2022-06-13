@@ -40,13 +40,6 @@ class RegistroController extends Controller
         {
             $registros = Registro::all();
             return DataTables()->of($registros)
-                ->addColumn('action', function($registros){
-                    $button = '<button type="button" name="edit" data-id="'.$registros->id.'" class="edit btn btn-warning btn-sm"><i class="fas fa-edit"></i></button>';
-                    $button .= '&nbsp;&nbsp;';
-                    $button .= '<button type="button" name="delete" data-id="'.$registros->id.'" class="delete btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>';
-                    return $button;
-                })
-                ->rawColumns(['action'])
                 ->make(true);
         }
         return view('admin.registros.index');

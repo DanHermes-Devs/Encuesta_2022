@@ -6,7 +6,7 @@
     <div class="container-fluid">
         <div class="card p-4">
             <div class="row justify-content-between">
-                <h2>Registros</h2>
+                <h2>Reportes</h2>
             </div>
             <div class="mt-5">
                 <table class="table table-stripped">
@@ -15,7 +15,6 @@
                             <td width="20%">Empresa</td>
                             <td>Correo</td>
                             <td>Resultados</td>
-                            <td width="10%">Acciones</td>
                         </tr>
                     </thead>
                 </table>
@@ -50,12 +49,6 @@
                         data: 'token',
                         name: 'token'
                     },
-                    {
-                        data: 'action',
-                        name: 'action',
-                        orderable: false,
-                        searchable: false
-                    }
                 ],
                 columnDefs: [
                     {
@@ -67,7 +60,7 @@
                     {
                         targets: 2,
                         render: function(data, type, row) {
-                            return `<a href="resultados/${row.token}">Ver resultados</a>`
+                            return `<a href="resultados/${row.token}" class="btn btn-success">Ver resultados</a>`
                         }
                     }
                 ],
