@@ -169,7 +169,7 @@
                 $tokenUsuario = $registroID->token;
 
                 // Crear registro de las calificaciones en la base de datos
-                $calificaciones = new Calificaciones;
+                $calificaciones = new App\Calificaciones;
                 $calificaciones->id_registro = $tokenUsuario;
                 $calificaciones->id_empresa = $tokenEmpresa;
                 $calificaciones->c_final = $calificacionFinal;

@@ -224,7 +224,8 @@
                                 <div class="tab-personal" id="step_21" style="display: none">
                                     @include('steps.step21')
                                 </div>
-                                <input type="hidden" name="token" value="{{ Str::uuid()->toString() }}">
+                                {{-- <input type="hidden" name="token" value="{{ Str::uuid()->toString() }}"> --}}
+                                <input type="hidden" class="form-control" name="token" id="token" value="">
                                 <input type="hidden" name="id_empresa" id="id_empresa" value="{{$token}}">
                             </form>
                         </section>
@@ -248,6 +249,20 @@
     <script src="{{ asset('js/waitMe.min.js') }}"></script>
     @parent
     <script>
+        const generateId = () => Math.random().toString(36).substr(2, 8) + '-' + Math.random().toString(36).substr(2, 4) + '-' + Math.random().toString(36).substr(2, 4) + '-' + Math.random().toString(36).substr(2, 4) + '-' + Math.random().toString(36).substr(2, 12);
+        // asignar uuid al campo token
+        $('#token').val(generateId());
+        
+        // Actualizar token cada 5 segundos
+        setInterval(() => {
+            $('#token').val(generateId());
+        }, 10000);
+        // Mandamos los datos por ajax
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
         function cambiarSeccion(valor, idBoton) {
             $('.display-section').removeClass("font-color-tab-selected");
             $('#' + idBoton).addClass('font-color-tab-selected');

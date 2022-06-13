@@ -57,12 +57,19 @@
                         searchable: false
                     }
                 ],
-                columnDefs: [{
+                columnDefs: [
+                    {
                         targets: 0,
                         render: function(data, type, row) {
-                            return `<a href="empresa/${row.token}">${row.nombre}</a>`
+                            return `<a href="empresa/${row.id_empresa}">${row.nombre}</a>`
                         }
                     },
+                    {
+                        targets: 2,
+                        render: function(data, type, row) {
+                            return `<a href="resultados/${row.token}">Ver resultados</a>`
+                        }
+                    }
                 ],
                 "language": {
                     "url": "//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json"
