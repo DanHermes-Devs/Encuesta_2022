@@ -15,7 +15,7 @@ class CreateRegistrosTable extends Migration
     {
         Schema::create('registros', function (Blueprint $table) {
             $table->id();
-            $table->text('id_empresa')->nullable();
+            $table->foreignId('id_empresa')->references('id')->on('empresas')->onDelete('cascade');
             $table->string('email')->unique()->nullable();
             $table->text('token');
             $table->text('sexo')->nullable();

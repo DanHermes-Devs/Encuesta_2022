@@ -119,4 +119,14 @@ class Registro extends Model
         'ets_19',
         'ets_20',
     ];
+
+    public function empresa()
+    {
+        return $this->belongsTo('App\Empresas', 'id_empresa');
+    }
+
+    public function calificaciones()
+    {
+        return $this->hasMany('App\Calificaciones', 'id_registro');
+    }
 }

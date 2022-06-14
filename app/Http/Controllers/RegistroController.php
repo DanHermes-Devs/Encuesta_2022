@@ -38,7 +38,7 @@ class RegistroController extends Controller
     public function registroAdmin(){
         if(request()->ajax())
         {
-            $registros = Registro::all();
+            $registros = Registro::with('empresa')->get();
             return DataTables()->of($registros)
                 ->make(true);
         }

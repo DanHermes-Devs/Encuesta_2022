@@ -11,7 +11,8 @@
     label {
         font-size: 1rem;
         font-weight: bold;
-        color: #6200ea;
+        color: {{$empresa->colores_principales ?? '#6200ea' }};
+        /* #6200ea */
     }
 
     label.form-check-label {
@@ -44,7 +45,7 @@
 
     .font-color-tab-selected {
         font-weight: bold;
-        background: #6645eb;
+        background: {{$empresa->colores_principales ?? '#6200ea' }};
         height: 10px;
         display: inline-block;
         width: 100%;
@@ -65,7 +66,7 @@
         padding: 1rem 3rem;
         border: none;
         align-items: center;
-        background: #6200EA;
+        background: {{$empresa->colores_principales  ?? '#6200ea' }};
         cursor: pointer;
         color: #fff !important;
         text-decoration: none;
@@ -79,9 +80,9 @@
         border: none;
         align-items: center;
         background: transparent;
-        border: 1px solid #6200EA;
+        border: 1px solid {{$empresa->colores_principales  ?? '#6200ea' }};
         cursor: pointer;
-        color: #6200EA !important;
+        color: {{$empresa->colores_principales  ?? '#6200ea' }} !important;
         text-decoration: none;
         transition-duration: 0.3s;
         font-weight: 400;
@@ -97,11 +98,11 @@
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-12">
-
                 @if ($empresa)
                     <div class="card_steps">
                         <div class="row">
-                            <div class="w-100" style="display: flex;" id="stepsBar">
+                            <div class="w-100" style="display: flex;" id="">
+                                {{-- stepsBar --}}
                                 <a href="javascript:void(0)"
                                     class="display-section font-color-tab font-color-tab-selected mx-2" id="stepOne"
                                     onclick="cambiarSeccion('step_One', 'stepOne')"></a>
@@ -151,7 +152,7 @@
                                     onclick="cambiarSeccion('step_21', 'step21')"></a>
                             </div>
                         </div>
-                        <section class="box-typical">
+                        <section class="box-typical mt-5">
                             <form method="POST" id="form-step1" enctype="multipart/form-data">
                                 @csrf
                                 @method('post')
@@ -226,7 +227,7 @@
                                 </div>
                                 {{-- <input type="hidden" name="token" value="{{ Str::uuid()->toString() }}"> --}}
                                 <input type="hidden" class="form-control" name="token" id="token" value="">
-                                <input type="hidden" name="id_empresa" id="id_empresa" value="{{$token}}">
+                                <input type="hidden" name="id_empresa" id="id_empresa" value="{{$empresa->id}}">
                             </form>
                         </section>
                     </div>

@@ -1,13 +1,19 @@
 @extends('admin.layouts.app')
 {{-- waitme --}}
 <link rel="stylesheet" href="{{ asset('css/waitMe.min.css') }}">
+<style>
+    .badge.badge-danger {
+        cursor: pointer;
+    }
+</style>
 @section('content')
     <div class="content">
         <div class="container-fluid">
             <div class="card p-4">
                 <div class="row justify-content-between">
                     <h2>Empresas</h2>
-                    <button class="btn btn-info" data-toggle="modal" data-target="#addEmpresa"><i class="fas fa-plus mr-2"></i>Añadir empresa</button>
+                    <button class="btn btn-info" data-toggle="modal" data-target="#addEmpresa"><i
+                            class="fas fa-plus mr-2"></i>Añadir empresa</button>
                 </div>
                 <div class="mt-5">
                     <table class="table table-stripped">
@@ -61,7 +67,8 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="logo">Imagen de fondo <small class="text-red">(Requerido)</small></label>
+                                    <label for="logo">Imagen de fondo <small
+                                            class="text-red">(Requerido)</small></label>
                                     <input type="file" class="form-control" id="imagen_fondo" name="imagen_fondo"
                                         accept="image/png, image/jpeg">
                                     <small>Tamaño máximo: 2MB</small>
@@ -70,7 +77,8 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="logo">Color principal <small class="text-red">(Requerido)</small></label>
+                                    <label for="logo">Color principal <small
+                                            class="text-red">(Requerido)</small></label>
                                     <input type="color" class="form-control" id="colores_principales"
                                         name="colores_principales" placeholder="Color principal">
                                 </div>
@@ -88,6 +96,91 @@
                                         <option value="1">Si</option>
                                         <option value="0">No</option>
                                     </select>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="my-input">Tipo de puesto</label>
+                                    <input type="hidden" name="tipo_puesto" value="1">
+                                    <div class="form-group__content input-group mb-3 tipo_puesto">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">
+                                                <span class="badge badge-danger" onclick="removeInput(0,'tipo_puesto')"><i class="fas fa-times"></i></span>
+                                            </span>
+                                        </div>
+                                        <input type="text" class="form-control" name="summaryPuesto_0">
+                                    </div>
+                                    <button class="btn btn-success btn-sm mb-2" type="button" id="addOption"
+                                        onclick="addInput(this, 'tipo_puesto')"><i
+                                            class="fas fa-plus mr-2"></i>Añadir</button>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="my-input">Área</label>
+                                    <input type="hidden" name="area" value="1">
+                                    <div class="form-group__content input-group mb-3 area">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">
+                                                <span class="badge badge-danger" onclick="removeInput(0,'area')"><i class="fas fa-times"></i></span>
+                                            </span>
+                                        </div>
+                                        <input type="text" class="form-control" name="summaryArea_0">
+                                    </div>
+                                    <button class="btn btn-success btn-sm mb-2" type="button" id="addOption"
+                                        onclick="addInput(this, 'area')"><i
+                                            class="fas fa-plus mr-2"></i>Añadir</button>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="my-input">Tipo de contratación</label>
+                                    <input type="hidden" name="tipo_contratacion" value="1">
+                                    <div class="form-group__content input-group mb-3 tipo_contratacion">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">
+                                                <span class="badge badge-danger" onclick="removeInput(0,'tipo_contratacion')"><i class="fas fa-times"></i></span>
+                                            </span>
+                                        </div>
+                                        <input type="text" class="form-control" name="summaryContratacion_0">
+                                    </div>
+                                    <button class="btn btn-success btn-sm mb-2" type="button" id="addOption"
+                                        onclick="addInput(this, 'tipo_contratacion')"><i
+                                            class="fas fa-plus mr-2"></i>Añadir</button>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="my-input">Jornada de trabajo</label>
+                                    <input type="hidden" name="jornada_trabajo" value="1">
+                                    <div class="form-group__content input-group mb-3 jornada_trabajo">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">
+                                                <span class="badge badge-danger" onclick="removeInput(0,'jornada_trabajo')"><i class="fas fa-times"></i></span>
+                                            </span>
+                                        </div>
+                                        <input type="text" class="form-control" name="summaryJornada_0">
+                                    </div>
+                                    <button class="btn btn-success btn-sm mb-2" type="button" id="addOption"
+                                        onclick="addInput(this, 'jornada_trabajo')"><i
+                                            class="fas fa-plus mr-2"></i>Añadir</button>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="my-input">Rotacion de turnos</label>
+                                    <input type="hidden" name="rotacion_turnos" value="1">
+                                    <div class="form-group__content input-group mb-3 rotacion_turnos">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">
+                                                <span class="badge badge-danger" onclick="removeInput(0,'rotacion_turnos')"><i class="fas fa-times"></i></span>
+                                            </span>
+                                        </div>
+                                        <input type="text" class="form-control" name="summaryRotacion_0">
+                                    </div>
+                                    <button class="btn btn-success btn-sm mb-2" type="button" id="addOption"
+                                        onclick="addInput(this, 'rotacion_turnos')"><i
+                                            class="fas fa-plus mr-2"></i>Añadir</button>
                                 </div>
                             </div>
                             {{-- <input type="hidden" class="form-control" name="token" id="token" value="{{ Str::uuid() }}"> --}}
@@ -110,6 +203,94 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="{{ asset('js/waitMe.min.js') }}"></script>
     <script>
+        function addInput(elem, type) {
+            var inputs = $("."+type);
+            
+            if(inputs.length < 15){
+                if(type == "tipo_puesto"){
+                    $(elem).before(`
+                        <div class="form-group__content input-group mb-3 tipo_puesto">
+                            <div class="input-group-append">
+                                <span class="input-group-text">
+                                    <span class="badge badge-danger" onclick="removeInput(${inputs.length},'tipo_puesto')"><i class="fas fa-times"></i></span>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control" name="summaryPuesto_${inputs.length}">
+                        </div>
+                    `);
+                }
+                if(type == "area"){
+                    $(elem).before(`
+                        <div class="form-group__content input-group mb-3 area">
+                            <div class="input-group-append">
+                                <span class="input-group-text">
+                                    <span class="badge badge-danger" onclick="removeInput(${inputs.length},'area')"><i class="fas fa-times"></i></span>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control" name="summaryArea_${inputs.length}">
+                        </div>
+                    `);
+                }
+                if(type == "tipo_contratacion"){
+                    $(elem).before(`
+                        <div class="form-group__content input-group mb-3 tipo_contratacion">
+                            <div class="input-group-append">
+                                <span class="input-group-text">
+                                    <span class="badge badge-danger" onclick="removeInput(${inputs.length},'tipo_contratacion')"><i class="fas fa-times"></i></span>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control" name="summaryContratacion_${inputs.length}">
+                        </div>
+                    `);
+                }
+                if(type == "jornada_trabajo"){
+                    $(elem).before(`
+                        <div class="form-group__content input-group mb-3 jornada_trabajo">
+                            <div class="input-group-append">
+                                <span class="input-group-text">
+                                    <span class="badge badge-danger" onclick="removeInput(${inputs.length},'jornada_trabajo')"><i class="fas fa-times"></i></span>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control" name="summaryJornada_${inputs.length}">
+                        </div>
+                    `);
+                }
+                if(type == "rotacion_turnos"){
+                    $(elem).before(`
+                        <div class="form-group__content input-group mb-3 rotacion_turnos">
+                            <div class="input-group-append">
+                                <span class="input-group-text">
+                                    <span class="badge badge-danger" onclick="removeInput(${inputs.length},'rotacion_turnos')"><i class="fas fa-times"></i></span>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control" name="summaryRotacion_${inputs.length}">
+                        </div>
+                    `);
+                }
+
+                $('[name="'+type+'"]').val(inputs.length+1);
+            }else{
+                alert("Maximo 15 opciones");
+                return;
+            }
+        }
+
+        function removeInput(index, type){
+            var inputs = $("."+type);
+
+            if(inputs.length > 1){
+                inputs.each(i=>{
+                    if(i == index){
+                        $(inputs[i]).remove();
+                    }
+                });
+                $('[name="'+type+'"]').val(inputs.length-1);
+            }else{
+                alert('Esta entrada no se puede eliminar');
+                return;
+            }
+        }
+
         $(document).ready(function() {
             $('.table').DataTable({
                 processing: true,
@@ -172,10 +353,14 @@
                 }
             });
 
-            const generateId = () => Math.random().toString(36).substr(2, 8) + '-' + Math.random().toString(36).substr(2, 4) + '-' + Math.random().toString(36).substr(2, 4) + '-' + Math.random().toString(36).substr(2, 4) + '-' + Math.random().toString(36).substr(2, 12);
+            
+
+            const generateId = () => Math.random().toString(36).substr(2, 8) + '-' + Math.random().toString(36)
+                .substr(2, 4) + '-' + Math.random().toString(36).substr(2, 4) + '-' + Math.random().toString(36)
+                .substr(2, 4) + '-' + Math.random().toString(36).substr(2, 12);
             // asignar uuid al campo token
             $('#token').val(generateId());
-            
+
             // Actualizar token cada 5 segundos
             setInterval(() => {
                 $('#token').val(generateId());
@@ -267,7 +452,8 @@
                                         confirmButtonText: 'Aceptar'
                                     }).then((result) => {
                                         if (result.value) {
-                                            $('.table').DataTable().ajax.reload();
+                                            $('.table').DataTable().ajax
+                                            .reload();
                                         }
                                     });
                                 } else {

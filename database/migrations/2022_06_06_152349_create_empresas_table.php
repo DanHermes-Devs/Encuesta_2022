@@ -22,6 +22,13 @@ class CreateEmpresasTable extends Migration
             $table->text('colores_principales')->nullable();
             $table->text('descripcion')->nullable();
             $table->text('activo')->nullable();
+
+            // Campos para dorwpdowns
+            $table->text('tipo_puesto')->nullable();
+            $table->text('area')->nullable();
+            $table->text('tipo_contratacion')->nullable();
+            $table->text('jornada_trabajo')->nullable();
+            $table->text('rotacion_turnos')->nullable();
             $table->timestamps();
         });
     }

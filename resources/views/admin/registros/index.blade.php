@@ -54,7 +54,7 @@
                     {
                         targets: 0,
                         render: function(data, type, row) {
-                            return `<a href="empresa/${row.id_empresa}">${row.nombre}</a>`
+                            return `<a href="empresa/${row.empresa.token}">${row.empresa.nombre}</a>`
                         }
                     },
                     {

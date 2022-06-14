@@ -18,4 +18,14 @@ class Empresas extends Model
         'descripcion',
         'activo',
     ];
+
+    public function registros()
+    {
+        return $this->hasMany(Registro::class);
+    }
+
+    public function calificaciones()
+    {
+        return $this->hasMany(Calificaciones::class);
+    }
 }
