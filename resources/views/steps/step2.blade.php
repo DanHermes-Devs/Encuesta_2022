@@ -16,12 +16,9 @@
     <label>Tipo de puesto</label>
     <select class="form-control" id="tipo_puesto" name="tipo_puesto">
         <option value="x">--Elige una opción--</option>
-        <option value="Operativo">Operativo</option>
-        <option value="Administrativo">Administrativo</option>
-        <option value="Técnico">Técnico</option>
-        <option value="Supervisor">Supervisor</option>
-        <option value="Gerente">Gerente</option>
-        <option value="Otro">Otro</option>
+        @foreach ($tipo_puesto as $puesto)
+            <option value="{{ $puesto }}">{{ $puesto }}</option>
+        @endforeach
     </select>
 </div>
 
@@ -29,24 +26,9 @@
     <label>Área</label>
     <select class="form-control" id="area" name="area">
         <option value="x">--Elige una opción--</option>
-        <option value="Administración">Administración</option>
-        <option value="Calidad">Calidad</option>
-        <option value="Placa">Placa</option>
-        <option value="Skin Pass">Skin Pass</option>
-        <option value="Tiras">Tiras</option>
-        <option value="Materias Primas">Materias Primas</option>
-        <option value="Cuadrilla">Cuadrilla</option>
-        <option value="Ascendidos">Ascendidos</option>
-
-        <option value="Mecánicos">Mecánicos</option>
-        <option value="Eléctricos">Eléctricos</option>
-        <option value="Rod. y Chumaceras">Rod. y Chumaceras</option>
-        <option value="CPYA">CPYA</option>
-        <option value="Planeación">Planeación</option>
-        <option value="CPYA">CPYA</option>
-        <option value="Planeación">Planeación</option>
-        <option value="Ing. de Procesos">Ing. de Procesos</option>
-        <option value="Otro">Otro</option>
+        @foreach ($area as $a)
+            <option value="{{ $a }}">{{ $a }}</option>
+        @endforeach
     </select>
 </div>
 

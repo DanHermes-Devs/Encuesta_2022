@@ -166,7 +166,7 @@
                 $tokenEmpresa = $registroID->id_empresa;
 
                 // Token usuario
-                $tokenUsuario = $registroID->token;
+                $tokenUsuario = $registroID->id;
 
                 // Crear registro de las calificaciones en la base de datos
                 $calificaciones = new App\Calificaciones;
@@ -213,12 +213,15 @@
                 $calificaciones->c_dimension_15 = $Itrabajofuera;
                 $calificaciones->c_dimension_16 = $Iresponsabilidades;
                 $calificaciones->c_dimension_17 = $Eclaridad;
-                $calificaciones->c_dimension_20 = $Drelaciones;
-                $calificaciones->c_dimension_21 = $ViolenciaLaboral;
-                $calificaciones->c_dimension_22 = $Eretroalimentacion;
-                $calificaciones->c_dimension_23 = $Ereconocimiento;
-                $calificaciones->c_dimension_24 = $Lpertenencia;
-                $calificaciones->c_dimension_25 = $Iestabilidad;
+                $calificaciones->c_dimension_18 = $Drelaciones;
+                $calificaciones->c_dimension_19 = $ViolenciaLaboral;
+                $calificaciones->c_dimension_20 = $Eretroalimentacion;
+                $calificaciones->c_dimension_21 = $Ereconocimiento;
+                $calificaciones->c_dimension_22 = $Lpertenencia;
+                $calificaciones->c_dimension_23 = $Iestabilidad;
+
+                // Guardar calificaciones
+                $calificaciones->save();
 
             @endphp
             <div class="col-12 mb-5">

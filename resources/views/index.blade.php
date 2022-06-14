@@ -98,6 +98,13 @@
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-12">
+                @php
+                    $tipo_puesto = json_decode($empresa->tipo_puesto);
+                    $area = json_decode($empresa->area);
+                    $tipo_contratacion = json_decode($empresa->tipo_contratacion);
+                    $jornada_trabajo = json_decode($empresa->jornada_trabajo);
+                    $rotacion_turnos = json_decode($empresa->rotacion_turnos);
+                @endphp
                 @if ($empresa)
                     <div class="card_steps">
                         <div class="row">

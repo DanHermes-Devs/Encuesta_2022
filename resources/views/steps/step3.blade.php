@@ -2,12 +2,9 @@
     <label>Tipo de contratación</label>
     <select class="form-control" id="tipo_contratacion" name="tipo_contratacion">
         <option value="x">--Elige una opción--</option>
-        <option value="Obra / proyecto">Obra / proyecto</option>
-        <option value="Temporal / Eventual">Temporal / Eventual</option>
-        <option value="Indeterminado">Indeterminado</option>
-        <option value="Honorarios">Honorarios</option>
-        <option value="Sindicalizado">Sindicalizado</option>
-        <option value="Confianza">Confianza</option>
+        @foreach ($tipo_contratacion as $contratos)
+            <option value="{{ $contratos }}">{{ $contratos }}</option>
+        @endforeach
     </select>
 </div>
 
@@ -15,12 +12,9 @@
     <label>Jornada de trabajo</label>
     <select class="form-control" id="jornada_trabajo" name="jornada_trabajo">
         <option value="x">--Elige una opción--</option>
-        <option value="07:00 - 15:00">07:00 - 15:00</option>
-        <option value="15:00 - 23:00">15:00 - 23:00</option>
-        <option value="23:00 - 07:00">23:00 - 07:00</option>
-        <option value="MIXTO">MIXTO</option>
-        <option value="8:00 - 17:00">8:00 - 17:00</option>
-        <option value="OTRO">OTRO</option>
+        @foreach ($jornada_trabajo as $jornada)
+            <option value="{{ $jornada }}">{{ $jornada }}</option>
+        @endforeach
     </select>
 </div>
 
@@ -28,8 +22,9 @@
     <label>Rotación de turnos</label>
     <select class="form-control" id="rotacion_turnos" name="rotacion_turnos">
         <option value="x">--Elige una opción--</option>
-        <option value="Sí">Sí</option>
-        <option value="No">No</option>
+        @foreach ($rotacion_turnos as $rotacion)
+            <option value="{{ $rotacion }}">{{ $rotacion }}</option>
+        @endforeach
     </select>
 </div>
 
