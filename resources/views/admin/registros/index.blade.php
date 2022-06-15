@@ -5,8 +5,9 @@
 <div class="content">
     <div class="container-fluid">
         <div class="card p-4">
-            <div class="row justify-content-between">
+            <div class="row justify-content-between align-items-center">
                 <h2>Reportes</h2>
+                <a href="{{ route('registro.export') }}" class="btn btn-success"><i class="fas fa-file-excel mr-2"></i>Exportar todo</a>
             </div>
             <div class="mt-5">
                 <table class="table table-stripped">
