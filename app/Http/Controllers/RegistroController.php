@@ -5,10 +5,11 @@ namespace App\Http\Controllers;
 use App\Empresas;
 use App\Registro;
 use App\Calificaciones;
+use App\AvisoPrivacidad;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use App\Http\Controllers\Controller;
 use App\Exports\RegistroExport;
+use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
 
 class RegistroController extends Controller
@@ -17,7 +18,8 @@ class RegistroController extends Controller
     public function index($token){
         // Empresa activa
         $empresa = Empresas::where('token', $token)->where('activo', 1)->first();
-        return view('index', compact('empresa', 'token'));
+        $aviso = AvisoPrivacidad::first();
+        return view('index', compact('empresa', 'token', 'aviso'));
     }
 
     public function registroDatos(Request $request)

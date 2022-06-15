@@ -44,4 +44,9 @@ Route::group(['middleware' => 'auth'], function () {
     
     // Rutas para graficas
     Route::get('/graficas', 'GraficasController@index')->name('graficas');
+
+    // Rutas para aviso de privacidad
+    Route::get('/aviso-privacidad', 'AvisoPrivacidadController@index')->name('aviso-privacidad');
+    Route::get('/aviso-privacidad/mostrar', 'AvisoPrivacidadController@mostrarAviso')->name('aviso-privacidad.mostrarAviso');
+    Route::put('update-aviso/{id}', 'AvisoPrivacidadController@update')->name('aviso-privacidad.update');
 });

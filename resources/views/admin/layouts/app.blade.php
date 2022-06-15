@@ -10,6 +10,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Träfika Encuestas</title>
 
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -147,7 +149,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="/docs/3.2/javascript/layout.html" class="nav-link">
+                                    <a href="{{ route('aviso-privacidad') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Aviso de privacidad</p>
                                     </a>

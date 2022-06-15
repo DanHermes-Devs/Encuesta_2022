@@ -81,6 +81,20 @@
     </div>
 </div>
 
+<div class="item_1_2 mb-4">
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="ets_20" id="aviso_privacidad" value="No">
+        <label class="form-check-label" for="aviso_privacidad">
+            Tus datos están protegidos. He leído y acepto <a data-toggle="collapse" href="#avisoPrivacidad" role="button" aria-expanded="false" aria-controls="avisoPrivacidad">Aviso de privacidad</a>
+        </label>
+    </div>
+</div>
+
+<div class="collapse" id="avisoPrivacidad">
+    <div class="card card-body">
+      {!! $aviso->aviso !!}
+  </div>
+
 <div class="d-flex justify-content-between">
     <button type="button" class="btn_atras" onclick="cambiarSeccion('step_20', 'step20')">Atras</button>
     <button type="submit" class="btn_siguiente btn_finalizar">Finalizar encuesta</button>

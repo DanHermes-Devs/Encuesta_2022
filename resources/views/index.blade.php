@@ -1,4 +1,5 @@
 @extends('layouts.app')
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="{{ asset('css/waitMe.min.css') }}">
 <style>
     body {
@@ -257,6 +258,18 @@
     <script src="{{ asset('js/waitMe.min.js') }}"></script>
     @parent
     <script>
+        $('.btn_finalizar').prop('disabled', true);
+        $('.btn_finalizar').css({'opacity':'0.5', 'cursor':'not-allowed'});
+        // Habilitar boton finalizar cuando se haya marcado la casilla de verificacion
+        $('#aviso_privacidad').change(function(){
+            if($(this).is(':checked')){
+                $('.btn_finalizar').prop('disabled', false);
+                $('.btn_finalizar').css({'opacity':'1', 'cursor':'pointer'});
+            }else{
+                $('.btn_finalizar').prop('disabled', true);
+                $('.btn_finalizar').css({'opacity':'0.5', 'cursor':'not-allowed'});
+            }
+        });
         const generateId = () => Math.random().toString(36).substr(2, 8) + '-' + Math.random().toString(36).substr(2, 4) + '-' + Math.random().toString(36).substr(2, 4) + '-' + Math.random().toString(36).substr(2, 4) + '-' + Math.random().toString(36).substr(2, 12);
         // asignar uuid al campo token
         $('#token').val(generateId());

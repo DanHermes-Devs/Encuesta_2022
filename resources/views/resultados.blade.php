@@ -1560,13 +1560,13 @@
     <script>
         $(function () {
             $('.table').DataTable({
-                searching: false,
+                searching: true,
                 language: {
                     url: 'https://cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json'
                 },
                 lengthMenu: [
-                    [25, 50, -1],
-                    ['25', '50', 'Todos']
+                    [10, 50, -1],
+                    ['10', '50', 'Todos']
                 ],
             });
         });
