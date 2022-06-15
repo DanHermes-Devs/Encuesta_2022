@@ -94,6 +94,7 @@
     <div class="card card-body">
       {!! $aviso->aviso !!}
   </div>
+</div>
 
 <div class="d-flex justify-content-between">
     <button type="button" class="btn_atras" onclick="cambiarSeccion('step_20', 'step20')">Atras</button>
