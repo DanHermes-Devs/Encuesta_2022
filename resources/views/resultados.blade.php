@@ -34,8 +34,6 @@
     <div class="container bg-white mt-5 p-5">
         <div class="row justify-content-center">
             @php
-                // $cookieGlobal = $_COOKIE['cookieCalificaciones'];
-                // $registroID = App\Registro::where('token', $cookieGlobal)->first();
                 $registroID = App\Registro::where('id', $registro->id)->first();
                 $Cfinal = App\Registro::where('id', $registro->id)->first();
 
@@ -302,7 +300,7 @@
                 <p class="mb-3">
                     <b>Experiencia Laboral:</b>
                     <br>
-                    {{ $registroID->tipo_contratacion }}
+                    {{ $registroID->experiencia_laboral }}
                 </p>
             </div>
         </div>

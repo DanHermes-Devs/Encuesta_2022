@@ -127,6 +127,6 @@ class Registro extends Model
 
     public function calificaciones()
     {
-        return $this->hasMany('App\Calificaciones', 'id_registro');
+        return $this->hasOne('App\Calificaciones', 'id_registro');
     }
 }

@@ -60,7 +60,7 @@
                     {
                         targets: 2,
                         render: function(data, type, row) {
-                            return `<a href="resultados/${row.token}" class="btn btn-success">Ver resultados</a>`
+                            return `<a target="_blank" href="resultados/${row.token}" class="btn btn-success">Ver resultados</a>`
                         }
                     }
                 ],

@@ -1,6 +1,9 @@
 <?php
 
+
 use App\Registro;
+use App\Exports\RegistroExport;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,6 +32,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Rutas para registros
     Route::get('/registros', 'RegistroController@registroAdmin')->name('registro.index');
+    Route::get('/registros/export', 'RegistroController@export')->name('registro.export');
 
     // Rutas para empresas
     Route::get('/empresas', 'EmpresasController@index')->name('empresas');
