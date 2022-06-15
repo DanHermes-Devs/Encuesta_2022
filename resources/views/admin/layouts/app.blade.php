@@ -97,12 +97,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         data-accordion="true">
 
                         {{-- Link a Dashboard --}}
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a href="{{ route('admin') }}" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>Dashboard</p>
                             </a>
-                        </li>
+                        </li> --}}
                         {{-- Fin Link a Dashboard --}}
 
                         {{-- Link a empresas --}}
