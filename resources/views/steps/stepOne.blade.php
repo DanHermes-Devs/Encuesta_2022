@@ -51,19 +51,25 @@
 <script>
 
     $("#email").keyup(function(){
+        var emailval  = $("#email").val();
+        var mailvalid = validateEmail(emailval);
 
-        var email = $("#email").val();
-
-        if(email.includes(".com") && email.includes("@")){
-
-            $("#comenzarEncuesta").show();
-
+        if ( mailvalid == false)
+        {
+            $("#respuesta2").html("<div class='errormsg'>El correo no es válido</div>");  
+            $("#email").addClass("errorinput");
+            $("#comenzarEncuesta").hide();
         }else{
 
-            $("#comenzarEncuesta").hide();
-
+            $("#comenzarEncuesta").show();
         }
 
+
 	});
+
+    function validateEmail(email) {
+        var reg = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return reg.test(email);
+    }
 
 </script>

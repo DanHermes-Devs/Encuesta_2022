@@ -729,9 +729,7 @@
 
             var inputs = $("." + type);
 
-
-
-            if (inputs.length < 15) {
+            if (inputs.length < 10) {
 
                 if (type == "tipo_puesto") {
 
@@ -859,7 +857,7 @@
 
             } else {
 
-                alert("Maximo 15 opciones");
+                alert("Maximo 10 opciones");
 
                 return;
 
