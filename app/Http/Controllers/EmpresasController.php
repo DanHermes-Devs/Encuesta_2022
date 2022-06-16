@@ -24,8 +24,8 @@ class EmpresasController extends Controller
                     $button = '<button type="button" name="edit" data-id="'.$empresas->id.'"  data-toggle="modal" data-target="#editEmpresa" title="Editar empresa" class="edit btn btn-warning btn-sm"><i class="fas fa-edit"></i></button>';
                     $button .= '&nbsp;&nbsp;';
                     $button .= '<button type="button" name="delete" data-id="'.$empresas->id.'" title="Eliminar empresa" class="delete btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>';
-                    $button .= '&nbsp;&nbsp;';
-                    $button .= '<a href="#" title="Ver graficos y reportes" class="btn btn-primary btn-sm"><i class="fas fa-chart-pie"></i></a>';
+                    // $button .= '&nbsp;&nbsp;';
+                    // $button .= '<a href="#" title="Ver graficos y reportes" class="btn btn-primary btn-sm"><i class="fas fa-chart-pie"></i></a>';
                     $button .= '&nbsp;&nbsp;';
                     $button .= '<a href="'.'/empresa/'.$empresas->token.'" target="_blank" title="Ver empresa" class="btn btn-success btn-sm"><i class="fas fa-eye"></i></a>';
                     return $button;

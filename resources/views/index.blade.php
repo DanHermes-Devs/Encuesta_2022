@@ -5,7 +5,6 @@
 <link rel="stylesheet" href="{{ asset('css/waitMe.min.css') }}">
 
 <style>
-
     body {
 
         background: url({{ Request::root() }}/storage/{{ $empresa->imagen_fondo ?? asset('img/bg.jpg') }}) no-repeat center center fixed;
@@ -26,7 +25,7 @@
 
         font-weight: bold;
 
-        color: {{$empresa->colores_principales ?? '#6200ea' }};
+        color: {{ $empresa->colores_principales ?? '#6200ea' }};
 
         /* #6200ea */
 
@@ -62,7 +61,7 @@
 
 
 
-    .card_steps .alert-warning {
+    .tab-personal .alert-warning {
 
         color: #000000;
 
@@ -72,6 +71,13 @@
 
         font-size: 20px;
 
+    }
+
+    #step_Two .alert-warning,
+    .warningAlert .alert-warning {
+        color: #856404;
+        background-color: #fff3cd;
+        border-color: #ffeeba;
     }
 
 
@@ -94,7 +100,7 @@
 
         font-weight: bold;
 
-        background: {{$empresa->colores_principales ?? '#6200ea' }};
+        background: {{ $empresa->colores_principales ?? '#6200ea' }};
 
         height: 10px;
 
@@ -136,7 +142,7 @@
 
         align-items: center;
 
-        background: {{$empresa->colores_principales  ?? '#6200ea' }};
+        background: {{ $empresa->colores_principales ?? '#6200ea' }};
 
         cursor: pointer;
 
@@ -164,11 +170,11 @@
 
         background: transparent;
 
-        border: 1px solid {{$empresa->colores_principales  ?? '#6200ea' }};
+        border: 1px solid {{ $empresa->colores_principales ?? '#6200ea' }};
 
         cursor: pointer;
 
-        color: {{$empresa->colores_principales  ?? '#6200ea' }} !important;
+        color: {{ $empresa->colores_principales ?? '#6200ea' }} !important;
 
         text-decoration: none;
 
@@ -189,11 +195,9 @@
         display: none;
 
     }
-
 </style>
 
 @section('content')
-
     <div class="container mt-5">
 
         <div class="row justify-content-center">
@@ -201,19 +205,18 @@
             <div class="col-12">
 
                 @if ($empresa)
-
                     @php
-
+                        
                         $tipo_puesto = json_decode($empresa->tipo_puesto);
-
+                        
                         $area = json_decode($empresa->area);
-
+                        
                         $tipo_contratacion = json_decode($empresa->tipo_contratacion);
-
+                        
                         $jornada_trabajo = json_decode($empresa->jornada_trabajo);
-
+                        
                         $rotacion_turnos = json_decode($empresa->rotacion_turnos);
-
+                        
                     @endphp
 
                     <div class="card_steps">
@@ -225,97 +228,76 @@
                                 {{-- stepsBar --}}
 
                                 <a href="javascript:void(0)"
-
                                     class="display-section font-color-tab font-color-tab-selected mx-2" id="stepOne"
-
                                     onclick="cambiarSeccion('step_One', 'stepOne')"></a>
 
                                 <a href="javascript:void(0)" class="display-section font-color-tab mx-2" id="stepTwo"
-
                                     onclick="cambiarSeccion('step_Two', 'stepTwo')"></a>
 
                                 <a href="javascript:void(0)" class="display-section font-color-tab mx-2" id="step1"
-
                                     onclick="cambiarSeccion('step_1', 'step1')"></a>
 
                                 <a href="javascript:void(0)" class="display-section font-color-tab mx-2" id="step2"
-
                                     onclick="cambiarSeccion('step_2', 'step2')"></a>
 
                                 <a href="javascript:void(0)" class="display-section font-color-tab mx-2" id="step3"
-
                                     onclick="cambiarSeccion('step_3', 'step3')"></a>
 
                                 <a href="javascript:void(0)" class="display-section font-color-tab mx-2" id="step4"
-
                                     onclick="cambiarSeccion('step_4', 'step4')"></a>
 
                                 <a href="javascript:void(0)" class="display-section font-color-tab mx-2" id="step5"
-
                                     onclick="cambiarSeccion('step_5', 'step5')"></a>
 
                                 <a href="javascript:void(0)" class="display-section font-color-tab mx-2" id="step6"
-
                                     onclick="cambiarSeccion('step_6', 'step6')"></a>
 
                                 <a href="javascript:void(0)" class="display-section font-color-tab mx-2" id="step7"
-
                                     onclick="cambiarSeccion('step_7', 'step7')"></a>
 
                                 <a href="javascript:void(0)" class="display-section font-color-tab mx-2" id="step8"
-
                                     onclick="cambiarSeccion('step_8', 'step8')"></a>
 
                                 <a href="javascript:void(0)" class="display-section font-color-tab mx-2" id="step9"
-
                                     onclick="cambiarSeccion('step_9', 'step9')"></a>
 
                                 <a href="javascript:void(0)" class="display-section font-color-tab mx-2" id="step10"
-
                                     onclick="cambiarSeccion('step_10', 'step10')"></a>
 
                                 <a href="javascript:void(0)" class="display-section font-color-tab mx-2" id="step11"
-
                                     onclick="cambiarSeccion('step_11', 'step11')"></a>
 
                                 <a href="javascript:void(0)" class="display-section font-color-tab mx-2" id="step12"
-
                                     onclick="cambiarSeccion('step_12', 'step12')"></a>
 
                                 <a href="javascript:void(0)" class="display-section font-color-tab mx-2" id="step13"
-
                                     onclick="cambiarSeccion('step_13', 'step13')"></a>
 
                                 <a href="javascript:void(0)" class="display-section font-color-tab mx-2" id="step14"
-
                                     onclick="cambiarSeccion('step_14', 'step14')"></a>
 
                                 <a href="javascript:void(0)" class="display-section font-color-tab mx-2" id="step15"
-
                                     onclick="cambiarSeccion('step_15', 'step15')"></a>
 
                                 <a href="javascript:void(0)" class="display-section font-color-tab mx-2" id="step16"
-
                                     onclick="cambiarSeccion('step_16', 'step16')"></a>
 
                                 <a href="javascript:void(0)" class="display-section font-color-tab mx-2" id="step17"
-
                                     onclick="cambiarSeccion('step_17', 'step17')"></a>
 
-                                <a href="javascript:void(0)" class="display-section font-color-tab mx-2" id="step18"
+                                <a href="javascript:void(0)" class="display-section font-color-tab mx-2" id="stepInstrucciones"
+                                    onclick="cambiarSeccion('step_instrucciones', 'stepInstrucciones')"></a>
 
+                                <a href="javascript:void(0)" class="display-section font-color-tab mx-2" id="step18"
                                     onclick="cambiarSeccion('step_18', 'step18')"></a>
 
                                 <a href="javascript:void(0)" class="display-section font-color-tab mx-2" id="step19"
-
                                     onclick="cambiarSeccion('step_19', 'step19')"></a>
 
                                 <a href="javascript:void(0)" class="display-section font-color-tab mx-2" id="step20"
-
                                     onclick="cambiarSeccion('step_20', 'step20')"></a>
 
                                 <a href="javascript:void(0)" class="display-section font-color-tab mx-2" id="step21"
-
                                     onclick="cambiarSeccion('step_21', 'step21')"></a>
 
                             </div>
@@ -446,6 +428,12 @@
 
                                 </div>
 
+                                <div class="tab-personal" id="step_instrucciones" style="display: none">
+
+                                    @include('steps.stepInstrucciones')
+
+                                </div>
+
                                 <div class="tab-personal" id="step_18" style="display: none">
 
                                     @include('steps.step18')
@@ -474,16 +462,14 @@
 
                                 <input type="hidden" class="form-control" name="token" id="token" value="">
 
-                                <input type="hidden" name="id_empresa" id="id_empresa" value="{{$empresa->id}}">
+                                <input type="hidden" name="id_empresa" id="id_empresa" value="{{ $empresa->id }}">
 
                             </form>
 
                         </section>
 
                     </div>
-
-                    @else
-
+                @else
                     <div class="col-md-12">
 
                         <div class="alert alert-danger">
@@ -495,7 +481,6 @@
                         </div>
 
                     </div>
-
                 @endif
 
             </div>
@@ -503,13 +488,11 @@
         </div>
 
     </div>
-
 @endsection
 
 
 
 @section('scripts')
-
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -519,38 +502,48 @@
     @parent
 
     <script>
-
         $('.btn_finalizar').prop('disabled', true);
 
-        $('.btn_finalizar').css({'opacity':'0.5', 'cursor':'not-allowed'});
+        $('.btn_finalizar').css({
+            'opacity': '0.5',
+            'cursor': 'not-allowed'
+        });
 
         // Habilitar boton finalizar cuando se haya marcado la casilla de verificacion
 
-        $('#aviso_privacidad').change(function(){
+        $('#aviso_privacidad').change(function() {
 
-            if($(this).is(':checked')){
+            if ($(this).is(':checked')) {
 
                 $('.btn_finalizar').prop('disabled', false);
 
-                $('.btn_finalizar').css({'opacity':'1', 'cursor':'pointer'});
+                $('.btn_finalizar').css({
+                    'opacity': '1',
+                    'cursor': 'pointer'
+                });
 
-            }else{
+            } else {
 
                 $('.btn_finalizar').prop('disabled', true);
 
-                $('.btn_finalizar').css({'opacity':'0.5', 'cursor':'not-allowed'});
+                $('.btn_finalizar').css({
+                    'opacity': '0.5',
+                    'cursor': 'not-allowed'
+                });
 
             }
 
         });
 
-        const generateId = () => Math.random().toString(36).substr(2, 8) + '-' + Math.random().toString(36).substr(2, 4) + '-' + Math.random().toString(36).substr(2, 4) + '-' + Math.random().toString(36).substr(2, 4) + '-' + Math.random().toString(36).substr(2, 12);
+        const generateId = () => Math.random().toString(36).substr(2, 8) + '-' + Math.random().toString(36).substr(2, 4) +
+            '-' + Math.random().toString(36).substr(2, 4) + '-' + Math.random().toString(36).substr(2, 4) + '-' + Math
+            .random().toString(36).substr(2, 12);
 
         // asignar uuid al campo token
 
         $('#token').val(generateId());
 
-        
+
 
         // Actualizar token cada 5 segundos
 
@@ -726,8 +719,5 @@
             });
 
         })
-
     </script>
-
 @endsection
-

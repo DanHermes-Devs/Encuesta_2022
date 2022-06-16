@@ -62,7 +62,7 @@
 
     <label>Eperiencia Laboral</label>
 
-    <select class="form-control" id="eperiencia_laboral" name="eperiencia_laboral">
+    <select class="form-control" id="experiencia_laboral" name="experiencia_laboral">
 
         <option value="">--Elige una opción--</option>
 

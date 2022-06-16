@@ -94,6 +94,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/admin', 'HomeController@index')->name('admin');
 
+    // Configuraciones
+    Route::get('/configuraciones', 'ConfiguracionController@index')->name('configuraciones.index');
+
 
 
     // Rutas para registros
