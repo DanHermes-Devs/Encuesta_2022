@@ -427,7 +427,7 @@ class RegistroController extends Controller
             // return response()->json(['data' => $registro, 'message' => 'Registro encontrado', 'status' => 200]);
             return view('resultados', compact('registro'));
         } else {
-            return response()->json(['data' => $registro, 'message' => 'Registro no encontrado', 'status' => 404]);
+            return view('resultado_inexistente');
         }
     }
 

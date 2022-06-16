@@ -216,6 +216,9 @@
                         $jornada_trabajo = json_decode($empresa->jornada_trabajo);
                         
                         $rotacion_turnos = json_decode($empresa->rotacion_turnos);
+
+                        // Usar carbon para fechas
+                        $fecha_actual = Carbon\Carbon::now();
                         
                     @endphp
 
@@ -463,6 +466,8 @@
                                 <input type="hidden" class="form-control" name="token" id="token" value="">
 
                                 <input type="hidden" name="id_empresa" id="id_empresa" value="{{ $empresa->id }}">
+
+                                <input type="hidden" name="fecha_inicio" id="fecha_inicio" value="{{ $fecha_actual }}">
 
                             </form>
 

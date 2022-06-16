@@ -34,9 +34,17 @@ use Illuminate\Support\Facades\Route;
 
 */
 
+// Hacer publica la ruta de almacenamiento
 Route::get('/storage_link', function() {
 
     Artisan::call('storage:link');
+
+});
+
+// Fresh y almcaenamiento de la base de datos
+Route::get('/fresh_db', function() {
+
+    Artisan::call('migrate:fresh --seed');
 
 });
 
@@ -47,7 +55,7 @@ Route::get('/agradecimientos', function() {
 });
 
 
-
+// Vaciar cache
 Route::get('cache_clear', function() {
 
     Artisan::call('cache:clear');
@@ -57,9 +65,6 @@ Route::get('cache_clear', function() {
     Artisan::call('config:clear');
 
 });
-
-
-
 
 
 Route::get('/', function () {

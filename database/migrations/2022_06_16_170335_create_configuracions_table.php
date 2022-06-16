@@ -15,6 +15,9 @@ class CreateConfiguracionsTable extends Migration
     {
         Schema::create('configuracions', function (Blueprint $table) {
             $table->id();
+            $table->text('mensaje_bienvenida');
+            $table->text('instrucciones1');
+            $table->text('instrucciones2');
             $table->timestamps();
         });
     }

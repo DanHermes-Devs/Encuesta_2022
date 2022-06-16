@@ -11,6 +11,7 @@ class Registro extends Model
     protected $table = 'registros';
     protected $fillable = [
         'id_empresa',
+        'fecha_inicio',
         'email',
         'token',
         'sexo',

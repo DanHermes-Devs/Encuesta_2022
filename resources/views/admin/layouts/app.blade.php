@@ -60,8 +60,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 </head>
 
-
-
+<style>
+    body {
+        background-color: #f4f6f9!important;
+    }
+</style>
 <body class="hold-transition sidebar-mini">
 
     <div class="wrapper">
@@ -174,7 +177,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                     style="opacity: .8"> --}}
 
-                <span class="brand-text font-weight-light">Encuestas</span>
+                <span class="brand-text font-weight-light">Gestor de Encuestas</span>
 
             </a>
 
@@ -350,9 +353,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
             <!-- Default to the left -->
 
-            <strong>Copyright &copy; {{ date('Y') }} <a href="https://wearetrafika.com/">Träfika |
-
-                    encuestas</a>.</strong> All rights reserved.
+            <strong>Copyright &copy; {{ date('Y') }} <a href="https://wearetrafika.com/">Gestor de encuestas</a>.</strong> All rights reserved.
 
         </footer>
 

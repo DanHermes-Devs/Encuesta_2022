@@ -5,19 +5,19 @@
 <link rel="stylesheet" href="{{ asset('css/waitMe.min.css') }}">
 
 <style>
-
     .badge.badge-danger {
 
         cursor: pointer;
 
     }
 
+    td:nth-child(7) {
+        display: flex;
+        justify-content: space-around;
+    }
 </style>
 
 @section('content')
-
-
-
     <div class="content">
 
         <div class="container-fluid">
@@ -29,7 +29,6 @@
                     <h2>Empresas</h2>
 
                     <button class="btn btn-info" data-toggle="modal" data-target="#addEmpresa"><i
-
                             class="fas fa-plus mr-2"></i>Añadir empresa</button>
 
                 </div>
@@ -100,274 +99,274 @@
 
                         <div class="row">
 
-                            <div class="col-md-12">
-
-                                <div class="form-group">
-
-                                    <label for="nombre">Nombre <small class="text-red">(Requerido)</small></label>
-
-                                    <input type="text" class="form-control" id="nombre" name="nombre"
-
-                                        placeholder="Nombre">
-
-                                </div>
-
-                            </div>
-
-                            <div class="col-md-12">
-
-                                <div class="form-group">
-
-                                    <label for="logo">Logo <small class="text-red">(Requerido)</small></label>
-
-                                    {{-- Solo aceptar jpg y png --}}
-
-                                    <input type="file" class="form-control" id="logo" name="logo"
-
-                                        accept="image/png, image/jpeg">
-
-                                    <small>Tamaño máximo: 2MB</small>
-
-                                    <small>Formato: jpg o png</small>
-
-                                </div>
-
-                            </div>
-
-                            <div class="col-md-12">
-
-                                <div class="form-group">
-
-                                    <label for="logo">Imagen de fondo <small
-
-                                            class="text-red">(Requerido)</small></label>
-
-                                    <input type="file" class="form-control" id="imagen_fondo" name="imagen_fondo"
-
-                                        accept="image/png, image/jpeg">
-
-                                    <small>Tamaño máximo: 2MB</small>
-
-                                    <small>Formato: jpg o png</small>
-
-                                </div>
-
-                            </div>
-
-                            <div class="col-md-12">
-
-                                <div class="form-group">
-
-                                    <label for="logo">Color principal <small
-
-                                            class="text-red">(Requerido)</small></label>
-
-                                    <input type="color" class="form-control" id="colores_principales"
-
-                                        name="colores_principales" placeholder="Color principal">
-
-                                </div>
-
-                            </div>
-
-                            <div class="col-md-12">
-
-                                <div class="form-group">
-
-                                    <label for="logo">Descripción <small class="text-red">(Requerido)</small></label>
-
-                                    <textarea class="form-control" id="descripcion" name="descripcion" placeholder="Descripción"></textarea>
-
-                                </div>
-
-                            </div>
-
-                            <div class="col-md-12">
-
-                                <div class="form-group">
-
-                                    <label for="logo">Activo <small class="text-red">(Requerido)</small></label>
-
-                                    <select class="form-control" id="activo" name="activo">
-
-                                        <option value="1">Si</option>
-
-                                        <option value="0">No</option>
-
-                                    </select>
-
-                                </div>
-
-                            </div>
-
                             <div class="col-12 col-md-6">
+                                <div class="col-md-12">
 
-                                <div class="form-group">
+                                    <div class="form-group">
 
-                                    <label for="my-input">Tipo de puesto</label>
+                                        <label for="nombre">Nombre <small class="text-red">(Requerido)</small></label>
 
-                                    <input type="hidden" name="tipo_puesto" value="1">
-
-                                    <div class="form-group__content input-group mb-3 tipo_puesto">
-
-                                        <div class="input-group-append">
-
-                                            <span class="input-group-text">
-
-                                                <span class="badge badge-danger" onclick="removeInput(0,'tipo_puesto')"><i class="fas fa-times"></i></span>
-
-                                            </span>
-
-                                        </div>
-
-                                        <input type="text" class="form-control" name="summaryPuesto_0">
+                                        <input type="text" class="form-control" id="nombre" name="nombre"
+                                            placeholder="Nombre">
 
                                     </div>
 
-                                    <button class="btn btn-success btn-sm mb-2" type="button" id="addOption"
-
-                                        onclick="addInput(this, 'tipo_puesto')"><i
-
-                                            class="fas fa-plus mr-2"></i>Añadir</button>
-
                                 </div>
 
-                            </div>
+                                <div class="col-md-12">
 
-                            <div class="col-12 col-md-6">
+                                    <div class="form-group">
 
-                                <div class="form-group">
+                                        <label for="logo">Logo <small class="text-red">(Requerido)</small></label>
 
-                                    <label for="my-input">Área</label>
+                                        {{-- Solo aceptar jpg y png --}}
 
-                                    <input type="hidden" name="area" value="1">
+                                        <input type="file" class="form-control" id="logo" name="logo"
+                                            accept="image/png, image/jpeg">
 
-                                    <div class="form-group__content input-group mb-3 area">
+                                        <small>Tamaño máximo: 2MB</small>
 
-                                        <div class="input-group-append">
-
-                                            <span class="input-group-text">
-
-                                                <span class="badge badge-danger" onclick="removeInput(0,'area')"><i class="fas fa-times"></i></span>
-
-                                            </span>
-
-                                        </div>
-
-                                        <input type="text" class="form-control" name="summaryArea_0">
+                                        <small>Formato: jpg o png</small>
 
                                     </div>
 
-                                    <button class="btn btn-success btn-sm mb-2" type="button" id="addOption"
-
-                                        onclick="addInput(this, 'area')"><i
-
-                                            class="fas fa-plus mr-2"></i>Añadir</button>
-
                                 </div>
 
-                            </div>
+                                <div class="col-md-12">
 
-                            <div class="col-12 col-md-6">
+                                    <div class="form-group">
 
-                                <div class="form-group">
+                                        <label for="logo">Imagen de fondo <small
+                                                class="text-red">(Requerido)</small></label>
 
-                                    <label for="my-input">Tipo de contratación</label>
+                                        <input type="file" class="form-control" id="imagen_fondo" name="imagen_fondo"
+                                            accept="image/png, image/jpeg">
 
-                                    <input type="hidden" name="tipo_contratacion" value="1">
+                                        <small>Tamaño máximo: 2MB</small>
 
-                                    <div class="form-group__content input-group mb-3 tipo_contratacion">
-
-                                        <div class="input-group-append">
-
-                                            <span class="input-group-text">
-
-                                                <span class="badge badge-danger" onclick="removeInput(0,'tipo_contratacion')"><i class="fas fa-times"></i></span>
-
-                                            </span>
-
-                                        </div>
-
-                                        <input type="text" class="form-control" name="summaryContratacion_0">
+                                        <small>Formato: jpg o png</small>
 
                                     </div>
 
-                                    <button class="btn btn-success btn-sm mb-2" type="button" id="addOption"
-
-                                        onclick="addInput(this, 'tipo_contratacion')"><i
-
-                                            class="fas fa-plus mr-2"></i>Añadir</button>
-
                                 </div>
 
-                            </div>
+                                <div class="col-md-12">
 
-                            <div class="col-12 col-md-6">
+                                    <div class="form-group">
 
-                                <div class="form-group">
+                                        <label for="logo">Color principal <small
+                                                class="text-red">(Requerido)</small></label>
 
-                                    <label for="my-input">Jornada de trabajo</label>
-
-                                    <input type="hidden" name="jornada_trabajo" value="1">
-
-                                    <div class="form-group__content input-group mb-3 jornada_trabajo">
-
-                                        <div class="input-group-append">
-
-                                            <span class="input-group-text">
-
-                                                <span class="badge badge-danger" onclick="removeInput(0,'jornada_trabajo')"><i class="fas fa-times"></i></span>
-
-                                            </span>
-
-                                        </div>
-
-                                        <input type="text" class="form-control" name="summaryJornada_0">
+                                        <input type="color" class="form-control" id="colores_principales"
+                                            name="colores_principales" placeholder="Color principal">
 
                                     </div>
 
-                                    <button class="btn btn-success btn-sm mb-2" type="button" id="addOption"
-
-                                        onclick="addInput(this, 'jornada_trabajo')"><i
-
-                                            class="fas fa-plus mr-2"></i>Añadir</button>
-
                                 </div>
 
-                            </div>
+                                <div class="col-md-12">
 
-                            <div class="col-12 col-md-6">
+                                    <div class="form-group">
 
-                                <div class="form-group">
+                                        <label for="logo">Descripción <small
+                                                class="text-red">(Requerido)</small></label>
 
-                                    <label for="my-input">Rotacion de turnos</label>
-
-                                    <input type="hidden" name="rotacion_turnos" value="1">
-
-                                    <div class="form-group__content input-group mb-3 rotacion_turnos">
-
-                                        <div class="input-group-append">
-
-                                            <span class="input-group-text">
-
-                                                <span class="badge badge-danger" onclick="removeInput(0,'rotacion_turnos')"><i class="fas fa-times"></i></span>
-
-                                            </span>
-
-                                        </div>
-
-                                        <input type="text" class="form-control" name="summaryRotacion_0">
+                                        <textarea class="form-control" id="descripcion" name="descripcion" placeholder="Descripción"></textarea>
 
                                     </div>
 
-                                    <button class="btn btn-success btn-sm mb-2" type="button" id="addOption"
+                                </div>
 
-                                        onclick="addInput(this, 'rotacion_turnos')"><i
+                                <div class="col-md-12">
 
-                                            class="fas fa-plus mr-2"></i>Añadir</button>
+                                    <div class="form-group">
+
+                                        <label for="logo">Activo <small class="text-red">(Requerido)</small></label>
+
+                                        <select class="form-control" id="activo" name="activo">
+
+                                            <option value="1">Si</option>
+
+                                            <option value="0">No</option>
+
+                                        </select>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+
+                            <div class="col-12 col-md-6">
+                                <div class="col-12 col-md-12">
+
+                                    <div class="form-group">
+
+                                        <label for="my-input">Tipo de puesto</label>
+
+                                        <input type="hidden" name="tipo_puesto" value="1">
+
+                                        <div class="form-group__content input-group mb-3 tipo_puesto">
+
+                                            <div class="input-group-append">
+
+                                                <span class="input-group-text">
+
+                                                    <span class="badge badge-danger"
+                                                        onclick="removeInput(0,'tipo_puesto')"><i
+                                                            class="fas fa-times"></i></span>
+
+                                                </span>
+
+                                            </div>
+
+                                            <input type="text" class="form-control" name="summaryPuesto_0">
+
+                                        </div>
+
+                                        <button class="btn btn-success btn-sm mb-2" type="button" id="addOption"
+                                            onclick="addInput(this, 'tipo_puesto')"><i
+                                                class="fas fa-plus mr-2"></i>Añadir</button>
+
+                                    </div>
 
                                 </div>
 
+                                <div class="col-12 col-md-12">
+
+                                    <div class="form-group">
+
+                                        <label for="my-input">Área</label>
+
+                                        <input type="hidden" name="area" value="1">
+
+                                        <div class="form-group__content input-group mb-3 area">
+
+                                            <div class="input-group-append">
+
+                                                <span class="input-group-text">
+
+                                                    <span class="badge badge-danger" onclick="removeInput(0,'area')"><i
+                                                            class="fas fa-times"></i></span>
+
+                                                </span>
+
+                                            </div>
+
+                                            <input type="text" class="form-control" name="summaryArea_0">
+
+                                        </div>
+
+                                        <button class="btn btn-success btn-sm mb-2" type="button" id="addOption"
+                                            onclick="addInput(this, 'area')"><i
+                                                class="fas fa-plus mr-2"></i>Añadir</button>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="col-12 col-md-12">
+
+                                    <div class="form-group">
+
+                                        <label for="my-input">Tipo de contratación</label>
+
+                                        <input type="hidden" name="tipo_contratacion" value="1">
+
+                                        <div class="form-group__content input-group mb-3 tipo_contratacion">
+
+                                            <div class="input-group-append">
+
+                                                <span class="input-group-text">
+
+                                                    <span class="badge badge-danger"
+                                                        onclick="removeInput(0,'tipo_contratacion')"><i
+                                                            class="fas fa-times"></i></span>
+
+                                                </span>
+
+                                            </div>
+
+                                            <input type="text" class="form-control" name="summaryContratacion_0">
+
+                                        </div>
+
+                                        <button class="btn btn-success btn-sm mb-2" type="button" id="addOption"
+                                            onclick="addInput(this, 'tipo_contratacion')"><i
+                                                class="fas fa-plus mr-2"></i>Añadir</button>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="col-12 col-md-12">
+
+                                    <div class="form-group">
+
+                                        <label for="my-input">Jornada de trabajo</label>
+
+                                        <input type="hidden" name="jornada_trabajo" value="1">
+
+                                        <div class="form-group__content input-group mb-3 jornada_trabajo">
+
+                                            <div class="input-group-append">
+
+                                                <span class="input-group-text">
+
+                                                    <span class="badge badge-danger"
+                                                        onclick="removeInput(0,'jornada_trabajo')"><i
+                                                            class="fas fa-times"></i></span>
+
+                                                </span>
+
+                                            </div>
+
+                                            <input type="text" class="form-control" name="summaryJornada_0">
+
+                                        </div>
+
+                                        <button class="btn btn-success btn-sm mb-2" type="button" id="addOption"
+                                            onclick="addInput(this, 'jornada_trabajo')"><i
+                                                class="fas fa-plus mr-2"></i>Añadir</button>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="col-12 col-md-12">
+
+                                    <div class="form-group">
+
+                                        <label for="my-input">Rotacion de turnos</label>
+
+                                        <input type="hidden" name="rotacion_turnos" value="1">
+
+                                        <div class="form-group__content input-group mb-3 rotacion_turnos">
+
+                                            <div class="input-group-append">
+
+                                                <span class="input-group-text">
+
+                                                    <span class="badge badge-danger"
+                                                        onclick="removeInput(0,'rotacion_turnos')"><i
+                                                            class="fas fa-times"></i></span>
+
+                                                </span>
+
+                                            </div>
+
+                                            <input type="text" class="form-control" name="summaryRotacion_0">
+
+                                        </div>
+
+                                        <button class="btn btn-success btn-sm mb-2" type="button" id="addOption"
+                                            onclick="addInput(this, 'rotacion_turnos')"><i
+                                                class="fas fa-plus mr-2"></i>Añadir</button>
+
+                                    </div>
+
+                                </div>
                             </div>
 
                             {{-- <input type="hidden" class="form-control" name="token" id="token" value="{{ Str::uuid() }}"> --}}
@@ -424,274 +423,269 @@
 
                         <div class="row">
 
-                            <div class="col-md-12">
+                            <div class="col-12 col-md-6">
+                                <div class="col-md-12">
 
-                                <div class="form-group">
-
-                                    <label for="nombre">Nombre <small class="text-red">(Requerido)</small></label>
-
-                                    <input type="text" class="form-control" id="nombre" name="nombre"
-
-                                        placeholder="Nombre">
-
+                                    <div class="form-group">
+    
+                                        <label for="nombre">Nombre <small class="text-red">(Requerido)</small></label>
+    
+                                        <input type="text" class="form-control" id="nombre" name="nombre"
+                                            placeholder="Nombre">
+    
+                                    </div>
+    
                                 </div>
-
-                            </div>
-
-                            <div class="col-md-12">
-
-                                <div class="form-group">
-
-                                    <label for="logo">Logo <small class="text-red">(Requerido)</small></label>
-
-                                    {{-- Solo aceptar jpg y png --}}
-
-                                    <input type="file" class="form-control" id="logo" name="logo"
-
-                                        accept="image/png, image/jpeg">
-
-                                    <small>Tamaño máximo: 2MB</small>
-
-                                    <small>Formato: jpg o png</small>
-
+    
+                                <div class="col-md-12">
+    
+                                    <div class="form-group">
+    
+                                        <label for="logo">Logo <small class="text-red">(Requerido)</small></label>
+    
+                                        {{-- Solo aceptar jpg y png --}}
+    
+                                        <input type="file" class="form-control" id="logo" name="logo"
+                                            accept="image/png, image/jpeg">
+    
+                                        <small>Tamaño máximo: 2MB</small>
+    
+                                        <small>Formato: jpg o png</small>
+    
+                                    </div>
+    
                                 </div>
-
-                            </div>
-
-                            <div class="col-md-12">
-
-                                <div class="form-group">
-
-                                    <label for="logo">Imagen de fondo <small
-
-                                            class="text-red">(Requerido)</small></label>
-
-                                    <input type="file" class="form-control" id="imagen_fondo" name="imagen_fondo"
-
-                                        accept="image/png, image/jpeg">
-
-                                    <small>Tamaño máximo: 2MB</small>
-
-                                    <small>Formato: jpg o png</small>
-
+    
+                                <div class="col-md-12">
+    
+                                    <div class="form-group">
+    
+                                        <label for="logo">Imagen de fondo <small
+                                                class="text-red">(Requerido)</small></label>
+    
+                                        <input type="file" class="form-control" id="imagen_fondo" name="imagen_fondo"
+                                            accept="image/png, image/jpeg">
+    
+                                        <small>Tamaño máximo: 2MB</small>
+    
+                                        <small>Formato: jpg o png</small>
+    
+                                    </div>
+    
                                 </div>
-
-                            </div>
-
-                            <div class="col-md-12">
-
-                                <div class="form-group">
-
-                                    <label for="logo">Color principal <small
-
-                                            class="text-red">(Requerido)</small></label>
-
-                                    <input type="color" class="form-control" id="colores_principales"
-
-                                        name="colores_principales" placeholder="Color principal">
-
+    
+                                <div class="col-md-12">
+    
+                                    <div class="form-group">
+    
+                                        <label for="logo">Color principal <small
+                                                class="text-red">(Requerido)</small></label>
+    
+                                        <input type="color" class="form-control" id="colores_principales"
+                                            name="colores_principales" placeholder="Color principal">
+    
+                                    </div>
+    
                                 </div>
-
-                            </div>
-
-                            <div class="col-md-12">
-
-                                <div class="form-group">
-
-                                    <label for="logo">Descripción <small class="text-red">(Requerido)</small></label>
-
-                                    <textarea class="form-control" id="descripcion" name="descripcion" placeholder="Descripción"></textarea>
-
+    
+                                <div class="col-md-12">
+    
+                                    <div class="form-group">
+    
+                                        <label for="logo">Descripción <small class="text-red">(Requerido)</small></label>
+    
+                                        <textarea class="form-control" id="descripcion" name="descripcion" placeholder="Descripción"></textarea>
+    
+                                    </div>
+    
                                 </div>
-
-                            </div>
-
-                            <div class="col-md-12">
-
-                                <div class="form-group">
-
-                                    <label for="logo">Activo <small class="text-red">(Requerido)</small></label>
-
-                                    <select class="form-control" id="activo" name="activo">
-
-                                        <option value="1">Si</option>
-
-                                        <option value="0">No</option>
-
-                                    </select>
-
+    
+                                <div class="col-md-12">
+    
+                                    <div class="form-group">
+    
+                                        <label for="logo">Activo <small class="text-red">(Requerido)</small></label>
+    
+                                        <select class="form-control" id="activo" name="activo">
+    
+                                            <option value="1">Si</option>
+    
+                                            <option value="0">No</option>
+    
+                                        </select>
+    
+                                    </div>
+    
                                 </div>
-
                             </div>
 
                             <div class="col-12 col-md-6">
+                                <div class="col-12 col-md-12">
 
-                                <div class="form-group">
-
-                                    <label for="my-input">Tipo de puesto</label>
-
-                                    <input type="hidden" name="tipo_puesto" value="1">
-
-                                    <div class="form-group__content input-group mb-3 tipo_puesto">
-
-                                        <div class="input-group-append">
-
-                                            <span class="input-group-text">
-
-                                                <span class="badge badge-danger" onclick="removeInput(0,'tipo_puesto')"><i class="fas fa-times"></i></span>
-
-                                            </span>
-
+                                    <div class="form-group">
+    
+                                        <label for="my-input">Tipo de puesto</label>
+    
+                                        <input type="hidden" name="tipo_puesto" value="1">
+    
+                                        <div class="form-group__content input-group mb-3 tipo_puesto">
+    
+                                            <div class="input-group-append">
+    
+                                                <span class="input-group-text">
+    
+                                                    <span class="badge badge-danger" onclick="removeInput(0,'tipo_puesto')"><i
+                                                            class="fas fa-times"></i></span>
+    
+                                                </span>
+    
+                                            </div>
+    
+                                            <input type="text" class="form-control" name="summaryPuesto_0">
+    
                                         </div>
-
-                                        <input type="text" class="form-control" name="summaryPuesto_0">
-
+    
+                                        <button class="btn btn-success btn-sm mb-2" type="button" id="addOption"
+                                            onclick="addInput(this, 'tipo_puesto')"><i
+                                                class="fas fa-plus mr-2"></i>Añadir</button>
+    
                                     </div>
-
-                                    <button class="btn btn-success btn-sm mb-2" type="button" id="addOption"
-
-                                        onclick="addInput(this, 'tipo_puesto')"><i
-
-                                            class="fas fa-plus mr-2"></i>Añadir</button>
-
+    
                                 </div>
-
-                            </div>
-
-                            <div class="col-12 col-md-6">
-
-                                <div class="form-group">
-
-                                    <label for="my-input">Área</label>
-
-                                    <input type="hidden" name="area" value="1">
-
-                                    <div class="form-group__content input-group mb-3 area">
-
-                                        <div class="input-group-append">
-
-                                            <span class="input-group-text">
-
-                                                <span class="badge badge-danger" onclick="removeInput(0,'area')"><i class="fas fa-times"></i></span>
-
-                                            </span>
-
+    
+                                <div class="col-12 col-md-12">
+    
+                                    <div class="form-group">
+    
+                                        <label for="my-input">Área</label>
+    
+                                        <input type="hidden" name="area" value="1">
+    
+                                        <div class="form-group__content input-group mb-3 area">
+    
+                                            <div class="input-group-append">
+    
+                                                <span class="input-group-text">
+    
+                                                    <span class="badge badge-danger" onclick="removeInput(0,'area')"><i
+                                                            class="fas fa-times"></i></span>
+    
+                                                </span>
+    
+                                            </div>
+    
+                                            <input type="text" class="form-control" name="summaryArea_0">
+    
                                         </div>
-
-                                        <input type="text" class="form-control" name="summaryArea_0">
-
+    
+                                        <button class="btn btn-success btn-sm mb-2" type="button" id="addOption"
+                                            onclick="addInput(this, 'area')"><i class="fas fa-plus mr-2"></i>Añadir</button>
+    
                                     </div>
-
-                                    <button class="btn btn-success btn-sm mb-2" type="button" id="addOption"
-
-                                        onclick="addInput(this, 'area')"><i
-
-                                            class="fas fa-plus mr-2"></i>Añadir</button>
-
+    
                                 </div>
-
-                            </div>
-
-                            <div class="col-12 col-md-6">
-
-                                <div class="form-group">
-
-                                    <label for="my-input">Tipo de contratación</label>
-
-                                    <input type="hidden" name="tipo_contratacion" value="1">
-
-                                    <div class="form-group__content input-group mb-3 tipo_contratacion">
-
-                                        <div class="input-group-append">
-
-                                            <span class="input-group-text">
-
-                                                <span class="badge badge-danger" onclick="removeInput(0,'tipo_contratacion')"><i class="fas fa-times"></i></span>
-
-                                            </span>
-
+    
+                                <div class="col-12 col-md-12">
+    
+                                    <div class="form-group">
+    
+                                        <label for="my-input">Tipo de contratación</label>
+    
+                                        <input type="hidden" name="tipo_contratacion" value="1">
+    
+                                        <div class="form-group__content input-group mb-3 tipo_contratacion">
+    
+                                            <div class="input-group-append">
+    
+                                                <span class="input-group-text">
+    
+                                                    <span class="badge badge-danger"
+                                                        onclick="removeInput(0,'tipo_contratacion')"><i
+                                                            class="fas fa-times"></i></span>
+    
+                                                </span>
+    
+                                            </div>
+    
+                                            <input type="text" class="form-control" name="summaryContratacion_0">
+    
                                         </div>
-
-                                        <input type="text" class="form-control" name="summaryContratacion_0">
-
+    
+                                        <button class="btn btn-success btn-sm mb-2" type="button" id="addOption"
+                                            onclick="addInput(this, 'tipo_contratacion')"><i
+                                                class="fas fa-plus mr-2"></i>Añadir</button>
+    
                                     </div>
-
-                                    <button class="btn btn-success btn-sm mb-2" type="button" id="addOption"
-
-                                        onclick="addInput(this, 'tipo_contratacion')"><i
-
-                                            class="fas fa-plus mr-2"></i>Añadir</button>
-
+    
                                 </div>
-
-                            </div>
-
-                            <div class="col-12 col-md-6">
-
-                                <div class="form-group">
-
-                                    <label for="my-input">Jornada de trabajo</label>
-
-                                    <input type="hidden" name="jornada_trabajo" value="1">
-
-                                    <div class="form-group__content input-group mb-3 jornada_trabajo">
-
-                                        <div class="input-group-append">
-
-                                            <span class="input-group-text">
-
-                                                <span class="badge badge-danger" onclick="removeInput(0,'jornada_trabajo')"><i class="fas fa-times"></i></span>
-
-                                            </span>
-
+    
+                                <div class="col-12 col-md-12">
+    
+                                    <div class="form-group">
+    
+                                        <label for="my-input">Jornada de trabajo</label>
+    
+                                        <input type="hidden" name="jornada_trabajo" value="1">
+    
+                                        <div class="form-group__content input-group mb-3 jornada_trabajo">
+    
+                                            <div class="input-group-append">
+    
+                                                <span class="input-group-text">
+    
+                                                    <span class="badge badge-danger"
+                                                        onclick="removeInput(0,'jornada_trabajo')"><i
+                                                            class="fas fa-times"></i></span>
+    
+                                                </span>
+    
+                                            </div>
+    
+                                            <input type="text" class="form-control" name="summaryJornada_0">
+    
                                         </div>
-
-                                        <input type="text" class="form-control" name="summaryJornada_0">
-
+    
+                                        <button class="btn btn-success btn-sm mb-2" type="button" id="addOption"
+                                            onclick="addInput(this, 'jornada_trabajo')"><i
+                                                class="fas fa-plus mr-2"></i>Añadir</button>
+    
                                     </div>
-
-                                    <button class="btn btn-success btn-sm mb-2" type="button" id="addOption"
-
-                                        onclick="addInput(this, 'jornada_trabajo')"><i
-
-                                            class="fas fa-plus mr-2"></i>Añadir</button>
-
+    
                                 </div>
-
-                            </div>
-
-                            <div class="col-12 col-md-6">
-
-                                <div class="form-group">
-
-                                    <label for="my-input">Rotacion de turnos</label>
-
-                                    <input type="hidden" name="rotacion_turnos" value="1">
-
-                                    <div class="form-group__content input-group mb-3 rotacion_turnos">
-
-                                        <div class="input-group-append">
-
-                                            <span class="input-group-text">
-
-                                                <span class="badge badge-danger" onclick="removeInput(0,'rotacion_turnos')"><i class="fas fa-times"></i></span>
-
-                                            </span>
-
+    
+                                <div class="col-12 col-md-12">
+    
+                                    <div class="form-group">
+    
+                                        <label for="my-input">Rotacion de turnos</label>
+    
+                                        <input type="hidden" name="rotacion_turnos" value="1">
+    
+                                        <div class="form-group__content input-group mb-3 rotacion_turnos">
+    
+                                            <div class="input-group-append">
+    
+                                                <span class="input-group-text">
+    
+                                                    <span class="badge badge-danger"
+                                                        onclick="removeInput(0,'rotacion_turnos')"><i
+                                                            class="fas fa-times"></i></span>
+    
+                                                </span>
+    
+                                            </div>
+    
+                                            <input type="text" class="form-control" name="summaryRotacion_0">
+    
                                         </div>
-
-                                        <input type="text" class="form-control" name="summaryRotacion_0">
-
+    
+                                        <button class="btn btn-success btn-sm mb-2" type="button" id="addOption"
+                                            onclick="addInput(this, 'rotacion_turnos')"><i
+                                                class="fas fa-plus mr-2"></i>Añadir</button>
+    
                                     </div>
-
-                                    <button class="btn btn-success btn-sm mb-2" type="button" id="addOption"
-
-                                        onclick="addInput(this, 'rotacion_turnos')"><i
-
-                                            class="fas fa-plus mr-2"></i>Añadir</button>
-
+    
                                 </div>
-
                             </div>
 
                             {{-- <input type="hidden" class="form-control" name="token" id="token" value="{{ Str::uuid() }}"> --}}
@@ -717,13 +711,11 @@
         </div>
 
     </div>
-
 @endsection
 
 
 
 @section('scripts')
-
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"></script>
@@ -733,16 +725,15 @@
     <script src="{{ asset('js/waitMe.min.js') }}"></script>
 
     <script>
-
         function addInput(elem, type) {
 
-            var inputs = $("."+type);
+            var inputs = $("." + type);
 
-            
 
-            if(inputs.length < 15){
 
-                if(type == "tipo_puesto"){
+            if (inputs.length < 15) {
+
+                if (type == "tipo_puesto") {
 
                     $(elem).before(`
 
@@ -766,7 +757,7 @@
 
                 }
 
-                if(type == "area"){
+                if (type == "area") {
 
                     $(elem).before(`
 
@@ -790,7 +781,7 @@
 
                 }
 
-                if(type == "tipo_contratacion"){
+                if (type == "tipo_contratacion") {
 
                     $(elem).before(`
 
@@ -814,7 +805,7 @@
 
                 }
 
-                if(type == "jornada_trabajo"){
+                if (type == "jornada_trabajo") {
 
                     $(elem).before(`
 
@@ -838,7 +829,7 @@
 
                 }
 
-                if(type == "rotacion_turnos"){
+                if (type == "rotacion_turnos") {
 
                     $(elem).before(`
 
@@ -864,9 +855,9 @@
 
 
 
-                $('[name="'+type+'"]').val(inputs.length+1);
+                $('[name="' + type + '"]').val(inputs.length + 1);
 
-            }else{
+            } else {
 
                 alert("Maximo 15 opciones");
 
@@ -878,17 +869,17 @@
 
 
 
-        function removeInput(index, type){
+        function removeInput(index, type) {
 
-            var inputs = $("."+type);
+            var inputs = $("." + type);
 
 
 
-            if(inputs.length > 1){
+            if (inputs.length > 1) {
 
-                inputs.each(i=>{
+                inputs.each(i => {
 
-                    if(i == index){
+                    if (i == index) {
 
                         $(inputs[i]).remove();
 
@@ -896,9 +887,9 @@
 
                 });
 
-                $('[name="'+type+'"]').val(inputs.length-1);
+                $('[name="' + type + '"]').val(inputs.length - 1);
 
-            }else{
+            } else {
 
                 alert('Esta entrada no se puede eliminar');
 
@@ -992,7 +983,7 @@
 
                         render: function(data, type, row) {
 
-                            return `<a href="empresa/${row.token}">${row.nombre}</a>`;
+                            return `<a target="_blank" href="empresa/${row.token}">${row.nombre}</a>`;
 
                         }
 
@@ -1042,11 +1033,11 @@
 
                         render: function(data, type, row) {
 
-                            if(row.activo == 1){
+                            if (row.activo == 1) {
 
                                 return `<span class="badge badge-success">Activo</span>`;
 
-                            }else{
+                            } else {
 
                                 return `<span class="badge badge-danger">Inactivo</span>`;
 
@@ -1068,7 +1059,7 @@
 
 
 
-            
+
 
 
 
@@ -1165,7 +1156,8 @@
 
                                     $('.modal-backdrop').remove();
 
-                                    $('#form_add_empresa').find('input[type="file"]').val('');
+                                    $('#form_add_empresa').find('input[type="file"]')
+                                        .val('');
 
                                 }
 
@@ -1275,7 +1267,7 @@
 
                                             $('.table').DataTable().ajax
 
-                                            .reload();
+                                                .reload();
 
                                         }
 
@@ -1316,8 +1308,5 @@
             });
 
         });
-
     </script>
-
 @endsection
-

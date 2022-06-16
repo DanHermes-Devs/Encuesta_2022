@@ -17,6 +17,7 @@ class CreateRegistrosTable extends Migration
             $table->id();
             $table->foreignId('id_empresa')->references('id')->on('empresas')->onDelete('cascade');
             $table->string('email')->unique()->nullable();
+            $table->text('fecha_inicio')->nullable();
             $table->text('token');
             $table->text('sexo')->nullable();
             $table->text('estado_civil')->nullable();

@@ -27,7 +27,7 @@ class EmpresasController extends Controller
                     // $button .= '&nbsp;&nbsp;';
                     // $button .= '<a href="#" title="Ver graficos y reportes" class="btn btn-primary btn-sm"><i class="fas fa-chart-pie"></i></a>';
                     $button .= '&nbsp;&nbsp;';
-                    $button .= '<a href="'.'/empresa/'.$empresas->token.'" target="_blank" title="Ver empresa" class="btn btn-success btn-sm"><i class="fas fa-eye"></i></a>';
+                    $button .= '<a href="'.'/empresa/'.$empresas->token.'" target="_blank" title="Ver encuesta" class="btn btn-success btn-sm"><i class="fas fa-eye"></i></a>';
                     return $button;
                 })
                 ->rawColumns(['action'])
