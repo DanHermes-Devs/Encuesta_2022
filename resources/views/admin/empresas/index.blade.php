@@ -873,8 +873,6 @@
 
             var inputs = $("." + type);
 
-
-
             if (inputs.length > 1) {
 
                 inputs.each(i => {

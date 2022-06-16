@@ -568,6 +568,6 @@
 
     <button type="button" class="btn_atras" onclick="cambiarSeccion('step_14', 'step14')">Atras</button>
 
-    <button type="button" class="btn_siguiente" onclick="cambiarSeccion('step_instrucciones', 'stepInstrucciones')">Siguiente</button>
+    <button type="button" class="btn_siguiente" onclick="cambiarSeccion('step_16', 'step16')">Siguiente</button>
 
 </div>
