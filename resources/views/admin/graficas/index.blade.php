@@ -378,7 +378,7 @@
                                     data.estudiosTecSuperior,
                                     data.estudiosLicenciatura,
                                     data.estudiosMaestría,
-                                    data.estudiosDoctorado
+                                    data.estudiosDoctorado,
                                 ],
 
                                 backgroundColor: [
