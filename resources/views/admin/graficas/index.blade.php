@@ -3,6 +3,7 @@
 @section('content')
     <div class="content">
 
+        {{-- Ve esta url papu https://es.stackoverflow.com/questions/159968/grafica-con-chartjs-y-filtrar --}}
         <div class="container-fluid">
 
             <div class="card p-4">
