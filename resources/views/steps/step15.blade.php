@@ -566,7 +566,7 @@
 
 <div class="d-flex justify-content-between">
 
-    <button type="button" class="btn_atras" onclick="cambiarSeccion('step_14', 'step14')">Atras</button>
+    <button type="button" class="btn_atras" onclick="cambiarSeccion('step_14', 'step14')">Atrás</button>
 
     <button type="button" class="btn_siguiente" onclick="cambiarSeccion('step_16', 'step16')">Siguiente</button>
 

@@ -28,8 +28,6 @@
 
         <option value="Casado(a)">Casado(a)</option>
 
-        <option value="Soltero(a)">Soltero(a)</option>
-
         <option value="Unión libre">Unión libre</option>
 
         <option value="Divorciado">Divorciado</option>
@@ -90,7 +88,7 @@
 
         <option value="x">--Elige una opción--</option>
 
-        <option value="Menos de 18 años">Menos de 1 año</option>
+        <option value="Menos de 1 año">Menos de 1 año</option>
 
         <option value="1-5 años">1-5 años</option>
 
@@ -112,7 +110,7 @@
 
 <div class="d-flex justify-content-between">
 
-    <button type="button" class="btn_atras" onclick="cambiarSeccion('step_Two', 'stepTwo')">Atras</button>
+    <button type="button" class="btn_atras" onclick="cambiarSeccion('step_Two', 'stepTwo')">Atrás</button>
 
     <button type="button" class="btn_siguiente" onclick="cambiarSeccion('step_2', 'step2')">Siguiente</button>
 

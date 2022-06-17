@@ -85,7 +85,7 @@ Route::post('/registroDatos', 'RegistroController@registroDatos')->name('registr
 
 // Ruta para guardar datos de la empresa
 
-Route::get('/graficas', 'CalificacionesController@index')->name('Calificaciones');
+Route::get('/graficas_grafica', 'CalificacionesController@index')->name('Calificaciones');
 
 
 
@@ -131,6 +131,7 @@ Route::group(['middleware' => 'auth'], function () {
     // Rutas para graficas
 
     Route::get('/graficas', 'GraficasController@index')->name('graficas');
+    Route::get('/graficas/empresa/{id}', 'GraficasController@filtrarEmpresa')->name('graficas.empresa');
 
 
 

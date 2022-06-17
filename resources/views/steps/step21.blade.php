@@ -202,7 +202,7 @@
 
 <div class="d-flex justify-content-between">
 
-    <button type="button" class="btn_atras" onclick="cambiarSeccion('step_20', 'step20')">Atras</button>
+    <button type="button" class="btn_atras" onclick="cambiarSeccion('step_20', 'step20')">Atrás</button>
 
     <button type="submit" class="btn_siguiente btn_finalizar">Finalizar encuesta</button>
 
