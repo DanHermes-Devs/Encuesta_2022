@@ -28,24 +28,6 @@
                     </div>
                 </div>
 
-                <div class="row mt-0" id="con_filtro">
-                    <div class="col-12 col-md-3 mt-5">
-                        <canvas id="sexo1" width="100%" height="100%"></canvas>
-                    </div>
-
-                    <div class="col-12 col-md-3 mt-5">
-                        <canvas id="estado_civil1" width="100%" height="100%"></canvas>
-                    </div>
-
-                    <div class="col-12 col-md-3 mt-5">
-                        <canvas id="edad1" width="100%" height="100%"></canvas>
-                    </div>
-
-                    <div class="col-12 col-md-3 mt-5">
-                        <canvas id="estudios1" width="100%" height="100%"></canvas>
-                    </div>
-                </div>
-
                 <div class="row mt-0" id="sin_filtro">
                     <div class="col-12 col-md-3 mt-5">
                         <canvas id="sexo" width="100%" height="100%"></canvas>
