@@ -7,6 +7,7 @@
     body {
 
         background: url({{asset('images/bg.jpg')}})!important;
+        background-size: cover!important;
 
     }
 

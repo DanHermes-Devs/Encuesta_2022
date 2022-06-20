@@ -120,6 +120,10 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/empresas/delete/{id}', 'EmpresasController@destroy')->name('empresas.destroy');
 
+    Route::get('/edit-company/{id}/edit', 'EmpresasController@edit')->name('empresas.edit');
+
+    Route::put('/edit-company/{id}', 'EmpresasController@update')->name('empresas.update');
+
 
 
     // Rutas para reportes

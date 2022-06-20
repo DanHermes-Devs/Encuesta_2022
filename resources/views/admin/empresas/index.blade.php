@@ -430,7 +430,7 @@
     
                                         <label for="nombre">Nombre <small class="text-red">(Requerido)</small></label>
     
-                                        <input type="text" class="form-control" id="nombre" name="nombre"
+                                        <input type="text" class="form-control" id="edit_nombre" name="edit_nombre"
                                             placeholder="Nombre">
     
                                     </div>
@@ -445,12 +445,14 @@
     
                                         {{-- Solo aceptar jpg y png --}}
     
-                                        <input type="file" class="form-control" id="logo" name="logo"
+                                        <input type="file" class="form-control" id="edit_logo" name="edit_logo"
                                             accept="image/png, image/jpeg">
-    
+
+                                            
                                         <small>Tamaño máximo: 2MB</small>
-    
+                                        
                                         <small>Formato: jpg o png</small>
+                                        <div id="logo_edit"></div>
     
                                     </div>
     
@@ -463,12 +465,14 @@
                                         <label for="logo">Imagen de fondo <small
                                                 class="text-red">(Requerido)</small></label>
     
-                                        <input type="file" class="form-control" id="imagen_fondo" name="imagen_fondo"
+                                        <input type="file" class="form-control" id="edit_imagen_fondo" name="edit_imagen_fondo"
                                             accept="image/png, image/jpeg">
     
                                         <small>Tamaño máximo: 2MB</small>
     
                                         <small>Formato: jpg o png</small>
+
+                                        <div id="img_fondo"></div>
     
                                     </div>
     
@@ -481,8 +485,8 @@
                                         <label for="logo">Color principal <small
                                                 class="text-red">(Requerido)</small></label>
     
-                                        <input type="color" class="form-control" id="colores_principales"
-                                            name="colores_principales" placeholder="Color principal">
+                                        <input type="color" class="form-control" id="edit_colores_principales"
+                                            name="edit_colores_principales" placeholder="Color principal">
     
                                     </div>
     
@@ -494,7 +498,7 @@
     
                                         <label for="logo">Descripción <small class="text-red">(Requerido)</small></label>
     
-                                        <textarea class="form-control" id="descripcion" name="descripcion" placeholder="Descripción"></textarea>
+                                        <textarea class="form-control" id="edit_descripcion" name="edit_descripcion" placeholder="Descripción"></textarea>
     
                                     </div>
     
@@ -506,7 +510,7 @@
     
                                         <label for="logo">Activo <small class="text-red">(Requerido)</small></label>
     
-                                        <select class="form-control" id="activo" name="activo">
+                                        <select class="form-control" id="edit_activo" name="edit_activo">
     
                                             <option value="1">Si</option>
     
@@ -526,24 +530,25 @@
     
                                         <label for="my-input">Tipo de puesto</label>
     
-                                        <input type="hidden" name="tipo_puesto" value="1">
-    
-                                        <div class="form-group__content input-group mb-3 tipo_puesto">
-    
-                                            <div class="input-group-append">
-    
-                                                <span class="input-group-text">
-    
-                                                    <span class="badge badge-danger" onclick="removeInput(0,'tipo_puesto')"><i
-                                                            class="fas fa-times"></i></span>
-    
-                                                </span>
-    
+                                        @foreach($empresas as $empresa)
+                                            <input type="hidden" name="tipo_puesto" value="1">
+        
+                                            <div class="form-group__content input-group mb-3 tipo_puesto">
+
+                                                <div class="input-group-append">
+
+                                                    <span class="input-group-text">
+
+                                                        <span class="badge badge-danger" onclick="removeInput(0,'tipo_puesto')"><i
+                                                                class="fas fa-times"></i></span>
+
+                                                    </span>
+
+                                                </div>
+
+                                                <input type="text" class="form-control" name="summaryPuesto_0">
                                             </div>
-    
-                                            <input type="text" class="form-control" name="summaryPuesto_0">
-    
-                                        </div>
+                                        @endforeach
     
                                         <button class="btn btn-success btn-sm mb-2" type="button" id="addOption"
                                             onclick="addInput(this, 'tipo_puesto')"><i
@@ -621,7 +626,7 @@
     
                                 <div class="col-12 col-md-12">
     
-                                    <div class="form-group">
+                                    <div class="form-group" id="editPuesto">
     
                                         <label for="my-input">Jornada de trabajo</label>
     
@@ -725,6 +730,7 @@
     <script src="{{ asset('js/waitMe.min.js') }}"></script>
 
     <script>
+        // Añadir campos
         function addInput(elem, type) {
 
             var inputs = $("." + type);
@@ -851,8 +857,6 @@
 
                 }
 
-
-
                 $('[name="' + type + '"]').val(inputs.length + 1);
 
             } else {
@@ -865,8 +869,7 @@
 
         }
 
-
-
+        // Eliminar campos
         function removeInput(index, type) {
 
             var inputs = $("." + type);
@@ -1053,12 +1056,7 @@
 
             });
 
-
-
-
-
-
-
+            // Generar token unico para la empresa cada X tiempo
             const generateId = () => Math.random().toString(36).substr(2, 8) + '-' + Math.random().toString(36)
 
                 .substr(2, 4) + '-' + Math.random().toString(36).substr(2, 4) + '-' + Math.random().toString(36)
@@ -1066,17 +1064,11 @@
                 .substr(2, 4) + '-' + Math.random().toString(36).substr(2, 12);
 
             // asignar uuid al campo token
-
             $('#token').val(generateId());
 
-
-
-            // Actualizar token cada 5 segundos
-
+            // Actualizar token cada 10 segundos
             setInterval(() => {
-
                 $('#token').val(generateId());
-
             }, 10000);
 
             // Mandamos los datos por ajax
@@ -1196,14 +1188,6 @@
                 });
 
             });
-
-
-
-            // Editar empresa
-
-
-
-
 
             // Eliminar empresa
 
