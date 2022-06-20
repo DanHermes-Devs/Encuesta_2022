@@ -14,7 +14,7 @@
                                 {{-- Label --}}
                                 <label for="empresa">Filtrar por empresa:</label>
                                 <select class="form-control" id="empresa" name="empresa">
-                                    <option value="">--Elige una opción--</option>
+                                    <option value="0">--Elige una opción--</option>
                                     <option value="-1">Ver todo</option>
                                     @foreach ($empresas as $empresa)
                                         <option value="{{ $empresa->id }}">{{ $empresa->nombre }}</option>
@@ -25,7 +25,12 @@
                     </div>
                 </div>
 
-                <div class="row mt-0">
+                <div class="row mt-0 text-center">
+                    <div class="col-12 mt-5" id="seleccionaEmpresa">
+                        <h2 class="text-center">
+                            Selecciona una empresa
+                        </h2>
+                    </div>
                     <div class="col-12 col-md-3 mt-5">
                         <canvas id="sexo" width="100%" height="100%"></canvas>
                     </div>
@@ -65,6 +70,8 @@
         var edadChart;
         var estudiosChart;
 
+        // Selecciona una empresa
+
 
         // Filtrar graficas por empresa mediante ajax
         $('#empresa').change(function() {
@@ -86,6 +93,13 @@
                 estudiosChart.destroy();
             }
 
+            if(empresa == 0){
+                $('#seleccionaEmpresa').html('<h2 class="text-center">Selecciona una empresa</h2>');
+                return;
+            } else if(empresa > 0){
+                $('#seleccionaEmpresa').html('<h2 class="text-center">Cargando...</h2>');
+            }
+
             $.ajax({
                 type: 'GET',
                 url: '/graficas/empresa/' + empresa,
@@ -93,7 +107,14 @@
                     id: empresa,
                 },
                 success: function(data) {
-                    console.log(data);
+                    $('#seleccionaEmpresa').html(data);
+                    // Crear if ternario para validar existensia del nombre de la empresa
+                    if (data.empresa) {
+                        $('#seleccionaEmpresa').html(`<h2 class="text-center">Datos de la empresa: ${data.empresa.nombre}</h2>`);
+                    } else {
+                        $('#seleccionaEmpresa').html('<h2 class="text-center">Datos generales</h2>');
+                    }
+                    // $('#seleccionaEmpresa').html(`<h2 class="text-center">Datos de la empresa: ${data.empresa.nombre}</h2>`);
                     // Grafica de sexo
                     var sexo = document.getElementById('sexo').getContext('2d');
                     sexoChart = new Chart(sexo, {

@@ -284,6 +284,7 @@ class GraficasController extends Controller
             $experiencia7 = Registro::with('empresas')->where('id_empresa', $id)->where('experiencia_laboral', 'Más de 25 años')->count();
 
             $data = [
+                'empresa' => $empresa,
                 'sexoMasculino' => $sexoMasculino,
                 'sexoFemenino' => $sexoFemenino,
                 'estadoCivilSoltero' => $estadoCivilSoltero,
