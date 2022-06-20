@@ -637,7 +637,6 @@
                     },
 
                     success: function(data) {
-
                         if (data.status == 201) {
                             $('#err_list').html('');
                             Swal.fire({
@@ -663,11 +662,29 @@
                             });
 
                         } else {
-                            $('#err_list').html('');
-                            $('#err_list').addClass('alert alert-danger');
-                            $.each(data.error, function(key, err_values) {
-                                $('#err_list').append(`<li>${err_values}</li>`);
+
+                            // Sweet alert para avisar que hay campos vacios
+                            Swal.fire({
+                                title: '¡Error!',
+                                text: data.message,
+                                icon: 'error',
+                                confirmButtonText: 'Continuar',
                             });
+                            
+                            
+                            // Mostrar los errores en cada input
+                            $.each(data.error, function(key, err_values) {
+                                $(`#${key}`).addClass('is-invalid');
+                                $("[name='" + key + "']").parent().addClass('has-error');
+                                // Si es un input radio, mostrar el mensaje de error de diferente manera
+                                if ($("[name='" + key + "']").attr('type') == 'radio') {
+                                    // $("[name='" + key + "'][value='" + err_values + "']").parent().addClass('has-error');
+                                    $("[name='" + key + "']").parent().parent().append(`<div class="invalid-feedback">${err_values}</div>`);
+                                }else{
+                                    $("[name='" + key + "']").parent().append(`<div class="invalid-feedback">${err_values}</div>`);
+                                }
+                            });
+
 
                         }
 

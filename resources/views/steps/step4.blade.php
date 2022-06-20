@@ -1,6 +1,7 @@
 <div class="alert alert-warning text-left">
 
-    <p class="m-0 text-left"><b>1.- Para responder las preguntas siguientes considere las condiciones ambientales de su centro de trabajo.</b></p>
+    <p class="m-0 text-left"><b>1.- Para responder las preguntas siguientes considere las condiciones ambientales de su
+            centro de trabajo.</b></p>
 
 </div>
 
@@ -36,9 +37,7 @@
 
     <div class="form-check">
 
-        <input class="form-check-input" type="radio" name="item_1" id="item_1_3"
-
-            value="2">
+        <input class="form-check-input" type="radio" name="item_1" id="item_1_3" value="2">
 
         <label class="form-check-label" for="item_1_3">
 
@@ -106,9 +105,7 @@
 
     <div class="form-check">
 
-        <input class="form-check-input" type="radio" name="item_2" id="item_2_3"
-
-        value="2">
+        <input class="form-check-input" type="radio" name="item_2" id="item_2_3" value="2">
 
         <label class="form-check-label" for="item_2_3">
 
@@ -176,9 +173,7 @@
 
     <div class="form-check">
 
-        <input class="form-check-input" type="radio" name="item_3" id="item_3_3"
-
-        value="2">
+        <input class="form-check-input" type="radio" name="item_3" id="item_3_3" value="2">
 
         <label class="form-check-label" for="item_3_3">
 
@@ -218,7 +213,8 @@
 
 <div class="item_1_4 mb-4">
 
-    <label for="tituloa-item__1"><b>4.- ¿Considero que en mi trabajo se aplican las normas de seguridad y salud en el trabajo?</b></label>
+    <label for="tituloa-item__1"><b>4.- ¿Considero que en mi trabajo se aplican las normas de seguridad y salud en el
+            trabajo?</b></label>
 
     <div class="form-check">
 
@@ -246,9 +242,7 @@
 
     <div class="form-check">
 
-        <input class="form-check-input" type="radio" name="item_4" id="item_4_3"
-
-        value="2">
+        <input class="form-check-input" type="radio" name="item_4" id="item_4_3" value="2">
 
         <label class="form-check-label" for="item_4_3">
 
@@ -316,9 +310,7 @@
 
     <div class="form-check">
 
-        <input class="form-check-input" type="radio" name="item_5" id="item_5_3"
-
-        value="2">
+        <input class="form-check-input" type="radio" name="item_5" id="item_5_3" value="2">
 
         <label class="form-check-label" for="item_5_3">
 

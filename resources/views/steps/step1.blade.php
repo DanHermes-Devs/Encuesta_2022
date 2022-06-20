@@ -4,7 +4,7 @@
 
     <select class="form-control" id="sexo" name="sexo">
 
-        <option value="x">--Elige una opción--</option>
+        <option value="">--Elige una opción--</option>
 
         <option value="Masculino">Masculino</option>
 
@@ -22,7 +22,7 @@
 
     <select class="form-control" id="estado_civil" name="estado_civil">
 
-        <option value="x">--Elige una opción--</option>
+        <option value="">--Elige una opción--</option>
 
         <option value="Soltero(a)">Soltero(a)</option>
 
@@ -48,7 +48,7 @@
 
     <select class="form-control" id="edad" name="edad">
 
-        <option value="x">--Elige una opción--</option>
+        <option value="">--Elige una opción--</option>
 
         <option value="Menos de 18 años">Menos de 18 años</option>
 
@@ -86,7 +86,7 @@
 
     <select class="form-control" id="antiguedad" name="antiguedad">
 
-        <option value="x">--Elige una opción--</option>
+        <option value="">--Elige una opción--</option>
 
         <option value="Menos de 1 año">Menos de 1 año</option>
 
