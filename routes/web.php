@@ -132,6 +132,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/graficas', 'GraficasController@index')->name('graficas');
     Route::get('/graficas/empresa/{id}', 'GraficasController@filtrarEmpresa')->name('graficas.empresa');
+    Route::get('/graficas/empresas', 'GraficasController@empresas')->name('graficas.empresa');
 
 
 

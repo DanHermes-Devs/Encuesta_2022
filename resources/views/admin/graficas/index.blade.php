@@ -5,31 +5,27 @@
 
         {{-- Ve esta url papu https://es.stackoverflow.com/questions/159968/grafica-con-chartjs-y-filtrar --}}
         <div class="container-fluid">
-
             <div class="card p-4">
-
                 <div class="row">
-
                     <div class="col-12">
-                        <div class="row justify-content-between">
+                        <div class="row">
                             <h2>Gráficas generales</h2>
-                            <form class="filterCompany d-flex align-items-center" style="gap: 1rem;">
-                                <div>
-                                    <select class="form-control" id="empresa" name="empresa">
-                                        <option value="">--Elige una opción--</option>
-                                        @foreach ($data['empresas'] as $empresa)
-                                            <option value="{{ $empresa->id }}">{{ $empresa->nombre }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <button type="submit" class="btn btn-success" id="filterCompany">Filtrar por
-                                    empresa</button>
-                            </form>
+                            <div class="form-group w-100 mt-4">
+                                {{-- Label --}}
+                                <label for="empresa">Filtrar por empresa:</label>
+                                <select class="form-control" id="empresa" name="empresa">
+                                    <option value="">--Elige una opción--</option>
+                                    <option value="-1">Ver todo</option>
+                                    @foreach ($empresas as $empresa)
+                                        <option value="{{ $empresa->id }}">{{ $empresa->nombre }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="row mt-0" id="sin_filtro">
+                <div class="row mt-0">
                     <div class="col-12 col-md-3 mt-5">
                         <canvas id="sexo" width="100%" height="100%"></canvas>
                     </div>
@@ -46,17 +42,6 @@
                         <canvas id="estudios" width="100%" height="100%"></canvas>
                     </div>
                 </div>
-
-                <div class="row">
-                    {{-- <div class="col-12 col-md-3 mt-5">
-                        <canvas id="evento_traumatico" width="100%" height="100%"></canvas>
-                    </div> --}}
-
-                    {{-- <div class="col-12 col-md-3 mt-5">
-                        <canvas id="antiguedad" width="100%" height="100%"></canvas>
-                    </div> --}}
-                </div>
-
             </div>
 
         </div>
@@ -74,60 +59,60 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-        $('#con_filtro').hide();
-        // Consultar empresa mediante ajax
-        $('#filterCompany').click(function(e) {
-            $('#sin_filtro').hide();
-            $('#con_filtro').show();
-            e.preventDefault();
-            var empresa = $('#empresa').val();
+
+        var sexoChart;
+        var edo_civilChart;
+        var edadChart;
+        var estudiosChart;
+
+
+        // Filtrar graficas por empresa mediante ajax
+        $('#empresa').change(function() {
+            var empresa = $(this).val();
+            // Limpiar graficas
+            if (sexoChart) {
+                sexoChart.destroy();
+            }
+
+            if (edo_civilChart) {
+                edo_civilChart.destroy();
+            }
+
+            if (edadChart) {
+                edadChart.destroy();
+            }
+
+            if (estudiosChart) {
+                estudiosChart.destroy();
+            }
+
             $.ajax({
-                url: '/graficas/empresa/' + empresa,
                 type: 'GET',
+                url: '/graficas/empresa/' + empresa,
                 data: {
-                    id: empresa
+                    id: empresa,
                 },
                 success: function(data) {
                     console.log(data);
-                    const ctx1 = $('#sexo1');
-
-                    const sexo1 = new Chart(ctx1, {
-
+                    // Grafica de sexo
+                    var sexo = document.getElementById('sexo').getContext('2d');
+                    sexoChart = new Chart(sexo, {
                         type: 'doughnut',
-
                         data: {
-
-                            labels: ['Masculino', 'Femenino'],
-
+                            labels: ['Hombres', 'Mujeres'],
                             datasets: [{
-
-                                label: 'Datos generales',
-
-                                data: [
-                                    data.sexoMasculino,
-                                    data.sexoFemenino
-                                ],
-
+                                label: '# de usuarios',
+                                data: [data.sexoMasculino, data.sexoFemenino],
                                 backgroundColor: [
-
                                     'rgba(255, 99, 132, 0.2)',
-
                                     'rgba(54, 162, 235, 0.2)',
-
                                 ],
-
                                 borderColor: [
-
                                     'rgba(255, 99, 132, 1)',
-
                                     'rgba(54, 162, 235, 1)',
-
                                 ],
-
                                 borderWidth: 1
-
                             }]
-
                         },
                         options: {
                             responsive: true,
@@ -144,68 +129,34 @@
                                 },
                             }
                         },
-
                     });
 
-                    const ctx2 = $('#estado_civil1');
-
-                    const estado_civil1 = new Chart(ctx2, {
-
+                    // Grafica de estado civil
+                    var edo_civil = document.getElementById('estado_civil').getContext('2d');
+                    edo_civilChart = new Chart(edo_civil, {
                         type: 'doughnut',
-
                         data: {
-
-                            labels: ['Soltero(a)', 'Casado(a)', 'Unión Libre', 'Divorciado',
-                                'Viudo', 'Otro'
-                            ],
-
+                            labels: ['Casado', 'Soltero', 'Divorciado', 'Viudo'],
                             datasets: [{
-
-                                data: [
-                                    data.estadoCivilSoltero,
-                                    data.estadoCivilCasado,
-                                    data.estadoUnionLibre,
-                                    data.estadoCivilDivorciado,
-                                    data.estadoCivilViudo,
-                                    data.estadoOtro
+                                label: '# de usuarios',
+                                data: [data.estadoCivilCasado, data.estadoCivilSoltero,
+                                    data.estadoCivilDivorciado, data
+                                    .estadoCivilViudo
                                 ],
-
                                 backgroundColor: [
-
                                     'rgba(255, 99, 132, 0.2)',
-
                                     'rgba(54, 162, 235, 0.2)',
-
                                     'rgba(255, 206, 86, 0.2)',
-
                                     'rgba(75, 192, 192, 0.2)',
-
-                                    'rgba(153, 102, 255, 0.2)',
-
-                                    'rgba(255, 159, 64, 0.2)'
-
                                 ],
-
                                 borderColor: [
-
                                     'rgba(255, 99, 132, 1)',
-
                                     'rgba(54, 162, 235, 1)',
-
                                     'rgba(255, 206, 86, 1)',
-
                                     'rgba(75, 192, 192, 1)',
-
-                                    'rgba(153, 102, 255, 1)',
-
-                                    'rgba(255, 159, 64, 1)'
-
                                 ],
-
                                 borderWidth: 1
-
                             }]
-
                         },
                         options: {
                             responsive: true,
@@ -215,34 +166,27 @@
                                 },
                                 title: {
                                     display: true,
-                                    text: 'Estado Civil',
+                                    text: 'Estado civil',
                                     font: {
                                         size: 20
                                     }
                                 },
                             }
                         },
-
                     });
 
-                    const ctx3 = $('#edad1');
-
-                    const edad1 = new Chart(ctx3, {
-
+                    // Grafica de edad
+                    var edad = document.getElementById('edad').getContext('2d');
+                    edadChart = new Chart(edad, {
                         type: 'bar',
-
                         data: {
-
                             labels: ['Menos de 18 años', '18-25 años', '26-30 años',
                                 '31-35 años', '36-40 años', '41-45 años',
                                 '46-50 años', '51-55 años', '56-60 años', '61-65 años',
                                 '66-70 años', 'Más de 70 años'
                             ],
-
                             datasets: [{
-
-                                label: ['Edad'],
-
+                                label: '# de usuarios',
                                 data: [
                                     data.edad18,
                                     data.edad18_25,
@@ -255,75 +199,44 @@
                                     data.edad56_60,
                                     data.edad61_65,
                                     data.edad66_70,
-                                    data.edad70
+                                    data.edad70,
                                 ],
-
                                 backgroundColor: [
-
                                     'rgba(0, 255, 255, 0.2)',
-
                                     'rgba(54, 162, 235, 0.2)',
-
                                     'rgba(255, 206, 86, 0.2)',
-
                                     'rgba(75, 192, 192, 0.2)',
-
                                     'rgba(153, 102, 255, 0.2)',
-
                                     'rgba(255, 159, 64, 0.2)',
-
                                     'rgba(565, 19, 64, 0.2)',
-
                                     'rgba(125, 10, 30, 0.2)',
-
                                     'rgba(255, 40, 255, 0.2)',
-
                                     'rgba(25, 40, 255, 0.2)',
-
                                     'rgba(25, 140, 25, 0.2)',
-
                                     'rgba(5, 90, 185, 0.2)',
-
                                 ],
-
                                 borderColor: [
-
                                     'rgba(0, 255, 255, 1)',
-
                                     'rgba(54, 162, 235, 1)',
-
                                     'rgba(255, 206, 86, 1)',
-
                                     'rgba(75, 192, 192, 1)',
-
                                     'rgba(153, 102, 255, 1)',
-
                                     'rgba(255, 159, 64, 1)',
-
                                     'rgba(565, 19, 64, 1)',
-
                                     'rgba(125, 10, 30, 1)',
-
                                     'rgba(255, 40, 255, 1)',
-
                                     'rgba(25, 40, 255, 1)',
-
                                     'rgba(25, 140, 25, 1)',
-
                                     'rgba(5, 90, 185, 1)',
-
                                 ],
-
                                 borderWidth: 1
-
                             }]
-
                         },
                         options: {
                             responsive: true,
                             plugins: {
                                 legend: {
-                                    display: false,
+                                    display: true,
                                 },
                                 title: {
                                     display: true,
@@ -334,26 +247,19 @@
                                 },
                             }
                         },
-
                     });
 
-                    const ctx4 = $('#estudios1');
-
-                    const estudios1 = new Chart(ctx4, {
-
+                    // Grafica de estudios
+                    var estudios = document.getElementById('estudios').getContext('2d');
+                    estudiosChart = new Chart(estudios, {
                         type: 'bar',
-
                         data: {
-
                             labels: ['Primaria', 'Secundaria', 'Preparatoria', 'Tec. Superior',
                                 'Licenciatura', 'Maestría',
                                 'Doctorado'
                             ],
-
                             datasets: [{
-
-                                label: ['Edad'],
-
+                                label: '# de usuarios',
                                 data: [
                                     data.estudiosPrimaria,
                                     data.estudiosSecundaria,
@@ -363,53 +269,34 @@
                                     data.estudiosMaestría,
                                     data.estudiosDoctorado,
                                 ],
-
                                 backgroundColor: [
-
                                     'rgba(0, 255, 255, 0.2)',
-
                                     'rgba(54, 162, 235, 0.2)',
-
                                     'rgba(255, 206, 86, 0.2)',
-
                                     'rgba(75, 192, 192, 0.2)',
-
                                     'rgba(153, 102, 255, 0.2)',
-
                                     'rgba(255, 159, 64, 0.2)',
-
                                     'rgba(565, 19, 64, 0.2)',
-
+                                    'rgba(125, 10, 30, 0.2)',
                                 ],
-
                                 borderColor: [
-
                                     'rgba(0, 255, 255, 1)',
-
                                     'rgba(54, 162, 235, 1)',
-
                                     'rgba(255, 206, 86, 1)',
-
                                     'rgba(75, 192, 192, 1)',
-
                                     'rgba(153, 102, 255, 1)',
-
                                     'rgba(255, 159, 64, 1)',
-
                                     'rgba(565, 19, 64, 1)',
-
+                                    'rgba(125, 10, 30, 1)',
                                 ],
-
                                 borderWidth: 1
-
                             }]
-
                         },
                         options: {
                             responsive: true,
                             plugins: {
                                 legend: {
-                                    display: false,
+                                    display: true,
                                 },
                                 title: {
                                     display: true,
@@ -420,330 +307,19 @@
                                 },
                             }
                         },
-
                     });
+
                 }
             });
         });
 
-        const ctx = $('#sexo');
 
-        const sexo = new Chart(ctx, {
 
-            type: 'doughnut',
-
-            data: {
-
-                labels: ['Masculino', 'Femenino'],
-
-                datasets: [{
-
-                    label: 'Datos generales',
-
-                    data: [
-                        {{ $data['sexoMasculino'] }},
-                        {{ $data['sexoFemenino'] }}
-                    ],
-
-                    backgroundColor: [
-
-                        'rgba(255, 99, 132, 0.2)',
-
-                        'rgba(54, 162, 235, 0.2)',
-
-                    ],
-
-                    borderColor: [
-
-                        'rgba(255, 99, 132, 1)',
-
-                        'rgba(54, 162, 235, 1)',
-
-                    ],
-
-                    borderWidth: 1
-
-                }]
-
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        display: true,
-                    },
-                    title: {
-                        display: true,
-                        text: 'Sexo',
-                        font: {
-                            size: 20
-                        }
-                    },
-                }
-            },
-
-        });
-
-        const ctx_2 = $('#estado_civil');
-
-        const estado_civil = new Chart(ctx_2, {
-
-            type: 'doughnut',
-
-            data: {
-
-                labels: ['Soltero(a)', 'Casado(a)', 'Unión Libre', 'Divorciado', 'Viudo', 'Otro'],
-
-                datasets: [{
-
-                    data: [
-                        {{ $data['estadoCivilSoltero'] }},
-                        {{ $data['estadoCivilCasado'] }},
-                        {{ $data['estadoUnionLibre'] }},
-                        {{ $data['estadoCivilDivorciado'] }},
-                        {{ $data['estadoCivilViudo'] }},
-                        {{ $data['estadoOtro'] }}
-                    ],
-
-                    backgroundColor: [
-
-                        'rgba(255, 99, 132, 0.2)',
-
-                        'rgba(54, 162, 235, 0.2)',
-
-                        'rgba(255, 206, 86, 0.2)',
-
-                        'rgba(75, 192, 192, 0.2)',
-
-                        'rgba(153, 102, 255, 0.2)',
-
-                        'rgba(255, 159, 64, 0.2)'
-
-                    ],
-
-                    borderColor: [
-
-                        'rgba(255, 99, 132, 1)',
-
-                        'rgba(54, 162, 235, 1)',
-
-                        'rgba(255, 206, 86, 1)',
-
-                        'rgba(75, 192, 192, 1)',
-
-                        'rgba(153, 102, 255, 1)',
-
-                        'rgba(255, 159, 64, 1)'
-
-                    ],
-
-                    borderWidth: 1
-
-                }]
-
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        display: true,
-                    },
-                    title: {
-                        display: true,
-                        text: 'Estado Civil',
-                        font: {
-                            size: 20
-                        }
-                    },
-                }
-            },
-
-        });
-
-
-        const ctx_4 = $('#edad');
-
-        const edad = new Chart(ctx_4, {
-
-            type: 'bar',
-
-            data: {
-
-                labels: ['Menos de 18 años', '18-25 años', '26-30 años', '31-35 años', '36-40 años', '41-45 años',
-                    '46-50 años', '51-55 años', '56-60 años', '61-65 años', '66-70 años', 'Más de 70 años'
-                ],
-
-                datasets: [{
-
-                    label: ['Edad'],
-
-                    data: [{{ $data['edad18'] }}, {{ $data['edad18_25'] }}, {{ $data['edad26_30'] }},
-                        {{ $data['edad31_35'] }},
-                        {{ $data['edad36_40'] }}, {{ $data['edad41_45'] }}, {{ $data['edad46_50'] }},
-                        {{ $data['edad51_55'] }},
-                        {{ $data['edad56_60'] }}, {{ $data['edad61_65'] }}, {{ $data['edad66_70'] }},
-                        {{ $data['edad70'] }}
-                    ],
-
-                    backgroundColor: [
-
-                        'rgba(0, 255, 255, 0.2)',
-
-                        'rgba(54, 162, 235, 0.2)',
-
-                        'rgba(255, 206, 86, 0.2)',
-
-                        'rgba(75, 192, 192, 0.2)',
-
-                        'rgba(153, 102, 255, 0.2)',
-
-                        'rgba(255, 159, 64, 0.2)',
-
-                        'rgba(565, 19, 64, 0.2)',
-
-                        'rgba(125, 10, 30, 0.2)',
-
-                        'rgba(255, 40, 255, 0.2)',
-
-                        'rgba(25, 40, 255, 0.2)',
-
-                        'rgba(25, 140, 25, 0.2)',
-
-                        'rgba(5, 90, 185, 0.2)',
-
-                    ],
-
-                    borderColor: [
-
-                        'rgba(0, 255, 255, 1)',
-
-                        'rgba(54, 162, 235, 1)',
-
-                        'rgba(255, 206, 86, 1)',
-
-                        'rgba(75, 192, 192, 1)',
-
-                        'rgba(153, 102, 255, 1)',
-
-                        'rgba(255, 159, 64, 1)',
-
-                        'rgba(565, 19, 64, 1)',
-
-                        'rgba(125, 10, 30, 1)',
-
-                        'rgba(255, 40, 255, 1)',
-
-                        'rgba(25, 40, 255, 1)',
-
-                        'rgba(25, 140, 25, 1)',
-
-                        'rgba(5, 90, 185, 1)',
-
-                    ],
-
-                    borderWidth: 1
-
-                }]
-
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        display: false,
-                    },
-                    title: {
-                        display: true,
-                        text: 'Edad',
-                        font: {
-                            size: 20
-                        }
-                    },
-                }
-            },
-
-        });
-
-        const ctx_5 = $('#estudios');
-
-        const estudios = new Chart(ctx_5, {
-
-            type: 'bar',
-
-            data: {
-
-                labels: ['Primaria', 'Secundaria', 'Preparatoria', 'Tec. Superior', 'Licenciatura', 'Maestría',
-                    'Doctorado'
-                ],
-
-                datasets: [{
-
-                    label: ['Edad'],
-
-                    data: [{{ $data['estudiosPrimaria'] }}, {{ $data['estudiosSecundaria'] }},
-                        {{ $data['estudiosPreparatoria'] }},
-                        {{ $data['estudiosTecSuperior'] }}, {{ $data['estudiosLicenciatura'] }},
-                        {{ $data['estudiosMaestría'] }},
-                        {{ $data['estudiosDoctorado'] }}
-                    ],
-
-                    backgroundColor: [
-
-                        'rgba(0, 255, 255, 0.2)',
-
-                        'rgba(54, 162, 235, 0.2)',
-
-                        'rgba(255, 206, 86, 0.2)',
-
-                        'rgba(75, 192, 192, 0.2)',
-
-                        'rgba(153, 102, 255, 0.2)',
-
-                        'rgba(255, 159, 64, 0.2)',
-
-                        'rgba(565, 19, 64, 0.2)',
-
-                    ],
-
-                    borderColor: [
-
-                        'rgba(0, 255, 255, 1)',
-
-                        'rgba(54, 162, 235, 1)',
-
-                        'rgba(255, 206, 86, 1)',
-
-                        'rgba(75, 192, 192, 1)',
-
-                        'rgba(153, 102, 255, 1)',
-
-                        'rgba(255, 159, 64, 1)',
-
-                        'rgba(565, 19, 64, 1)',
-
-                    ],
-
-                    borderWidth: 1
-
-                }]
-
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        display: false,
-                    },
-                    title: {
-                        display: true,
-                        text: 'Estudios',
-                        font: {
-                            size: 20
-                        }
-                    },
-                }
-            },
-
-        });
+        // $('#empresa').change(function() {
+        //     var empresa = $('#empresa').val();
+        //     // var url = '{{ route('graficas.empresa', ':empresa') }}';
+        //     // url = url.replace(':empresa', empresa);
+        //     // window.location.href = url;
+        // });
     </script>
 @endsection
