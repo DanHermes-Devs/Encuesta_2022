@@ -4,6 +4,8 @@
 
 <link rel="stylesheet" href="{{ asset('css/waitMe.min.css') }}">
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.min.css"/>
+
 <style>
     .badge.badge-danger {
 
@@ -14,6 +16,20 @@
     td:nth-child(7) {
         display: flex;
         justify-content: space-around;
+    }
+
+    trix-editor {
+
+        min-height: 400px!important;
+
+    }
+
+    .wrapper .content-wrapper{
+        height: auto!important;
+    }
+
+    .content-wrapper {
+        margin-bottom: 3rem;
     }
 </style>
 
@@ -164,7 +180,6 @@
 
                                     </div>
                                 </div>
-
 
 
                                 <div class="col-12 col-md-6">
@@ -345,6 +360,14 @@
                                     </div>
                                 </div>
 
+                                <div class="col-12 col-md-12">
+                                    <div class="form-group">
+                                        <label for="aviso_privacidad">Aviso de privacidad</label>
+                                        <input id="aviso" type="hidden" name="aviso" value="{{ $empresas->aviso }}">
+                                        <trix-editor input="aviso"></trix-editor>
+                                    </div>
+                                </div>
+
 
                                 <input type="hidden" class="form-control" name="token" id="token" value="{{ $empresas->token }}">
 
@@ -380,6 +403,8 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script src="{{ asset('js/waitMe.min.js') }}"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.min.js"></script>
 
     <script>
         // Añadir campos

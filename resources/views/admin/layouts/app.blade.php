@@ -1,14 +1,6 @@
 <!DOCTYPE html>
 
-<!--
-
-This is a starter template page. Use this page to start your new project from
-
-scratch. This page gets rid of all links and provides the needed markup only.
-
--->
-
-<html lang="es">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 
 
@@ -18,7 +10,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Träfika Encuestas</title>
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
 
 
@@ -28,9 +20,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- Google Font: Source Sans Pro -->
 
-    <link rel="stylesheet"
-
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
 
     <!-- Font Awesome Icons -->
 
@@ -301,7 +291,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                                 </li>
 
-                                <li class="nav-item">
+                                {{-- <li class="nav-item">
 
                                     <a href="{{ route('aviso-privacidad') }}" class="nav-link">
 
@@ -311,7 +301,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                                     </a>
 
-                                </li>
+                                </li> --}}
 
                             </ul>
 

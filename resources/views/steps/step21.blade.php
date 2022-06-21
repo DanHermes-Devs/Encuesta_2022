@@ -188,8 +188,8 @@
 
     <div class="card card-body">
 
-        @if ($aviso)
-            {!! $aviso->aviso !!}
+        @if ($empresa->aviso)
+            {!! $empresa->aviso !!}
         @else
             <p>No hay aviso de privacidad</p>
         @endif

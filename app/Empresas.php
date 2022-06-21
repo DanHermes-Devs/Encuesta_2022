@@ -17,6 +17,12 @@ class Empresas extends Model
         'colores_principales',
         'descripcion',
         'activo',
+        'aviso',
+        'tipo_puesto',
+        'area',
+        'tipo_contratacion',
+        'jornada_trabajo',
+        'rotacion_turnos'
     ];
 
     public function registros()

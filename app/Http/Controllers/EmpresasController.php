@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Empresas;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Validator;
 
@@ -47,13 +48,20 @@ class EmpresasController extends Controller
      */
     public function store(Request $request)
     {
+        $messages = [
+            // Validar campos
+            'nombre.required' => 'El nombre de la empresa es requerido',
+            'logo.required' => 'El logo de la empresa es requerido',
+            'imagen_fondo.required' => 'La imagen de fondo de la empresa es requerido',
+            'descripcion.required' => 'La descripcion de la empresa es requerido'
+        ];
         $validator = Validator::make($request->all(), [
             'token' => 'required',
             'nombre' => 'required',
-            'logo' => 'required|image',
-            'imagen_fondo' => 'required|image',
+            'logo' => 'required|image:jpeg,png,jpg|max:2048',
+            'imagen_fondo' => 'required|image:jpeg,png,jpg|max:2048',
             'descripcion' => 'required',
-        ]);
+        ], $messages);
 
         if ($validator->fails()) {
             return response()->json(['error'=>$validator->errors(), 'status'=>'failed']);
@@ -74,6 +82,7 @@ class EmpresasController extends Controller
             $empresas->colores_principales = $request->colores_principales;
             $empresas->descripcion = $request->descripcion;
             $empresas->activo = $request->activo;
+            $empresas->aviso = $request->aviso;
             if(isset($request->tipo_puesto)){
                 $tipo_puesto = array();
                 // Recorrer con un ciclo for para obtener los valores
@@ -159,10 +168,18 @@ class EmpresasController extends Controller
     {
         // Enoncontrar empresa primero
         $empresas = Empresas::find($request->id);
+        $messages = [
+            // Validar campos
+            'nombre.required' => 'El nombre de la empresa es requerido',
+            'descripcion.required' => 'La descripcion de la empresa es requerido'
+        ];
         $validator = Validator::make($request->all(), [
+            'token' => 'required',
             'nombre' => 'required',
+            'logo' => 'image:jpeg,png,jpg|max:2048',
+            'imagen_fondo' => 'image:jpeg,png,jpg|max:2048',
             'descripcion' => 'required',
-        ]);
+        ], $messages);
 
         if ($validator->fails()) {
             return response()->json(['error'=>$validator->errors(), 'status'=>'failed']);
@@ -185,6 +202,7 @@ class EmpresasController extends Controller
             $empresas->colores_principales = $request->colores_principales;
             $empresas->descripcion = $request->descripcion;
             $empresas->activo = $request->activo;
+            $empresas->aviso = $request->aviso;
             if(isset($request->tipo_puesto)){
                 $tipo_puesto = array();
                 // Recorrer con un ciclo for para obtener los valores
@@ -244,6 +262,18 @@ class EmpresasController extends Controller
     {
         $empresas = Empresas::find($id);
         $empresas->delete();
+
+        // Eliminar el logotipo
+        $imagen_path = public_path("storage/" . $empresas->logo);
+        if(File::exists($imagen_path)){
+            unlink($imagen_path);
+        }
+
+        // Eliminar la imagen de fondo
+        $imagen_path_2 = public_path("storage/" . $empresas->imagen_fondo );
+        if(File::exists($imagen_path_2)){
+            unlink($imagen_path_2);
+        }
         return response()->json(['message' => 'Empresa eliminada correctamente.', 'status' => 'success']);
     }
 }
