@@ -20,7 +20,7 @@
 
                 <h2 class="mt-4">Empresa: {{$empresa->nombre}}</h2>
 
-                <p>A continuación encontraras una serie de reactivos en la que no existen respuestas buenas ni malas, solo son respuestas que hacen alusión a la experiencia que tienes dentro de trabajo, recuerda contestar lo primero que se te venga a la mente,  considerando las condiciones ambientales de su centro de trabajo.</p>
+                <p>{!! $configuraciones->mensaje_bienvenida !!}</p>
 
             </div>
 

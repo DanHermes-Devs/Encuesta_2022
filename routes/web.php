@@ -99,6 +99,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Configuraciones
     Route::get('/configuraciones', 'ConfiguracionController@index')->name('configuraciones.index');
+    Route::put('/configuraciones/{id}', 'ConfiguracionController@update')->name('configuraciones.update');
 
 
 

@@ -2,7 +2,9 @@
 
 <div class="alert alert-warning">
 
-    <h2>Marca la respuesta que consideres más apropiada de acuerdo a lo que se te pide.</h2>
+    <h2>
+        {!! $configuraciones->instrucciones1 !!}
+    </h2>
 
 </div>
 

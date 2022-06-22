@@ -226,6 +226,8 @@
 
                         <div class="row">
 
+                            {{-- {{dd($configuraciones)}} --}}
+
                             <div class="w-100" style="display: flex;" id="">
 
                                 {{-- stepsBar --}}

@@ -14,7 +14,8 @@ class ConfiguracionController extends Controller
      */
     public function index()
     {
-        return view('admin.configuraciones.index');
+        $data = Configuracion::first();
+        return view('admin.configuraciones.index', compact('data'));
     }
 
     /**
@@ -67,9 +68,14 @@ class ConfiguracionController extends Controller
      * @param  \App\Configuracion  $configuracion
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Configuracion $configuracion)
+    public function update(Request $request, $id)
     {
-        //
+        $datoActualizar = Configuracion::find($id);
+        $datoActualizar->mensaje_bienvenida = $request->mensaje_bienvenida;
+        $datoActualizar->instrucciones1 = $request->instrucciones1;
+        $datoActualizar->instrucciones2 = $request->instrucciones2;
+        $datoActualizar->save();
+        return response()->json(['message' => 'Actualizado correctamente', 'status' => 200]);
     }
 
     /**

@@ -24,14 +24,6 @@
 
     }
 
-    .wrapper .content-wrapper{
-        height: auto!important;
-    }
-
-    .content-wrapper {
-        margin-bottom: 3rem;
-    }
-
     .cards{
         border: 1px solid #ccc;
         padding: 1rem!important;

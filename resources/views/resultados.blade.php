@@ -1941,7 +1941,7 @@
                     </tr>
 
                     <tr class="text-center bg-custom text-white">
-                        <td colspan="4"><b>Eventos Trumáticos</b></td>
+                        <td colspan="4"><b>Eventos Traumáticos</b></td>
                     </tr>
                     <tr class="text-center">
                         <th scope="row">42</th>

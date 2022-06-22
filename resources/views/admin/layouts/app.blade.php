@@ -41,7 +41,7 @@
     {{-- waitme --}}
 
     <link rel="stylesheet" href="{{ asset('css/waitMe.min.css') }}">
-
+    <link rel="icon" type="image/png" href="{{ asset('images/favicon.png') }}" />
 
 
     <!-- Theme style -->
@@ -53,6 +53,18 @@
 <style>
     body {
         background-color: #f4f6f9!important;
+    }
+
+    .wrapper .content-wrapper{
+        height: auto!important;
+    }
+
+    .content-wrapper {
+        margin-bottom: 3rem;
+    }
+
+    .trix-button-group--file-tools {
+        display: none !important;
     }
 </style>
 <body class="hold-transition sidebar-mini">
@@ -394,6 +406,12 @@
     <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
 
     @yield('scripts')
+
+    <script>
+        $("trix-file-accept", (e) => {
+            e.preventDefault()
+        });
+    </script>
 
 </body>
 

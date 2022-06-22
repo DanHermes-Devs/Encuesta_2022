@@ -6,6 +6,7 @@ use App\Empresas;
 use App\Registro;
 use App\Calificaciones;
 use App\AvisoPrivacidad;
+use App\Configuracion;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Exports\RegistroExport;
@@ -21,7 +22,8 @@ class RegistroController extends Controller
         // Empresa activa
         $empresa = Empresas::where('token', $token)->where('activo', 1)->first();
         $aviso = AvisoPrivacidad::first();
-        return view('index', compact('empresa', 'token', 'aviso'));
+        $configuraciones = Configuracion::first();
+        return view('index', compact('empresa', 'token', 'configuraciones'));
     }
 
     public function registroDatos(Request $request)
