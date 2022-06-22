@@ -180,13 +180,10 @@
 
                                             <label for="logo">Activo <small class="text-red">(Requerido)</small></label>
 
-                                            <select class="form-control" id="activo" name="activo"
-                                                value="{{ $empresas->activo }}">
-
-                                                <option value="1">Si</option>
-
+                                            <select class="form-control" id="activo" name="activo" value="{{ $empresas->activo }}">
+                                                <option value="">-- Selecciona una opción --</option>
+                                                <option value="1">Sí</option>
                                                 <option value="0">No</option>
-
                                             </select>
 
                                         </div>

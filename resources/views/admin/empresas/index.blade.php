@@ -121,7 +121,7 @@
                         <div class="row">
 
                             <div class="col-12 col-md-6">
-                                <div class="col-md-12">
+                                <div class="col-md-12 mb-4 cards">
 
                                     <div class="form-group">
 
@@ -213,7 +213,7 @@
                                         <label for="logo">Activo <small class="text-red">(Requerido)</small></label>
 
                                         <select class="form-control" id="activo" name="activo">
-
+                                            <option value="">-- Selecciona una opción --</option>
                                             <option value="1">Si</option>
 
                                             <option value="0">No</option>
