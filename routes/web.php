@@ -76,9 +76,6 @@ Route::get('/', function () {
 Route::get('/empresa/{token}', 'RegistroController@index')->name('inicio');
 
 
-
-Route::get('/resultados/{token}', 'RegistroController@resultados')->name('resultados');
-
 Route::post('/registroDatos', 'RegistroController@registroDatos')->name('registro.datos');
 
 
@@ -92,6 +89,7 @@ Route::get('/graficas_grafica', 'CalificacionesController@index')->name('Calific
 Auth::routes();
 
 
+Route::get('/resultados/{token}', 'RegistroController@resultados')->name('resultados');
 
 Route::group(['middleware' => 'auth'], function () {
 

@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Exports\RegistroExport;
 use App\Http\Controllers\Controller;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Validator;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -634,13 +635,18 @@ class RegistroController extends Controller
     {
         // $registro = Registro::find($token);
         $registro = Registro::where('token', $token)->first();
+        $calificacionesDT = Calificaciones::where('id_registro', $registro->id)->first();
+
+        Paginator::useBootstrap();
+
         if ($registro) {
-            // return response()->json(['data' => $registro, 'message' => 'Registro encontrado', 'status' => 200]);
-            return view('resultados', compact('registro'));
+            return view('resultados', compact('registro', 'calificacionesDT'));
         } else {
             return view('resultado_inexistente');
         }
     }
+
+
 
     public function registroAdmin(){
         if(request()->ajax())

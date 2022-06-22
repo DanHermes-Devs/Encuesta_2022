@@ -27,6 +27,15 @@
     .content-wrapper {
         margin-bottom: 3rem;
     }
+
+    .gap-1{
+        gap: 1rem;
+    }
+
+    .cards{
+        border: 1px solid #ccc;
+        padding: 1rem!important;
+    }
 </style>
 
 @section('content')
@@ -125,7 +134,7 @@
 
                                 </div>
 
-                                <div class="col-md-12">
+                                <div class="col-md-12 mb-4 cards">
 
                                     <div class="form-group">
 
@@ -134,17 +143,21 @@
                                         {{-- Solo aceptar jpg y png --}}
 
                                         <input type="file" class="form-control" id="logo" name="logo"
-                                            accept="image/png, image/jpeg">
+                                            accept="image/png, image/jpeg, image/jpg">
 
-                                        <small>Tamaño máximo: 2MB</small>
+                                        <div class="d-flex gap-1 mt-2">
+                                            <small class="badge badge-warning">Tamaño máximo: 2MB</small>
 
-                                        <small>Formato: jpg o png</small>
+                                            <small class="badge badge-warning">Formato: jpeg, jpg o png</small>
+
+                                            <small class="badge badge-warning">Medidas: 300x300 pixeles</small>
+                                        </div>
 
                                     </div>
 
                                 </div>
 
-                                <div class="col-md-12">
+                                <div class="col-md-12 mb-4 cards">
 
                                     <div class="form-group">
 
@@ -152,17 +165,21 @@
                                                 class="text-red">(Requerido)</small></label>
 
                                         <input type="file" class="form-control" id="imagen_fondo" name="imagen_fondo"
-                                            accept="image/png, image/jpeg">
+                                            accept="image/png, image/jpeg, image/jpg">
 
-                                        <small>Tamaño máximo: 2MB</small>
+                                        <div class="d-flex gap-1 mt-2">
+                                            <small class="badge badge-warning">Tamaño máximo: 2MB</small>
 
-                                        <small>Formato: jpg o png</small>
+                                            <small class="badge badge-warning">Formato: jpeg, jpg o png</small>
+
+                                            <small class="badge badge-warning">Medidas: 1920x1080 pixeles</small>
+                                        </div>
 
                                     </div>
 
                                 </div>
 
-                                <div class="col-md-12">
+                                <div class="col-md-12 mb-4 cards">
 
                                     <div class="form-group">
 
@@ -176,7 +193,7 @@
 
                                 </div>
 
-                                <div class="col-md-12">
+                                <div class="col-md-12 mb-4 cards">
 
                                     <div class="form-group">
 
@@ -189,7 +206,7 @@
 
                                 </div>
 
-                                <div class="col-md-12">
+                                <div class="col-md-12 mb-4 cards">
 
                                     <div class="form-group">
 
@@ -211,7 +228,7 @@
 
 
                             <div class="col-12 col-md-6">
-                                <div class="col-12 col-md-12">
+                                <div class="col-12 col-md-12 mb-4 cards">
 
                                     <div class="form-group">
 
@@ -245,7 +262,7 @@
 
                                 </div>
 
-                                <div class="col-12 col-md-12">
+                                <div class="col-12 col-md-12 mb-4 cards">
 
                                     <div class="form-group">
 
@@ -278,7 +295,7 @@
 
                                 </div>
 
-                                <div class="col-12 col-md-12">
+                                <div class="col-12 col-md-12 mb-4 cards">
 
                                     <div class="form-group">
 
@@ -312,7 +329,7 @@
 
                                 </div>
 
-                                <div class="col-12 col-md-12">
+                                <div class="col-12 col-md-12 mb-4 cards">
 
                                     <div class="form-group">
 
@@ -346,7 +363,7 @@
 
                                 </div>
 
-                                <div class="col-12 col-md-12">
+                                <div class="col-12 col-md-12 mb-4 cards">
 
                                     <div class="form-group">
 
