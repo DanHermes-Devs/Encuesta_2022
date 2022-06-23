@@ -42,7 +42,6 @@
     }
 
 
-
     .font-color-tab {
 
         background: #e6e6e6;
@@ -291,16 +290,16 @@
                                     onclick="cambiarSeccion('step_17', 'step17')"></a>
 
                                 <a href="javascript:void(0)" class="display-section font-color-tab mx-2" id="stepInstrucciones"
-                                    onclick="cambiarSeccion('step_instrucciones', 'stepInstrucciones')"></a>
+                                    onclick="cambiarSeccion('step_instrucciones', 'stepInstrucciones')" style="display: none;"></a>
 
                                 <a href="javascript:void(0)" class="display-section font-color-tab mx-2" id="step18"
-                                    onclick="cambiarSeccion('step_18', 'step18')"></a>
+                                    onclick="cambiarSeccion('step_18', 'step18')" style="display: none;"></a>
 
                                 <a href="javascript:void(0)" class="display-section font-color-tab mx-2" id="step19"
-                                    onclick="cambiarSeccion('step_19', 'step19')"></a>
+                                    onclick="cambiarSeccion('step_19', 'step19')" style="display: none;"></a>
 
                                 <a href="javascript:void(0)" class="display-section font-color-tab mx-2" id="step20"
-                                    onclick="cambiarSeccion('step_20', 'step20')"></a>
+                                    onclick="cambiarSeccion('step_20', 'step20')" style="display: none;"></a>
 
                                 <a href="javascript:void(0)" class="display-section font-color-tab mx-2" id="step21"
                                     onclick="cambiarSeccion('step_21', 'step21')"></a>
@@ -578,7 +577,11 @@
 
             $('#' + idBoton).addClass('font-color-tab-selected');
 
-
+            $('#' + valor).click(function(){
+                $('body, html').animate({
+                    scrollTop: '0px'
+                }, 300);
+            });
 
             $('.tab-personal').hide();
 
@@ -702,21 +705,41 @@
 
             });
 
-
-
             $("input[name='item_jefe']").change(function() {
 
                 var valor = $(this).val();
 
-
-
                 if (valor == 'Sí') {
 
                     $("#radio_input_1").css("display", "block");
+                    $('#stepInstrucciones').show();
+                    $('#btn_atras_1').show();
+                    $('#formInputs').show();
+                    $('#step18').show();
+                    $('#step19').show();
+                    $('#step20').show();
+                    $('#stepInstrucciones_btn').show();
+                    $('#stepFinales').hide();
+                    $('#btn_atras_2').hide();
 
                 } else {
 
                     $("#radio_input_1").css("display", "none");
+                    $('#stepInstrucciones').hide();
+                    $('#btn_atras_1').hide();
+                    $('#formInputs').hide();
+                    $('#step18').hide();
+                    $('#step19').hide();
+                    $('#step20').hide();
+                    $('#stepInstrucciones_btn').hide();
+                    $('#stepFinales').show();
+                    $('#btn_atras_2').show();
+                    $('#radio_input_1').find('input[type="radio"]').prop('checked', false);
+                    $('#radio_input_2').find('input[type="radio"]').prop('checked', false);
+                    $('.step18_1').find('input[type="radio"]').prop('checked', false);
+                    $('.step19_1').find('input[type="radio"]').prop('checked', false);
+                    $('.step20_1').find('input[type="radio"]').prop('checked', false);
+                    $('#formInputs').find('input[type="radio"]').prop('checked', false);
 
                 }
 
@@ -728,16 +751,38 @@
 
                 var valor = $(this).val();
 
-
-
                 if (valor == 'Sí') {
 
                     $("#radio_input_2").css("display", "block");
+                    $('#stepInstrucciones').show();
+                    $('#btn_atras_1').show();
+                    $('#formInputs').show();
+                    $('#step18').show();
+                    $('#step19').show();
+                    $('#step20').show();
+                    $('#stepInstrucciones_btn').show();
+                    $('#stepFinales').hide();
+                    $('#btn_atras_1').show();
+                    $('#btn_atras_2').hide();
 
                 } else {
 
                     $("#radio_input_2").css("display", "none");
-
+                    $('#stepInstrucciones').hide();
+                    $('#btn_atras_1').hide();
+                    $('#formInputs').hide();
+                    $('#step18').hide();
+                    $('#step19').hide();
+                    $('#step20').hide();
+                    $('#stepInstrucciones_btn').hide();
+                    $('#stepFinales').show();
+                    $('#btn_atras_2').show();
+                    $('#radio_input_1').find('input[type="radio"]').prop('checked', false);
+                    $('#radio_input_2').find('input[type="radio"]').prop('checked', false);
+                    $('.step18_1').find('input[type="radio"]').prop('checked', false);
+                    $('.step19_1').find('input[type="radio"]').prop('checked', false);
+                    $('.step20_1').find('input[type="radio"]').prop('checked', false);
+                    $('#formInputs').find('input[type="radio"]').prop('checked', false);
                 }
 
             });

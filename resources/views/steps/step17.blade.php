@@ -321,6 +321,7 @@
 
     <button type="button" class="btn_atras" onclick="cambiarSeccion('step_16', 'step16')">Atrás</button>
 
-    <button type="button" class="btn_siguiente" onclick="cambiarSeccion('step_instrucciones', 'stepInstrucciones')">Siguiente</button>
+    <button type="button" class="btn_siguiente" onclick="cambiarSeccion('step_instrucciones', 'stepInstrucciones')" style="display: none;" id="stepInstrucciones_btn">Siguiente</button>
+    <button type="button" class="btn_siguiente" onclick="cambiarSeccion('step_21', 'step21')" id="stepFinales">Siguiente</button>
 
 </div>

@@ -24,6 +24,10 @@
 
     }
 
+    .gap-1{
+        gap: 1rem;
+    }
+
     .cards{
         border: 1px solid #ccc;
         padding: 1rem!important;
@@ -174,8 +178,8 @@
 
                                             <select class="form-control" id="activo" name="activo" value="{{ $empresas->activo }}">
                                                 <option value="">-- Selecciona una opción --</option>
-                                                <option value="1">Sí</option>
-                                                <option value="0">No</option>
+                                                <option value="1" {{ $empresas->activo == 1 ? ' selected' : '' }}>Sí</option>
+                                                <option value="0" {{ $empresas->activo == 0 ? ' selected' : '' }}>No</option>
                                             </select>
 
                                         </div>
