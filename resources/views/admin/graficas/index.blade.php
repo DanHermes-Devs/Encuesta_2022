@@ -46,6 +46,14 @@
                     <div class="col-12 col-md-3 mt-5">
                         <canvas id="estudios" width="100%" height="100%"></canvas>
                     </div>
+
+                    <div class="col-12 col-md-3 mt-5">
+                        <canvas id="grupoAntiguedad" width="100%" height="100%"></canvas>
+                    </div>
+
+                    <div class="col-12 col-md-3 mt-5">
+                        <canvas id="eventoTraumatico" width="100%" height="100%"></canvas>
+                    </div>
                 </div>
             </div>
 
@@ -69,6 +77,8 @@
         var edo_civilChart;
         var edadChart;
         var estudiosChart;
+        var experienciaAntiguedadChart;
+        var eventoTraumaticoChart;
 
         // Selecciona una empresa
 
@@ -93,10 +103,18 @@
                 estudiosChart.destroy();
             }
 
-            if(empresa == 0){
+            if (experienciaAntiguedadChart) {
+                experienciaAntiguedadChart.destroy();
+            }
+
+            if (eventoTraumaticoChart) {
+                eventoTraumaticoChart.destroy();
+            }
+
+            if (empresa == 0) {
                 $('#seleccionaEmpresa').html('<h2 class="text-center">Selecciona una empresa</h2>');
                 return;
-            } else if(empresa > 0){
+            } else if (empresa > 0) {
                 $('#seleccionaEmpresa').html('<h2 class="text-center">Cargando...</h2>');
             }
 
@@ -110,7 +128,9 @@
                     $('#seleccionaEmpresa').html(data);
                     // Crear if ternario para validar existensia del nombre de la empresa
                     if (data.empresa) {
-                        $('#seleccionaEmpresa').html(`<h2 class="text-center">Datos de la empresa: ${data.empresa.nombre}</h2>`);
+                        $('#seleccionaEmpresa').html(
+                            `<h2 class="text-center">Datos de la empresa: <b>${data.empresa.nombre}</b></h2>`
+                            );
                     } else {
                         $('#seleccionaEmpresa').html('<h2 class="text-center">Datos generales</h2>');
                     }
@@ -118,7 +138,7 @@
                     // Grafica de sexo
                     var sexo = document.getElementById('sexo').getContext('2d');
                     sexoChart = new Chart(sexo, {
-                        type: 'doughnut',
+                        type: 'pie',
                         data: {
                             labels: ['Hombres', 'Mujeres'],
                             datasets: [{
@@ -155,7 +175,7 @@
                     // Grafica de estado civil
                     var edo_civil = document.getElementById('estado_civil').getContext('2d');
                     edo_civilChart = new Chart(edo_civil, {
-                        type: 'doughnut',
+                        type: 'pie',
                         data: {
                             labels: ['Casado', 'Soltero', 'Divorciado', 'Viudo'],
                             datasets: [{
@@ -330,6 +350,121 @@
                         },
                     });
 
+                    // Grafica de antiguedad / experiencia
+                    var experienciaAntiguedad = document.getElementById('grupoAntiguedad').getContext('2d');
+                    experienciaAntiguedadChart = new Chart(experienciaAntiguedad, {
+                        type: 'bar',
+                        data: {
+                            labels: ['Menos de 1 año',
+                                '1-5 años',
+                                '6-10 años',
+                                '11-15 años',
+                                '16-20 años',
+                                '21-25 años',
+                                'Más de 25 años'],
+                            datasets: [{
+                                    label: 'Antigüedad',
+                                    data: [data.antiguedad1, data.antiguedad2, data.antiguedad3, data.antiguedad4, data.antiguedad5, data.antiguedad6, data.antiguedad7],
+                                    backgroundColor: [
+                                        'rgba(0, 255, 255, 0.2)',
+                                        'rgba(54, 162, 235, 0.2)',
+                                        'rgba(255, 206, 86, 0.2)',
+                                        'rgba(75, 192, 192, 0.2)',
+                                        'rgba(153, 102, 255, 0.2)',
+                                        'rgba(255, 159, 64, 0.2)',
+                                        'rgba(565, 19, 64, 0.2)',
+                                    ],
+                                    borderColor: [
+                                        'rgba(0, 255, 255, 1)',
+                                        'rgba(54, 162, 235, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(153, 102, 255, 1)',
+                                        'rgba(255, 159, 64, 1)',
+                                        'rgba(565, 19, 64, 1)',
+                                    ],
+                                },
+                                {
+                                    label: 'Experiencia',
+                                    data: [data.experiencia1, data.experiencia2, data.experiencia3, data.experiencia4, data.experiencia5, data.experiencia6, data.experiencia7],
+                                    backgroundColor: [
+                                        'rgba(565, 19, 64, 0.2)',
+                                        'rgba(255, 159, 64, 0.2)',
+                                        'rgba(153, 102, 255, 0.2)',
+                                        'rgba(75, 192, 192, 0.2)',
+                                        'rgba(255, 206, 86, 0.2)',
+                                        'rgba(54, 162, 235, 0.2)',
+                                        'rgba(0, 255, 255, 0.2)',
+                                    ],
+                                    borderColor: [
+                                        'rgba(565, 19, 64, 1)',
+                                        'rgba(255, 159, 64, 1)',
+                                        'rgba(153, 102, 255, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(54, 162, 235, 1)',
+                                        'rgba(0, 255, 255, 1)',
+                                    ],
+                                }
+                            ]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: {
+                                legend: {
+                                    display: true,
+                                },
+                                title: {
+                                    display: true,
+                                    text: 'Antigüedad / Experiencia',
+                                    font: {
+                                        size: 20
+                                    }
+                                },
+                            }
+                        },
+                    });
+
+                    // Grafica eventos traumáticos
+                    // Grafica de estudios
+                    var eventoTraumatico = document.getElementById('eventoTraumatico').getContext('2d');
+                    eventoTraumaticoChart = new Chart(eventoTraumatico, {
+                        type: 'bar',
+                        data: {
+                            labels: ['Sí', 'No'],
+                            datasets: [{
+                                label: '# de usuarios',
+                                data: [
+                                    data.ets_Si,
+                                    data.ets_No,
+                                ],
+                                backgroundColor: [
+                                    'rgba(0, 255, 255, 0.2)',
+                                    'rgba(54, 162, 235, 0.2)',
+                                ],
+                                borderColor: [
+                                    'rgba(0, 255, 255, 1)',
+                                    'rgba(54, 162, 235, 1)',
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: {
+                                legend: {
+                                    display: true,
+                                },
+                                title: {
+                                    display: true,
+                                    text: 'Eventos Traumáticos Severos',
+                                    font: {
+                                        size: 20
+                                    }
+                                },
+                            }
+                        },
+                    });
                 }
             });
         });

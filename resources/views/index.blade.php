@@ -577,11 +577,11 @@
 
             $('#' + idBoton).addClass('font-color-tab-selected');
 
-            $('#' + valor).click(function(){
-                $('body, html').animate({
-                    scrollTop: '0px'
-                }, 300);
-            });
+            // $('#' + valor).click(function(){
+            //     $('body, html').animate({
+            //         scrollTop: '0px'
+            //     }, 300);
+            // });
 
             $('.tab-personal').hide();
 

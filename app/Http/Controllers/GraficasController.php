@@ -181,8 +181,74 @@ class GraficasController extends Controller
             $experiencia5 = Registro::select('experiencia_laboral')->where('experiencia_laboral', '16-20 años')->count();
             $experiencia6 = Registro::select('experiencia_laboral')->where('experiencia_laboral', '21-25 años')->count();
             $experiencia7 = Registro::select('experiencia_laboral')->where('experiencia_laboral', 'Más de 25 años')->count();
-        
+
+            // Eventos traumáticos severos
+            $ets_1Si = Registro::select('ets_1')->where('ets_1', 'Sí')->count();
+            $ets_1No = Registro::select('ets_1')->where('ets_1', 'No')->count();
+            
+            $ets_2Si = Registro::select('ets_2')->where('ets_2', 'Sí')->count();
+            $ets_2No = Registro::select('ets_2')->where('ets_2', 'No')->count();
+            
+            $ets_3Si = Registro::select('ets_3')->where('ets_3', 'Sí')->count();
+            $ets_3No = Registro::select('ets_3')->where('ets_3', 'No')->count();
+            
+            $ets_4Si = Registro::select('ets_4')->where('ets_4', 'Sí')->count();
+            $ets_4No = Registro::select('ets_4')->where('ets_4', 'No')->count();
+            
+            $ets_5Si = Registro::select('ets_5')->where('ets_5', 'Sí')->count();
+            $ets_5No = Registro::select('ets_5')->where('ets_5', 'No')->count();
+            
+            $ets_6Si = Registro::select('ets_6')->where('ets_6', 'Sí')->count();
+            $ets_6No = Registro::select('ets_6')->where('ets_6', 'No')->count();
+            
+            $ets_7Si = Registro::select('ets_7')->where('ets_7', 'Sí')->count();
+            $ets_7No = Registro::select('ets_7')->where('ets_7', 'No')->count();
+            
+            $ets_8Si = Registro::select('ets_8')->where('ets_8', 'Sí')->count();
+            $ets_8No = Registro::select('ets_8')->where('ets_8', 'No')->count();
+            
+            $ets_9Si = Registro::select('ets_9')->where('ets_9', 'Sí')->count();
+            $ets_9No = Registro::select('ets_9')->where('ets_9', 'No')->count();
+            
+            $ets_10Si = Registro::select('ets_10')->where('ets_10', 'Sí')->count();
+            $ets_10No = Registro::select('ets_10')->where('ets_10', 'No')->count();
+            
+            $ets_11Si = Registro::select('ets_11')->where('ets_11', 'Sí')->count();
+            $ets_11No = Registro::select('ets_11')->where('ets_11', 'No')->count();
+            
+            $ets_12Si = Registro::select('ets_12')->where('ets_12', 'Sí')->count();
+            $ets_12No = Registro::select('ets_12')->where('ets_12', 'No')->count();
+            
+            $ets_13Si = Registro::select('ets_13')->where('ets_13', 'Sí')->count();
+            $ets_13No = Registro::select('ets_13')->where('ets_13', 'No')->count();
+            
+            $ets_14Si = Registro::select('ets_14')->where('ets_14', 'Sí')->count();
+            $ets_14No = Registro::select('ets_14')->where('ets_14', 'No')->count();
+            
+            $ets_15Si = Registro::select('ets_15')->where('ets_15', 'Sí')->count();
+            $ets_15No = Registro::select('ets_15')->where('ets_15', 'No')->count();
+            
+            $ets_16Si = Registro::select('ets_16')->where('ets_16', 'Sí')->count();
+            $ets_16No = Registro::select('ets_16')->where('ets_16', 'No')->count();
+            
+            $ets_17Si = Registro::select('ets_17')->where('ets_17', 'Sí')->count();
+            $ets_17No = Registro::select('ets_17')->where('ets_17', 'No')->count();
+            
+            $ets_18Si = Registro::select('ets_18')->where('ets_18', 'Sí')->count();
+            $ets_18No = Registro::select('ets_18')->where('ets_18', 'No')->count();
+            
+            $ets_19Si = Registro::select('ets_19')->where('ets_19', 'Sí')->count();
+            $ets_19No = Registro::select('ets_19')->where('ets_19', 'No')->count();
+            
+            $ets_20Si = Registro::select('ets_20')->where('ets_20', 'Sí')->count();
+            $ets_20No = Registro::select('ets_20')->where('ets_20', 'No')->count();
+
+            $etsTotalSi = $ets_1Si+$ets_2Si+$ets_3Si+$ets_4Si+$ets_5Si+$ets_6Si+$ets_7Si+$ets_8Si+$ets_9Si+$ets_10Si+$ets_11Si+$ets_12Si+$ets_13Si+$ets_14Si+$ets_15Si+$ets_16Si+$ets_17Si+$ets_18Si+$ets_19Si+$ets_20Si;
+            $etsTotalNo = $ets_1No+$ets_2No+$ets_3No+$ets_4No+$ets_5No+$ets_6No+$ets_7No+$ets_8No+$ets_9No+$ets_10No+$ets_11No+$ets_12No+$ets_13No+$ets_14No+$ets_15No+$ets_16No+$ets_17No+$ets_18No+$ets_19No+$ets_20No;
+
             $data = [
+                'ets_Si' => $etsTotalSi,
+                'ets_No' => $etsTotalNo,
                 'sexoMasculino' => $sexoMasculino,
                 'sexoFemenino' => $sexoFemenino,
                 'estadoCivilSoltero' => $estadoCivilSoltero,
@@ -283,7 +349,73 @@ class GraficasController extends Controller
             $experiencia6 = Registro::with('empresas')->where('id_empresa', $id)->where('experiencia_laboral', '21-25 años')->count();
             $experiencia7 = Registro::with('empresas')->where('id_empresa', $id)->where('experiencia_laboral', 'Más de 25 años')->count();
 
+            // Eventos traumáticos severos
+            $ets_1Si = Registro::with('empresas')->select('ets_1')->where('id_empresa', $id)->where('ets_1', 'Sí')->count();
+            $ets_1No = Registro::with('empresas')->select('ets_1')->where('id_empresa', $id)->where('ets_1', 'No')->count();
+            
+            $ets_2Si = Registro::with('empresas')->select('ets_2')->where('id_empresa', $id)->where('ets_2', 'Sí')->count();
+            $ets_2No = Registro::with('empresas')->select('ets_2')->where('id_empresa', $id)->where('ets_2', 'No')->count();
+            
+            $ets_3Si = Registro::with('empresas')->select('ets_3')->where('id_empresa', $id)->where('ets_3', 'Sí')->count();
+            $ets_3No = Registro::with('empresas')->select('ets_3')->where('id_empresa', $id)->where('ets_3', 'No')->count();
+            
+            $ets_4Si = Registro::with('empresas')->select('ets_4')->where('id_empresa', $id)->where('ets_4', 'Sí')->count();
+            $ets_4No = Registro::with('empresas')->select('ets_4')->where('id_empresa', $id)->where('ets_4', 'No')->count();
+            
+            $ets_5Si = Registro::with('empresas')->select('ets_5')->where('id_empresa', $id)->where('ets_5', 'Sí')->count();
+            $ets_5No = Registro::with('empresas')->select('ets_5')->where('id_empresa', $id)->where('ets_5', 'No')->count();
+            
+            $ets_6Si = Registro::with('empresas')->select('ets_6')->where('id_empresa', $id)->where('ets_6', 'Sí')->count();
+            $ets_6No = Registro::with('empresas')->select('ets_6')->where('id_empresa', $id)->where('ets_6', 'No')->count();
+            
+            $ets_7Si = Registro::with('empresas')->select('ets_7')->where('id_empresa', $id)->where('ets_7', 'Sí')->count();
+            $ets_7No = Registro::with('empresas')->select('ets_7')->where('id_empresa', $id)->where('ets_7', 'No')->count();
+            
+            $ets_8Si = Registro::with('empresas')->select('ets_8')->where('id_empresa', $id)->where('ets_8', 'Sí')->count();
+            $ets_8No = Registro::with('empresas')->select('ets_8')->where('id_empresa', $id)->where('ets_8', 'No')->count();
+            
+            $ets_9Si = Registro::with('empresas')->select('ets_9')->where('id_empresa', $id)->where('ets_9', 'Sí')->count();
+            $ets_9No = Registro::with('empresas')->select('ets_9')->where('id_empresa', $id)->where('ets_9', 'No')->count();
+            
+            $ets_10Si = Registro::with('empresas')->select('ets_10')->where('id_empresa', $id)->where('ets_10', 'Sí')->count();
+            $ets_10No = Registro::with('empresas')->select('ets_10')->where('id_empresa', $id)->where('ets_10', 'No')->count();
+            
+            $ets_11Si = Registro::with('empresas')->select('ets_11')->where('id_empresa', $id)->where('ets_11', 'Sí')->count();
+            $ets_11No = Registro::with('empresas')->select('ets_11')->where('id_empresa', $id)->where('ets_11', 'No')->count();
+            
+            $ets_12Si = Registro::with('empresas')->select('ets_12')->where('id_empresa', $id)->where('ets_12', 'Sí')->count();
+            $ets_12No = Registro::with('empresas')->select('ets_12')->where('id_empresa', $id)->where('ets_12', 'No')->count();
+            
+            $ets_13Si = Registro::with('empresas')->select('ets_13')->where('id_empresa', $id)->where('ets_13', 'Sí')->count();
+            $ets_13No = Registro::with('empresas')->select('ets_13')->where('id_empresa', $id)->where('ets_13', 'No')->count();
+            
+            $ets_14Si = Registro::with('empresas')->select('ets_14')->where('id_empresa', $id)->where('ets_14', 'Sí')->count();
+            $ets_14No = Registro::with('empresas')->select('ets_14')->where('id_empresa', $id)->where('ets_14', 'No')->count();
+            
+            $ets_15Si = Registro::with('empresas')->select('ets_15')->where('id_empresa', $id)->where('ets_15', 'Sí')->count();
+            $ets_15No = Registro::with('empresas')->select('ets_15')->where('id_empresa', $id)->where('ets_15', 'No')->count();
+            
+            $ets_16Si = Registro::with('empresas')->select('ets_16')->where('id_empresa', $id)->where('ets_16', 'Sí')->count();
+            $ets_16No = Registro::with('empresas')->select('ets_16')->where('id_empresa', $id)->where('ets_16', 'No')->count();
+            
+            $ets_17Si = Registro::with('empresas')->select('ets_17')->where('id_empresa', $id)->where('ets_17', 'Sí')->count();
+            $ets_17No = Registro::with('empresas')->select('ets_17')->where('id_empresa', $id)->where('ets_17', 'No')->count();
+            
+            $ets_18Si = Registro::with('empresas')->select('ets_18')->where('id_empresa', $id)->where('ets_18', 'Sí')->count();
+            $ets_18No = Registro::with('empresas')->select('ets_18')->where('id_empresa', $id)->where('ets_18', 'No')->count();
+            
+            $ets_19Si = Registro::with('empresas')->select('ets_19')->where('id_empresa', $id)->where('ets_19', 'Sí')->count();
+            $ets_19No = Registro::with('empresas')->select('ets_19')->where('id_empresa', $id)->where('ets_19', 'No')->count();
+            
+            $ets_20Si = Registro::with('empresas')->select('ets_20')->where('id_empresa', $id)->where('ets_20', 'Sí')->count();
+            $ets_20No = Registro::with('empresas')->select('ets_20')->where('id_empresa', $id)->where('ets_20', 'No')->count();
+
+            $etsTotalSi = $ets_1Si+$ets_2Si+$ets_3Si+$ets_4Si+$ets_5Si+$ets_6Si+$ets_7Si+$ets_8Si+$ets_9Si+$ets_10Si+$ets_11Si+$ets_12Si+$ets_13Si+$ets_14Si+$ets_15Si+$ets_16Si+$ets_17Si+$ets_18Si+$ets_19Si+$ets_20Si;
+            $etsTotalNo = $ets_1No+$ets_2No+$ets_3No+$ets_4No+$ets_5No+$ets_6No+$ets_7No+$ets_8No+$ets_9No+$ets_10No+$ets_11No+$ets_12No+$ets_13No+$ets_14No+$ets_15No+$ets_16No+$ets_17No+$ets_18No+$ets_19No+$ets_20No;
+
             $data = [
+                'ets_Si' => $etsTotalSi,
+                'ets_No' => $etsTotalNo,
                 'empresa' => $empresa,
                 'sexoMasculino' => $sexoMasculino,
                 'sexoFemenino' => $sexoFemenino,

@@ -407,11 +407,11 @@
 
     @yield('scripts')
 
-    <script>
+    {{-- <script>
         $("trix-file-accept", (e) => {
             e.preventDefault()
         });
-    </script>
+    </script> --}}
 
 </body>
 

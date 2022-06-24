@@ -68,15 +68,15 @@
 
         <option value="Menos de 1 año">Menos de 1 año</option>
 
-        <option value="1 - 5 años">1 - 5 años</option>
+        <option value="1-5 años">1 - 5 años</option>
 
-        <option value="6 - 10 años">6 - 10 años</option>
+        <option value="6-10 años">6 - 10 años</option>
 
-        <option value="11 - 15 años">11 - 15 años</option>
+        <option value="11-15 años">11 - 15 años</option>
 
-        <option value="16 - 20 años">16 - 20 años</option>
+        <option value="16-20 años">16 - 20 años</option>
 
-        <option value="21 - 25 años">21 - 25 años</option>
+        <option value="21-25 años">21 - 25 años</option>
 
         <option value="Más de 25 años">Más de 25 años</option>
 
