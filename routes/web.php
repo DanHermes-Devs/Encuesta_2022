@@ -147,5 +147,6 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::put('update-aviso/{id}', 'AvisoPrivacidadController@update')->name('aviso-privacidad.update');
 
+
 });
 

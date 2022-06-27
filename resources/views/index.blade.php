@@ -508,6 +508,7 @@
     @parent
 
     <script>
+
         $('.btn_finalizar').prop('disabled', true);
 
         $('.btn_finalizar').css({
