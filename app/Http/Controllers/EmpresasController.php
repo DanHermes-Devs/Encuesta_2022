@@ -53,13 +53,15 @@ class EmpresasController extends Controller
             'nombre.required' => 'El nombre de la empresa es requerido',
             'logo.required' => 'El logo de la empresa es requerido',
             'imagen_fondo.required' => 'La imagen de fondo de la empresa es requerido',
+            'logo.mimes' => 'El logo de la empresa debe ser de tipo jpeg, png o jpg',
+            'imagen_fondo.mimes' => 'La imagen de fondo debe ser de tipo jpeg, png o jpg',
             'descripcion.required' => 'La descripcion de la empresa es requerido'
         ];
         $validator = Validator::make($request->all(), [
             'token' => 'required',
             'nombre' => 'required',
-            'logo' => 'required|image:jpeg,png,jpg|max:2048',
-            'imagen_fondo' => 'required|image:jpeg,png,jpg|max:2048',
+            'logo' => 'required|mimes:jpeg,png,jpg|max:2048',
+            'imagen_fondo' => 'required|mimes:jpeg,png,jpg|max:2048',
             'descripcion' => 'required',
         ], $messages);
 
