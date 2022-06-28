@@ -123,6 +123,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::put('/edit-company/{id}', 'EmpresasController@update')->name('empresas.update');
 
+    Route::get('/empresas/{id}/graficas', 'EmpresasController@getGraficas')->name('empresas.getGraficas');
+
 
 
     // Rutas para reportes

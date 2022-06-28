@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Empresas;
+use App\Registro;
+use App\Calificaciones;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Validator;
@@ -277,5 +280,24 @@ class EmpresasController extends Controller
             unlink($imagen_path_2);
         }
         return response()->json(['message' => 'Empresa eliminada correctamente.', 'status' => 'success']);
+    }
+
+    // Ver pagina para las graficas restantes
+    public function getGraficas($id)
+    {
+        $registros = Registro::where('id_empresa', $id)->get();
+
+        $empresas = DB::table('registros')->selectRaw('SUM(item_1) + SUM(item_2) + SUM(item_3) + SUM(item_4) + SUM(item_5) + SUM(item_6) + SUM(item_7) + SUM(item_8) + SUM(item_9) + SUM(item_10) + 
+        SUM(item_11) + SUM(item_12) + SUM(item_13) + SUM(item_14) + SUM(item_15) + SUM(item_16) + SUM(item_17) + SUM(item_18) + SUM(item_19) + SUM(item_20) + 
+        SUM(item_21) + SUM(item_22) + SUM(item_23) + SUM(item_24) + SUM(item_25) + SUM(item_26) + SUM(item_27) + SUM(item_28) + SUM(item_29) + SUM(item_30) + 
+        SUM(item_31) + SUM(item_32) + SUM(item_33) + SUM(item_34) + SUM(item_35) + SUM(item_36) + SUM(item_37) + SUM(item_38) + SUM(item_39) + SUM(item_40) + 
+        SUM(item_41) + SUM(item_42) + SUM(item_43) + SUM(item_44) + SUM(item_45) + SUM(item_46) + SUM(item_47) + SUM(item_48) + SUM(item_49) + SUM(item_50) + 
+        SUM(item_51) + SUM(item_52) + SUM(item_53) + SUM(item_54) + SUM(item_55) + SUM(item_56) + SUM(item_57) + SUM(item_58) + SUM(item_59) + SUM(item_60) + 
+        SUM(item_61) + SUM(item_62) + SUM(item_63) + SUM(item_64) + SUM(item_65) + SUM(item_66) + SUM(item_67) + SUM(item_68) + SUM(item_69) + SUM(item_70) + 
+        SUM(item_71) + SUM(item_72) as suma')->where('id_empresa', $id)->first()->suma;
+
+        $calificaciones = Calificaciones::where('id_empresa', $id)->get();
+
+        return view('admin.empresas.graficas', compact('registros', 'calificaciones', 'empresas'));
     }
 }
