@@ -22,142 +22,142 @@
 
     <thead>
 
-    <tr>
+        <tr>
 
-        <th style="width: 25px;">ID</th>
+            <th style="width: 25px;word-wrap: break-word;background-color: rgb(0, 85, 255);">ID</th>
 
-        <th style="width: 100px;">Empresa</th>
+            <th style="width: 350px;word-wrap: break-word;background-color: rgb(0, 85, 255;">Empresa</th>
 
-        <th style="width: 100px;">Email</th>
+            <th style="width: 250px;word-wrap: break-word;background-color: rgb(0, 85, 255;">Email</th>
 
-        <th style="width: 100px;">Sexo</th>
+            <th style="width: 100px;word-wrap: break-word;background-color: rgb(0, 85, 255;">Sexo</th>
 
-        <th style="width: 100px;">Estado civil</th>
+            <th style="width: 100px;word-wrap: break-word;background-color: rgb(0, 85, 255;">Estado civil</th>
 
-        <th style="width: 100px;">Edad</th>
+            <th style="width: 100px;word-wrap: break-word;background-color: rgb(0, 85, 255;">Edad</th>
 
-        <th style="width: 100px;">Antiguedad</th>
+            <th style="width: 100px;word-wrap: break-word;background-color: rgb(0, 85, 255;">Antiguedad</th>
 
-        <th style="width: 100px;">Estudios</th>
+            <th style="width: 100px;word-wrap: break-word;background-color: rgb(0, 85, 255;">Estudios</th>
 
-        <th style="width: 100px;">Tipo de puesto</th>
+            <th style="width: 180px;word-wrap: break-word;background-color: rgb(0, 85, 255;">Tipo de puesto</th>
 
-        <th style="width: 100px;">Área</th>
+            <th style="width: 180px;word-wrap: break-word;background-color: rgb(0, 85, 255;">Área</th>
 
-        <th style="width: 100px;">Tipo de contratacion</th>
+            <th style="width: 180px;word-wrap: break-word;background-color: rgb(0, 85, 255;">Tipo de contratacion</th>
 
-        <th style="width: 100px;">Jornada de trabajo</th>
+            <th style="width: 180px;word-wrap: break-word;background-color: rgb(0, 85, 255;">Jornada de trabajo</th>
 
-        <th style="width: 100px;">Rotacion de turnos</th>
+            <th style="width: 180px;word-wrap: break-word;background-color: rgb(0, 85, 255;">Rotacion de turnos</th>
 
-        <th style="width: 100px;">Experiencia laboral</th>
+            <th style="width: 180px;word-wrap: break-word;background-color: rgb(0, 85, 255;">Experiencia laboral</th>
 
-        <th style="width: 100px;">Calificación final</th>
+            <th style="width: 180px;word-wrap: break-word;background-color: rgb(0, 85, 255;">Calificación final</th>
 
-        <th style="width: 100px;">Ambiente de trabajo</th>
+            <th style="width: 180px;word-wrap: break-word;background-color: rgb(0, 85, 255;">Ambiente de trabajo</th>
 
-        <th style="width: 100px;">Factores propios de la actividad</th>
+            <th style="width: 180px;word-wrap: break-word;background-color: rgb(0, 85, 255;">Factores propios de la actividad</th>
 
-        <th style="width: 100px;">Organización del tiempo de trabajo</th>
+            <th style="width: 180px;word-wrap: break-word;background-color: rgb(0, 85, 255;">Organización del tiempo de trabajo</th>
 
-        <th style="width: 100px;">Liderazgo y relaciones en el trabajo</th>
+            <th style="width: 180px;word-wrap: break-word;background-color: rgb(0, 85, 255;">Liderazgo y relaciones en el trabajo</th>
 
-        <th style="width: 100px;">Entorno organizacional</th>
+            <th style="width: 180px;word-wrap: break-word;background-color: rgb(0, 85, 255;">Entorno organizacional</th>
 
-        <th style="width: 100px;">Condiciones en el ambiente de trabajo</th>
+            <th style="width: 180px;word-wrap: break-word;background-color: rgb(0, 85, 255;">Condiciones en el ambiente de trabajo</th>
 
-        <th style="width: 100px;">Carga de trabajo</th>
+            <th style="width: 180px;word-wrap: break-word;background-color: rgb(0, 85, 255;">Carga de trabajo</th>
 
-        <th style="width: 100px;">Falta de control sobre el trabajo</th>
+            <th style="width: 180px;word-wrap: break-word;background-color: rgb(0, 85, 255;">Falta de control sobre el trabajo</th>
 
-        <th style="width: 100px;">Jornada de trabajo</th>
+            <th style="width: 180px;word-wrap: break-word;background-color: rgb(0, 85, 255;">Jornada de trabajo</th>
 
-        <th style="width: 100px;">Interferencia en la relación trabajo-familia</th>
+            <th style="width: 180px;word-wrap: break-word;background-color: rgb(0, 85, 255;">Interferencia en la relación trabajo-familia</th>
 
-        <th style="width: 100px;">Liderazgo</th>
+            <th style="width: 180px;word-wrap: break-word;background-color: rgb(0, 85, 255;">Liderazgo</th>
 
-        <th style="width: 100px;">Relaciones en el trabajo</th>
+            <th style="width: 180px;word-wrap: break-word;background-color: rgb(0, 85, 255;">Relaciones en el trabajo</th>
 
-        <th style="width: 100px;">Violencia</th>
+            <th style="width: 180px;word-wrap: break-word;background-color: rgb(0, 85, 255;">Violencia</th>
 
-        <th style="width: 100px;">Reconocimiento del desempeño</th>
+            <th style="width: 180px;word-wrap: break-word;background-color: rgb(0, 85, 255;">Reconocimiento del desempeño</th>
 
-        <th style="width: 100px;">Insuficiente sentido de pertenencia e, inestabilidad</th>
+            <th style="width: 180px;word-wrap: break-word;background-color: rgb(0, 85, 255;">Insuficiente sentido de pertenencia e, inestabilidad</th>
 
-        <th style="width: 100px;">Condiciones peligrosas e inseguras</th>
+            <th style="width: 180px;word-wrap: break-word;background-color: rgb(0, 85, 255;">Condiciones peligrosas e inseguras</th>
 
-        <th style="width: 100px;">Condiciones deficientes e insalubres</th>
+            <th style="width: 180px;word-wrap: break-word;background-color: rgb(0, 85, 255;">Condiciones deficientes e insalubres</th>
 
-        <th style="width: 100px;">Trabajos peligrosos</th>
+            <th style="width: 180px;word-wrap: break-word;background-color: rgb(0, 85, 255;">Trabajos peligrosos</th>
 
-        <th style="width: 100px;">Cargas cuantitativas</th>
+            <th style="width: 180px;word-wrap: break-word;background-color: rgb(0, 85, 255;">Cargas cuantitativas</th>
 
-        <th style="width: 100px;">Ritmos de trabajo acelerado</th>
+            <th style="width: 180px;word-wrap: break-word;background-color: rgb(0, 85, 255;">Ritmos de trabajo acelerado</th>
 
-        <th style="width: 100px;">Carga mental</th>
+            <th style="width: 180px;word-wrap: break-word;background-color: rgb(0, 85, 255;">Carga mental</th>
 
-        <th style="width: 100px;">Cargas psicológicas emocionales</th>
+            <th style="width: 180px;word-wrap: break-word;background-color: rgb(0, 85, 255;">Cargas psicológicas emocionales</th>
 
-        <th style="width: 100px;">Cargas de alta responsabilidad</th>
+            <th style="width: 180px;word-wrap: break-word;background-color: rgb(0, 85, 255;">Cargas de alta responsabilidad</th>
 
-        <th style="width: 100px;">Cargas contradictorias o inconsistentes</th>
+            <th style="width: 180px;word-wrap: break-word;background-color: rgb(0, 85, 255;">Cargas contradictorias o inconsistentes</th>
 
-        <th style="width: 100px;">Falta de control y autonomía sobre el trabajo</th>
+            <th style="width: 180px;word-wrap: break-word;background-color: rgb(0, 85, 255;">Falta de control y autonomía sobre el trabajo</th>
 
-        <th style="width: 100px;">Limitada o nula posibilidad de desarrollo</th>
+            <th style="width: 180px;word-wrap: break-word;background-color: rgb(0, 85, 255;">Limitada o nula posibilidad de desarrollo</th>
 
-        <th style="width: 100px;">Insuficiente participación y manejo del cambio</th>
+            <th style="width: 180px;word-wrap: break-word;background-color: rgb(0, 85, 255;">Insuficiente participación y manejo del cambio</th>
 
-        <th style="width: 100px;">Limitada o inexistente capacitación</th>
+            <th style="width: 180px;word-wrap: break-word;background-color: rgb(0, 85, 255;">Limitada o inexistente capacitación</th>
 
-        <th style="width: 100px;">Jornadas de trabajo extensas</th>
+            <th style="width: 180px;word-wrap: break-word;background-color: rgb(0, 85, 255;">Jornadas de trabajo extensas</th>
 
-        <th style="width: 100px;">Influencia del trabajo fuera del centro laboral</th>
+            <th style="width: 180px;word-wrap: break-word;background-color: rgb(0, 85, 255;">Influencia del trabajo fuera del centro laboral</th>
 
-        <th style="width: 100px;">Influencia de las responsabilidades familiares</th>
+            <th style="width: 180px;word-wrap: break-word;background-color: rgb(0, 85, 255;">Influencia de las responsabilidades familiares</th>
 
-        <th style="width: 100px;">Escaza claridad de funciones</th>
+            <th style="width: 180px;word-wrap: break-word;background-color: rgb(0, 85, 255;">Escaza claridad de funciones</th>
 
-        <th style="width: 100px;">Características del liderazgo</th>
+            <th style="width: 180px;word-wrap: break-word;background-color: rgb(0, 85, 255;">Características del liderazgo</th>
 
-        <th style="width: 100px;">Relaciones sociales en el trabajo</th>
+            <th style="width: 180px;word-wrap: break-word;background-color: rgb(0, 85, 255;">Relaciones sociales en el trabajo</th>
 
-        <th style="width: 100px;">Deficiente relación con los colaboradores que supervisa</th>
+            <th style="width: 180px;word-wrap: break-word;background-color: rgb(0, 85, 255;">Deficiente relación con los colaboradores que supervisa</th>
 
-        <th style="width: 100px;">Violencia laboral</th>
+            <th style="width: 180px;word-wrap: break-word;background-color: rgb(0, 85, 255;">Violencia laboral</th>
 
-        <th style="width: 100px;">Escasa o nula retroalimentación del desempeño</th>
+            <th style="width: 180px;word-wrap: break-word;background-color: rgb(0, 85, 255;">Escasa o nula retroalimentación del desempeño</th>
 
-        <th style="width: 100px;">Escaso o nulo reconocimiento y compensación</th>
+            <th style="width: 180px;word-wrap: break-word;background-color: rgb(0, 85, 255;">Escaso o nulo reconocimiento y compensación</th>
 
-        <th style="width: 100px;">Limitado sentido de pertenencia</th>
+            <th style="width: 180px;word-wrap: break-word;background-color: rgb(0, 85, 255;">Limitado sentido de pertenencia</th>
 
-        <th style="width: 100px;">Inestabilidad laboral</th>
+            <th style="width: 180px;word-wrap: break-word;background-color: rgb(0, 85, 255;">Inestabilidad laboral</th>
 
-        <th style="width: 100px;">¿Accidente que tenga como consecuencia la muerte, la pérdida de un miembro o una lesión grave?</th>
-        <th style="width: 100px;">¿Asaltos?</th>
-        <th style="width: 100px;">¿Actos violentos que derivaron en lesiones graves?</th>
-        <th style="width: 100px;">¿Secuestro?</th>
-        <th style="width: 100px;">¿Amenazas?</th>
-        <th style="width: 100px;">¿Cualquier otro que ponga en riesgo su vida o salud, y/o la de otras personas?</th>
-        <th style="width: 100px;">¿Ha tenido recuerdos recurrentes sobre el acontecimiento que le provocan malestares?</th>
-        <th style="width: 100px;">¿Ha tenido sueños de carácter recurrente sobre el acontecimiento, que le producen malestar?</th>
-        <th style="width: 100px;">¿Se ha esforzado por evitar todo tipo de sentimientos, conversaciones o situaciones que le puedan recordar el acontecimiento?</th>
-        <th style="width: 100px;">¿Se ha esforzado por evitar todo tipo de actividades, lugares o personas que motivan recuerdos del acontecimiento?</th>
-        <th style="width: 100px;">¿Ha tenido dificultad para recordar alguna parte importante del evento?</th>
-        <th style="width: 100px;">¿Ha disminuido su interés en sus actividades cotidianas?</th>
-        <th style="width: 100px;">¿Se ha sentido usted alejado o distante de los demás?</th>
-        <th style="width: 100px;">¿Ha notado que tiene dificultad para expresar sus sentimientos?</th>
-        <th style="width: 100px;">¿Ha tenido la impresión de que su vida se va a acortar, que va a morir antes que otras personas o que tiene un futuro limitado?</th>
-        <th style="width: 100px;">¿Ha tenido usted dificultades para dormir?</th>
-        <th style="width: 100px;">¿Ha estado particularmente irritable o le han dado arranques de coraje?</th>
-        <th style="width: 100px;">¿Ha tenido dificultad para concentrarse?</th>
-        <th style="width: 100px;">¿Ha estado nervioso o constantemente en alerta?</th>
-        <th style="width: 100px;">¿Se ha sobresaltado fácilmente por cualquier cosa?</th>
+            <th style="width: 180px;word-wrap: break-word;background-color: rgb(0, 85, 255;">¿Accidente que tenga como consecuencia la muerte, la pérdida de un miembro o una lesión grave?</th>
+            <th style="width: 180px;word-wrap: break-word;background-color: rgb(0, 85, 255;">¿Asaltos?</th>
+            <th style="width: 180px;word-wrap: break-word;background-color: rgb(0, 85, 255;">¿Actos violentos que derivaron en lesiones graves?</th>
+            <th style="width: 180px;word-wrap: break-word;background-color: rgb(0, 85, 255;">¿Secuestro?</th>
+            <th style="width: 180px;word-wrap: break-word;background-color: rgb(0, 85, 255;">¿Amenazas?</th>
+            <th style="width: 250px;word-wrap: break-word;background-color: rgb(0, 85, 255;">¿Cualquier otro que ponga en riesgo su vida o salud, y/o la de otras personas?</th>
+            <th style="width: 250px;word-wrap: break-word;background-color: rgb(0, 85, 255;">¿Ha tenido recuerdos recurrentes sobre el acontecimiento que le provocan malestares?</th>
+            <th style="width: 250px;word-wrap: break-word;background-color: rgb(0, 85, 255;">¿Ha tenido sueños de carácter recurrente sobre el acontecimiento, que le producen malestar?</th>
+            <th style="width: 250px;word-wrap: break-word;background-color: rgb(0, 85, 255;">¿Se ha esforzado por evitar todo tipo de sentimientos, conversaciones o situaciones que le puedan recordar el acontecimiento?</th>
+            <th style="width: 250px;word-wrap: break-word;background-color: rgb(0, 85, 255;">¿Se ha esforzado por evitar todo tipo de actividades, lugares o personas que motivan recuerdos del acontecimiento?</th>
+            <th style="width: 250px;word-wrap: break-word;background-color: rgb(0, 85, 255;">¿Ha tenido dificultad para recordar alguna parte importante del evento?</th>
+            <th style="width: 250px;word-wrap: break-word;background-color: rgb(0, 85, 255;">¿Ha disminuido su interés en sus actividades cotidianas?</th>
+            <th style="width: 250px;word-wrap: break-word;background-color: rgb(0, 85, 255;">¿Se ha sentido usted alejado o distante de los demás?</th>
+            <th style="width: 250px;word-wrap: break-word;background-color: rgb(0, 85, 255;">¿Ha notado que tiene dificultad para expresar sus sentimientos?</th>
+            <th style="width: 250px;word-wrap: break-word;background-color: rgb(0, 85, 255;">¿Ha tenido la impresión de que su vida se va a acortar, que va a morir antes que otras personas o que tiene un futuro limitado?</th>
+            <th style="width: 250px;word-wrap: break-word;background-color: rgb(0, 85, 255;">¿Ha tenido usted dificultades para dormir?</th>
+            <th style="width: 250px;word-wrap: break-word;background-color: rgb(0, 85, 255;">¿Ha estado particularmente irritable o le han dado arranques de coraje?</th>
+            <th style="width: 250px;word-wrap: break-word;background-color: rgb(0, 85, 255;">¿Ha tenido dificultad para concentrarse?</th>
+            <th style="width: 250px;word-wrap: break-word;background-color: rgb(0, 85, 255;">¿Ha estado nervioso o constantemente en alerta?</th>
+            <th style="width: 250px;word-wrap: break-word;background-color: rgb(0, 85, 255;">¿Se ha sobresaltado fácilmente por cualquier cosa?</th>
 
 
 
-    </tr>
+        </tr>
 
     </thead>
 
