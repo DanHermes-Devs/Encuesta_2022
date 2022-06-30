@@ -285,6 +285,11 @@ class EmpresasController extends Controller
     // Ver pagina para las graficas restantes
     public function getGraficas($id)
     {
+        $registros = Registro::where('id_empresa', $id)->with('empresa')->get();
+
+        $estudios = Registro::where('id_empresa', $id)->get();
+
+        $NombreEmpresa = Registro::where('id_empresa', $id)->with('empresa')->first();
         $c_final = DB::table('registros')->selectRaw('SUM(item_1) + SUM(item_2) + SUM(item_3) + SUM(item_4) + SUM(item_5) + SUM(item_6) + SUM(item_7) + SUM(item_8) + SUM(item_9) + SUM(item_10) + 
         SUM(item_11) + SUM(item_12) + SUM(item_13) + SUM(item_14) + SUM(item_15) + SUM(item_16) + SUM(item_17) + SUM(item_18) + SUM(item_19) + SUM(item_20) + 
         SUM(item_21) + SUM(item_22) + SUM(item_23) + SUM(item_24) + SUM(item_25) + SUM(item_26) + SUM(item_27) + SUM(item_28) + SUM(item_29) + SUM(item_30) + 
@@ -304,6 +309,6 @@ class EmpresasController extends Controller
         // Organización del tiempo de trabajo
         $Otiempo = DB::table('registros')->selectRaw('SUM(item_17) + SUM(item_18) + SUM(item_19) + SUM(item_20) + SUM(item_21) + SUM(item_22) as Otiempo')->where('id_empresa', $id)->first()->Otiempo;
 
-        return view('admin.empresas.graficas', compact('c_final', 'Atrabajo', 'Fpropios', 'Otiempo'));
+        return view('admin.empresas.graficas', compact('estudios', 'registros', 'NombreEmpresa', 'c_final', 'Atrabajo', 'Fpropios', 'Otiempo'));
     }
 }

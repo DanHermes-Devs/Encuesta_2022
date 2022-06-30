@@ -9,6 +9,7 @@ class Registro extends Model
 {
     use HasFactory;
     protected $table = 'registros';
+    protected $dates = ['fecha_inicio'];
     protected $fillable = [
         'id_empresa',
         'fecha_inicio',
