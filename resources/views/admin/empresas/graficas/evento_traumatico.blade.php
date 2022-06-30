@@ -1,5 +1,5 @@
 <div class="col-12 col-md-2">
-    <canvas id="estudios" width="400" height="400"></canvas>
+    <canvas id="trauma" width="400" height="400"></canvas>
 </div>
 
 @php
@@ -8,13 +8,13 @@
     $sumEstudios = array();
     
     foreach ($estudios as $key => $value){
-        $estudio = $value->estudios;
+        $estudio = $value->estado_civil;
         
         // Introducir los estudios en el arreglo arrayEstudios
         array_push($arrayEstudios, $estudio);
 
         // Capturar cuantos son del mismo nivel academico
-        $estudios_academicos = array($estudio => count($value->estudios));
+        $estudios_academicos = array($estudio => count($value->sexo));
         // echo "<pre>"; print_r($estudios_academicos); echo "</pre>";
         foreach($estudios_academicos as $index => $item){
             $sumEstudios[$index] += $item;
@@ -28,26 +28,14 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
 <script>
 
-    var estudios = document.getElementById('estudios').getContext('2d');
+    var estudios = document.getElementById('trauma').getContext('2d');
     var estudiosChart = new Chart(estudios, {
         type: 'bar',
         data: {
-            labels: [
-                <?php
-                    foreach($dataNoRepeat as $key => $value){
-                        echo "'".$value."',";
-                    }
-                ?>
-            ],
+            labels: ['No', 'Sí'],
             datasets: [{
                 label: 'Resultados de <?php echo count($estudios); ?> registros de usuarios',
-                data: [
-                    <?php
-                        foreach($dataNoRepeat as $key => $value){
-                            echo "'".$sumEstudios[$value]."',";
-                        }
-                    ?>
-                ],
+                data: [<?php echo "'".$etsTotalNo."',"; echo "'".$etsTotalSi."'"?>],
                 backgroundColor: [
                     'rgba(0, 255, 255, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
@@ -75,7 +63,7 @@
                 },
                 title: {
                     display: true,
-                    text: 'Estudios',
+                    text: 'Evento Traumatico',
                     font: {
                         size: 20
                     }

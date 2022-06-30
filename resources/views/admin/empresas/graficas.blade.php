@@ -231,8 +231,16 @@
                             <div class="tab-pane fade show active" id="nav-profile" role="tabpanel"
                                 aria-labelledby="nav-profile-tab">
                                 <div class="col-12 col-md-12 mt-4">
-                                    <div class="row">
+                                    <div class="row" style="gap: 5rem;">
                                         @include('admin.empresas.graficas.estudios')
+                                        @include('admin.empresas.graficas.sexo')
+                                        @include('admin.empresas.graficas.estado_civil')
+                                        @include('admin.empresas.graficas.evento_traumatico')
+                                        @include('admin.empresas.graficas.edad')
+                                        @include('admin.empresas.graficas.tipo_puesto')
+                                        @include('admin.empresas.graficas.area')
+                                        @include('admin.empresas.graficas.experiencia')
+                                        @include('admin.empresas.graficas.antiguedad')
                                     </div>
                                 </div>
                             </div>
