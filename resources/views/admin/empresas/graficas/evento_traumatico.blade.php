@@ -63,7 +63,7 @@
                 },
                 title: {
                     display: true,
-                    text: 'Evento Traumatico',
+                    text: 'Eventos Traumáticos Severos',
                     font: {
                         size: 20
                     }
