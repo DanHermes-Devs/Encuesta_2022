@@ -16,7 +16,7 @@
         <div class="container-fluid">
             <div class="card p-4">
                 <div class="row justify-content-between">
-                    <h2>Datos generales de la empresa: <b>{{ $NombreEmpresa->empresa->nombre }}</b></h2>
+                    <h2>Datos generales de la empresa: <b>{{ $NombreEmpresa->empresa->nombre ?? '' }}</b></h2>
                 </div>
 
                 <div class="row">
@@ -243,6 +243,17 @@
                                         @include('admin.empresas.graficas.antiguedad')
                                     </div>
                                 </div>
+
+                                <div class="col-12 col-md-12 mt-5 pt-4">
+                                    <div class="row mt-4" style="gap: 5rem;">
+                                        @include('admin.empresas.graficas.cfinal')
+                                        @include('admin.empresas.graficas.ambiente')
+                                        @include('admin.empresas.graficas.factores')
+                                        @include('admin.empresas.graficas.organizacion')
+                                        @include('admin.empresas.graficas.liderazgo')
+                                        @include('admin.empresas.graficas.organizacional')
+                                    </div>
+                                </div>
                             </div>
                             <div class="tab-pane fade" id="nav-contact" role="tabpanel"
                                 aria-labelledby="nav-contact-tab">
@@ -308,8 +319,6 @@
             </div>
         </div>
     </div>
-
-    
 @endsection
 
 
