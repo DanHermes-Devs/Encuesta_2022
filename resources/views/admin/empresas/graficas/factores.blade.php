@@ -10,6 +10,8 @@ $sumFactores = [];
 foreach ($estudios as $key => $value) {
     $estudio = $value->item_1 + $value->item_2 + $value->item_3 + $value->item_4 + $value->item_5 + $value->item_6 + $value->item_7 + $value->item_8 + $value->item_9 + $value->item_10 + $value->item_11 + $value->item_12 + $value->item_13 + $value->item_14 + $value->item_15 + $value->item_16 + $value->item_23 + $value->item_24 + $value->item_25 + $value->item_26 + $value->item_27 + $value->item_28 + $value->item_29 + $value->item_30 + $value->item_35 + $value->item_36 + $value->item_65 + $value->item_66 + $value->item_67 + $value->item_68;
 
+    // echo $estudio, "<br>";
+
     // Introducir los estudios en el arreglo arrFactores
     array_push($arrFactores, $estudio);
 
@@ -21,21 +23,9 @@ foreach ($estudios as $key => $value) {
     }
 }
 
-echo "<pre>"; print_r($sumFactores); echo "</pre>";
+// echo "<pre>"; print_r($sumFactores); echo "</pre>";
 $dataNoRepeat = array_unique($arrFactores);
-foreach ($dataNoRepeat as $key => $value) {
-    if ($value < 15) {
-        echo "'NULO',";
-    } elseif ($value <= 15 || $value < 30) {
-        echo "'BAJO',";
-    } elseif ($value <= 30 || $value < 45) {
-        echo "'MEDIO',";
-    } elseif ($value <= 45 || $value < 60) {
-        echo "'ALTO',";
-    } elseif ($value >= 60) {
-        echo "'MUY ALTO',";
-    }
-}
+
 // echo "<pre>"; print_r($dataNoRepeat); echo "</pre>";
 @endphp
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>

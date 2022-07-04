@@ -36,17 +36,7 @@
         data: {
             labels: [<?php
                     foreach($dataNoRepeat as $key => $value){
-                        if($value < '50'){
-                            echo "'NULO',";
-                        }else if($value <= '50' || $value < '75'){
-                            echo "'BAJO',";
-                        }else if($value <= '75' || $value < '99'){
-                            echo "'MEDIO',";
-                        }else if($value <= '99' || $value < '140'){
-                            echo "'ALTO',";
-                        }else if($value >= '140'){
-                            echo "'MUY ALTO',";
-                        }
+                        echo "'".$value."',";
                     }
                 ?>],
             datasets: [{
