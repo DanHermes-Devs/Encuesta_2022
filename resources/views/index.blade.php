@@ -312,7 +312,7 @@
 
                             <div id="err_list"></div>
 
-                            <form method="POST" id="form-step1" enctype="multipart/form-data">
+                            <form method="POST" action="{{ route('registro.datos') }}" id="form-step1" enctype="multipart/form-data">
 
                                 @csrf
 
@@ -606,105 +606,6 @@
 
             });
 
-
-
-            $('#form-step1').submit(function(e) {
-
-                e.preventDefault();
-
-                var form = $(this);
-
-                var formData = new FormData(form[0]);
-
-                $.ajax({
-
-                    url: '/registroDatos',
-
-                    type: 'POST',
-
-                    data: formData,
-
-                    dataType: 'json',
-
-                    cache: false,
-
-                    contentType: false,
-
-                    processData: false,
-
-                    beforeSend: function() {
-
-                        $('#step_21').waitMe({
-
-                            text: 'Registrando...',
-
-                        })
-
-                    },
-
-                    success: function(data) {
-                        if (data.status == 201) {
-                            $('#err_list').html('');
-                            Swal.fire({
-
-                                title: '¡Éxito!',
-
-                                icon: 'success',
-
-                                type: 'success',
-
-                                confirmButtonText: 'Continuar',
-
-                            }).then((result) => {
-
-                                if (result.value) {
-
-                                    // window.location.href = `/resultados/${data.data.token}`;
-
-                                    window.location.href = `/agradecimientos`;
-
-                                }
-
-                            });
-
-                        } else {
-
-                            // Sweet alert para avisar que hay campos vacios
-                            Swal.fire({
-                                title: '¡Error!',
-                                text: data.message,
-                                icon: 'error',
-                                confirmButtonText: 'Continuar',
-                            });
-                            
-                            
-                            // Mostrar los errores en cada input
-                            $.each(data.error, function(key, err_values) {
-                                $(`#${key}`).addClass('is-invalid');
-                                $("[name='" + key + "']").parent().addClass('has-error');
-                                // Si es un input radio, mostrar el mensaje de error de diferente manera
-                                if ($("[name='" + key + "']").attr('type') == 'radio') {
-                                    // $("[name='" + key + "'][value='" + err_values + "']").parent().addClass('has-error');
-                                    $("[name='" + key + "']").parent().parent().append(`<div class="invalid-feedback">${err_values}</div>`);
-                                }else{
-                                    $("[name='" + key + "']").parent().append(`<div class="invalid-feedback">${err_values}</div>`);
-                                }
-                            });
-
-
-                        }
-
-                    },
-
-                    complete: function() {
-
-                        $('#step_21').waitMe('hide');
-
-                    }
-
-                });
-
-            });
 
             $("input[name='item_jefe']").change(function() {
 

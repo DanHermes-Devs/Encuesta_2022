@@ -2,7 +2,7 @@
 
     <label>Tipo de contratación</label>
 
-    <select class="form-control" id="tipo_contratacion" name="tipo_contratacion">
+    <select class="form-control @error('email') is-invalid @enderror" id="tipo_contratacion" name="tipo_contratacion">
 
         <option value="">--Elige una opción--</option>
 
@@ -13,6 +13,12 @@
         @endforeach
 
     </select>
+
+    @error('sexo')
+        <span class="invalid-feedback d-block" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+    @enderror   
 
 </div>
 

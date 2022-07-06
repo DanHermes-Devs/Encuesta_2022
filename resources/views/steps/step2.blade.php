@@ -2,7 +2,7 @@
 
     <label>Estudios</label>
 
-    <select class="form-control" id="estudios" name="estudios">
+    <select class="form-control @error('estudios') is-invalid @enderror" id="estudios" name="estudios">
 
         <option value="">--Elige una opción--</option>
 
@@ -22,6 +22,12 @@
 
     </select>
 
+    @error('estudios')
+        <span class="invalid-feedback d-block" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+    @enderror
+
 </div>
 
 
@@ -30,7 +36,7 @@
 
     <label>Tipo de puesto</label>
 
-    <select class="form-control" id="tipo_puesto" name="tipo_puesto">
+    <select class="form-control @error('tipo_puesto') is-invalid @enderror" id="tipo_puesto" name="tipo_puesto">
 
         <option value="">--Elige una opción--</option>
 
@@ -42,6 +48,12 @@
 
     </select>
 
+    @error('tipo_puesto')
+        <span class="invalid-feedback d-block" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+    @enderror
+
 </div>
 
 
@@ -50,7 +62,7 @@
 
     <label>Área</label>
 
-    <select class="form-control" id="area" name="area">
+    <select class="form-control @error('area') is-invalid @enderror" id="area" name="area">
 
         <option value="">--Elige una opción--</option>
 
@@ -61,6 +73,12 @@
         @endforeach
 
     </select>
+
+    @error('area')
+        <span class="invalid-feedback d-block" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+    @enderror
 
 </div>
 
