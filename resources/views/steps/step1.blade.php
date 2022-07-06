@@ -2,7 +2,7 @@
 
     <label>Sexo</label>
 
-    <select class="form-control @error('sexo') is-invalid @enderror" id="sexo" name="sexo">
+    <select class="form-control" id="sexo" name="sexo">
 
         <option value="">--Elige una opción--</option>
 
@@ -12,12 +12,6 @@
 
     </select>
 
-    @error('sexo')
-        <span class="invalid-feedback d-block" role="alert">
-            <strong>{{ $message }}</strong>
-        </span>
-    @enderror
-
 </div>
 
 
@@ -26,7 +20,7 @@
 
     <label>Estado Civil</label>
 
-    <select class="form-control @error('estado_civil') is-invalid @enderror" id="estado_civil" name="estado_civil">
+    <select class="form-control" id="estado_civil" name="estado_civil">
 
         <option value="">--Elige una opción--</option>
 
@@ -44,12 +38,6 @@
 
     </select>
 
-    @error('estado_civil')
-        <span class="invalid-feedback d-block" role="alert">
-            <strong>{{ $message }}</strong>
-        </span>
-    @enderror
-
 </div>
 
 
@@ -58,7 +46,7 @@
 
     <label>Edad en años</label>
 
-    <select class="form-control  @error('edad') is-invalid @enderror" id="edad" name="edad">
+    <select class="form-control" id="edad" name="edad">
 
         <option value="">--Elige una opción--</option>
 
@@ -88,12 +76,6 @@
 
     </select>
 
-    @error('edad')
-        <span class="invalid-feedback d-block" role="alert">
-            <strong>{{ $message }}</strong>
-        </span>
-    @enderror
-
 </div>
 
 
@@ -102,7 +84,7 @@
 
     <label>Antigüedad en puesto actual</label>
 
-    <select class="form-control @error('antiguedad') is-invalid @enderror" id="antiguedad" name="antiguedad">
+    <select class="form-control" id="antiguedad" name="antiguedad">
 
         <option value="">--Elige una opción--</option>
 
@@ -121,13 +103,6 @@
         <option value="Más de 25 años">Más de 25 años</option>
 
     </select>
-
-    @error('antiguedad')
-        <span class="invalid-feedback d-block" role="alert">
-            <strong>{{ $message }}</strong>
-        </span>
-    @enderror
-
 </div>
 
 

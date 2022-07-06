@@ -215,7 +215,7 @@
                         $jornada_trabajo = json_decode($empresa->jornada_trabajo);
                         
                         $rotacion_turnos = json_decode($empresa->rotacion_turnos);
-
+                        
                         // Usar carbon para fechas
                         $fecha_actual = Carbon\Carbon::now();
                         
@@ -289,8 +289,10 @@
                                 <a href="javascript:void(0)" class="display-section font-color-tab mx-2" id="step17"
                                     onclick="cambiarSeccion('step_17', 'step17')"></a>
 
-                                <a href="javascript:void(0)" class="display-section font-color-tab mx-2" id="stepInstrucciones"
-                                    onclick="cambiarSeccion('step_instrucciones', 'stepInstrucciones')" style="display: none;"></a>
+                                <a href="javascript:void(0)" class="display-section font-color-tab mx-2"
+                                    id="stepInstrucciones"
+                                    onclick="cambiarSeccion('step_instrucciones', 'stepInstrucciones')"
+                                    style="display: none;"></a>
 
                                 <a href="javascript:void(0)" class="display-section font-color-tab mx-2" id="step18"
                                     onclick="cambiarSeccion('step_18', 'step18')" style="display: none;"></a>
@@ -312,7 +314,8 @@
 
                             <div id="err_list"></div>
 
-                            <form method="POST" action="{{ route('registro.datos') }}" id="form-step1" enctype="multipart/form-data">
+                            <form method="POST" action="{{ route('registro.datos') }}" id="form-step1"
+                                enctype="multipart/form-data">
 
                                 @csrf
 
@@ -464,11 +467,13 @@
 
                                 {{-- <input type="hidden" name="token" value="{{ Str::uuid()->toString() }}"> --}}
 
-                                <input type="hidden" class="form-control" name="token" id="token" value="">
+                                <input type="hidden" class="form-control" name="token" id="token"
+                                    value="">
 
                                 <input type="hidden" name="id_empresa" id="id_empresa" value="{{ $empresa->id }}">
 
-                                <input type="hidden" name="fecha_inicio" id="fecha_inicio" value="{{ $fecha_actual }}">
+                                <input type="hidden" name="fecha_inicio" id="fecha_inicio"
+                                    value="{{ $fecha_actual }}">
 
                             </form>
 
@@ -508,7 +513,6 @@
     @parent
 
     <script>
-
         $('.btn_finalizar').prop('disabled', true);
 
         $('.btn_finalizar').css({
@@ -603,6 +607,115 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 
                 }
+
+            });
+
+
+            $('#form-step1').submit(function(e) {
+
+                e.preventDefault();
+
+                $("div").removeClass("has-error");
+                $("input").removeClass("is-invalid");
+                $(".invalid-feedback").remove();
+
+                var form = $(this);
+
+                var formData = new FormData(form[0]);
+
+                $.ajax({
+
+                    url: '/registroDatos',
+
+                    type: 'POST',
+
+                    data: formData,
+
+                    dataType: 'json',
+
+                    cache: false,
+
+                    contentType: false,
+
+                    processData: false,
+
+                    beforeSend: function() {
+
+                        $('#step_21').waitMe({
+
+                            text: 'Registrando...',
+
+                        })
+
+                    },
+
+                    success: function(data) {
+                        if (data.status == 201) {
+                            $('#err_list').html('');
+                            Swal.fire({
+
+                                title: '¡Éxito!',
+
+                                icon: 'success',
+
+                                type: 'success',
+
+                                confirmButtonText: 'Continuar',
+
+                            }).then((result) => {
+
+                                if (result.value) {
+
+                                    // window.location.href = `/resultados/${data.data.token}`;
+
+                                    window.location.href = `/agradecimientos`;
+
+                                }
+
+                            });
+
+                        } else {
+
+                            // Sweet alert para avisar que hay campos vacios
+                            Swal.fire({
+                                title: '¡Error!',
+                                text: data.message,
+                                icon: 'error',
+                                confirmButtonText: 'Continuar',
+                            });
+
+                            $("div").removeClass("has-error");
+                            $("input").removeClass("is-invalid");
+                            $(".invalid-feedback").remove();
+
+
+                            // Mostrar los errores en cada input
+                            $.each(data.error, function(key, err_values) {
+                                $(`#${key}`).addClass('is-invalid');
+                                $("[name='" + key + "']").parent().addClass('has-error');
+                                // Si es un input radio, mostrar el mensaje de error de diferente manera
+                                if ($("[name='" + key + "']").attr('type') == 'radio') {
+                                    // $("[name='" + key + "'][value='" + err_values + "']").parent().addClass('has-error');
+                                    $("[name='" + key + "']").parent().parent().append(
+                                        `<div class="invalid-feedback">${err_values}</div>`
+                                        );
+                                } else {
+                                    $("[name='" + key + "']").parent().append( `<div class="invalid-feedback">${err_values}</div>`);
+                                }
+                            });
+
+
+                        }
+
+                    },
+
+                    complete: function() {
+
+                        $('#step_21').waitMe('hide');
+
+                    }
+
+                });
 
             });
 

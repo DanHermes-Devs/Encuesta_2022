@@ -28,15 +28,8 @@
 
                 <small class="mb-5">Para poder contestar los cuestionarios será importante agregues tu correo institucional. Recuerda que los datos obtenidos en los cuestionarios son confidenciales.</small>
 
-                <input type="email" class="form-control mt-3 @error('email') is-invalid @enderror" name="email" id="email" placeholder="Correo electrónico">
+                <input type="email" class="form-control mt-3" name="email" id="email" placeholder="Correo electrónico">
 
-                @error('email')
-                
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-
-                @enderror
 
                 <div class="d-flex justify-content-center">
 
