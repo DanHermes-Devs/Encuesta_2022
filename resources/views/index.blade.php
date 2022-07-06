@@ -615,13 +615,13 @@
 
                 e.preventDefault();
 
-                $("div").removeClass("has-error");
-                $("input").removeClass("is-invalid");
-                $(".invalid-feedback").remove();
-
                 var form = $(this);
 
                 var formData = new FormData(form[0]);
+
+                $("div").removeClass("has-error");
+                $("input").removeClass("is-invalid");
+                $(".invalid-feedback").remove();
 
                 $.ajax({
 
@@ -683,10 +683,6 @@
                                 icon: 'error',
                                 confirmButtonText: 'Continuar',
                             });
-
-                            $("div").removeClass("has-error");
-                            $("input").removeClass("is-invalid");
-                            $(".invalid-feedback").remove();
 
 
                             // Mostrar los errores en cada input
