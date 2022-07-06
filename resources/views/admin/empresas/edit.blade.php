@@ -331,7 +331,7 @@
 
                                     </div>
 
-                                    <div class="col-12 col-md-12 mb-4 cards">
+                                    {{-- <div class="col-12 col-md-12 mb-4 cards">
 
                                         <div class="form-group">
 
@@ -363,7 +363,7 @@
 
                                         </div>
 
-                                    </div>
+                                    </div> --}}
                                 </div>
 
                                 <div class="col-12 col-md-12">

@@ -38,7 +38,7 @@
 
 
 
-<div class="form-group">
+{{-- <div class="form-group">
 
     <label>Rotación de turnos</label>
 
@@ -54,7 +54,7 @@
 
     </select>
 
-</div>
+</div> --}}
 
 
 
