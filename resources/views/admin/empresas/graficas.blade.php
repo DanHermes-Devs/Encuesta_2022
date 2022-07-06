@@ -60,7 +60,7 @@
                             <div class="tab-pane fade" id="nav-contact" role="tabpanel"
                                 aria-labelledby="nav-contact-tab">
                                 <div class="col-12 col-md-12 mt-4">
-                                    <table class="table table-stripped table-bordered w-100">
+                                    <table class="table table-stripped table-responsive table-bordered w-100">
 
                                         <thead class="thead-dark">
 
