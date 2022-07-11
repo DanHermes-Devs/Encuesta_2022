@@ -33,7 +33,7 @@
                             <div class="tab-pane fade show active" id="nav-profile" role="tabpanel"
                                 aria-labelledby="nav-profile-tab">
                                 <div class="col-12 col-md-12 mt-4">
-                                    <div class="row" style="gap: 5rem;">
+                                    <div class="row">
                                         @include('admin.empresas.graficas.estudios')
                                         @include('admin.empresas.graficas.sexo')
                                         @include('admin.empresas.graficas.estado_civil')
@@ -47,7 +47,7 @@
                                 </div>
 
                                 <div class="col-12 col-md-12 mt-5 pt-4">
-                                    <div class="row mt-4" style="gap: 5rem;">
+                                    <div class="row mt-4">
                                         @include('admin.empresas.graficas.cfinal')
                                         @include('admin.empresas.graficas.ambiente')
                                         @include('admin.empresas.graficas.factores')

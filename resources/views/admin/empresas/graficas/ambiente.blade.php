@@ -1,4 +1,4 @@
-<div class="col-12 col-md-2">
+<div class="col-12 col-md-4">
     <canvas id="ambiente" width="400" height="400"></canvas>
 </div>
 
