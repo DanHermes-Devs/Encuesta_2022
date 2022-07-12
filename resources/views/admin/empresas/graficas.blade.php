@@ -62,7 +62,7 @@
                             <div class="tab-pane fade" id="nav-contact" role="tabpanel"
                                 aria-labelledby="nav-contact-tab">
                                 <div class="col-12 mt-4">
-                                    <a href="{{ route('registro.export', ['id' => 1]) }}" class="btn btn-success"><i class="fas fa-file-excel mr-2"></i>Exportar reporte</a>
+                                    <a href="{{ route('registro.export', ['id' => $empresa->id]) }}" class="btn btn-success"><i class="fas fa-file-excel mr-2"></i>Exportar reporte</a>
                                 </div>
                                 <div class="col-12 col-md-12 mt-4">
                                     <table class="table table-stripped table-responsive table-bordered w-100">

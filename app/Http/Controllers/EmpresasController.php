@@ -285,6 +285,7 @@ class EmpresasController extends Controller
     // Ver pagina para las graficas restantes
     public function getGraficas($id)
     {
+        $empresa = Empresas::where('id', $id)->first();
         $registros = Registro::where('id_empresa', $id)->with('empresa')->get();
 
         $estudios = Registro::where('id_empresa', $id)->get();
@@ -382,6 +383,7 @@ class EmpresasController extends Controller
         $etsTotalNo = $ets_1No+$ets_2No+$ets_3No+$ets_4No+$ets_5No+$ets_6No+$ets_7No+$ets_8No+$ets_9No+$ets_10No+$ets_11No+$ets_12No+$ets_13No+$ets_14No+$ets_15No+$ets_16No+$ets_17No+$ets_18No+$ets_19No+$ets_20No;
 
         return view('admin.empresas.graficas', compact(
+            'empresa',
             'etsTotalSi', 
             'etsTotalNo', 
             'estudios', 
