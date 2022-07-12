@@ -1,5 +1,5 @@
 <div class="col-12 col-md-4">
-    <canvas id="factores" width="400" height="400"></canvas>
+    <canvas id="cargaTrabajo" width="400" height="400"></canvas>
 </div>
 @php
     $nulo = 0;
@@ -8,23 +8,24 @@
     $alto = 0;
     $muyalto = 0;
 
-    foreach($Fpropios as $value){
-        if ($value->c_cat_2 < 15){
+    foreach($Ctrabajo as $value){
+        if ($value->c_dominio_2 < 15){
             $nulo+=1;
-        }else if ($value->c_cat_2 <= 15 || $value->c_cat_2 < 30){
+        }else if ($value->c_dominio_2 <= 15 || $value->c_dominio_2 < 21){
             $bajo+=1;
-        }else if ($value->c_cat_2 <= 30 || $value->c_cat_2 < 45){
+        }else if ($value->c_dominio_2 <= 21 || $value->c_dominio_2 < 27){
             $medio+=1;
-        }else if ($value->c_cat_2 <= 45 || $value->c_cat_2 < 60){
+        }else if ($value->c_dominio_2 <= 27 || $value->c_dominio_2 < 37){
             $alto+=1;
-        }else if ($value->c_cat_2 >= 60){
+        }else if ($value->c_dominio_2 >= 37){
             $muyalto+=1;
         }
     }
 @endphp
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
 <script>
-    var estudios = document.getElementById('factores').getContext('2d');
+
+    var estudios = document.getElementById('cargaTrabajo').getContext('2d');
     var estudiosChart = new Chart(estudios, {
         type: 'bar',
         data: {
@@ -73,7 +74,7 @@
                 },
                 title: {
                     display: true,
-                    text: 'Factores propios de la actividad',
+                    text: 'Carga de trabajo',
                     font: {
                         size: 20
                     }

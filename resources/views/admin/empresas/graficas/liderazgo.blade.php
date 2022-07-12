@@ -1,31 +1,26 @@
 <div class="col-12 col-md-4">
     <canvas id="liderazgo" width="400" height="400"></canvas>
 </div>
-
 @php
-    error_reporting(0);
-    $arrayEstudios = array();
-    $sumEstudios = array();
-    
-    foreach ($estudios as $key => $value){
-        $estudio = $value->item_31+$value->item_32+$value->item_33+$value->item_34+$value->item_35+$value->item_36+$value->item_37+$value->item_38+$value->item_39+$value->item_40+$value->item_41+$value->item_42+$value->item_43+$value->item_44+$value->item_45+$value->item_46+$value->item_57+$value->item_58+$value->item_59+$value->item_60+$value->item_61+$value->item_62+$value->item_63+$value->item_64+$value->item_65+$value->item_66+$value->item_67+$value->item_68+$value->item_69+$value->item_70+$value->item_71+$value->item_72;
-        
-        // Introducir los estudios en el arreglo arrayEstudios
-        array_push($arrayEstudios, $estudio);
+    $nulo = 0;
+    $bajo = 0;
+    $medio = 0;
+    $alto = 0;
+    $muyalto = 0;
 
-        // Capturar cuantos son del mismo nivel academico
-        $estudios_academicos = array($estudio => count($value->item_31+$value->item_32+$value->item_33+$value->item_34+$value->item_35+$value->item_36+$value->item_37+$value->item_38+$value->item_39+$value->item_40+$value->item_41+$value->item_42+$value->item_43+$value->item_44+$value->item_45+$value->item_46+$value->item_57+$value->item_58+$value->item_59+$value->item_60+$value->item_61+$value->item_62+$value->item_63+$value->item_64+$value->item_65+$value->item_66+$value->item_67+$value->item_68+$value->item_69+$value->item_70+$value->item_71+$value->item_72));
-        // echo "<pre>"; print_r($estudios_academicos); echo "</pre>";
-        foreach($estudios_academicos as $index => $item){
-            $sumEstudios[$index] += $item;
+    foreach($Lrelaciones as $value){
+        if ($value->c_cat_4 < 14){
+            $nulo+=1;
+        }else if ($value->c_cat_4 <= 14 || $value->c_cat_4 < 29){
+            $bajo+=1;
+        }else if ($value->c_cat_4 <= 29 || $value->c_cat_4 < 42){
+            $medio+=1;
+        }else if ($value->c_cat_4 <= 42 || $value->c_cat_4 < 58){
+            $alto+=1;
+        }else if ($value->c_cat_4 >= 58){
+            $muyalto+=1;
         }
     }
-
-    
-
-    // echo "<pre>"; print_r($sumEstudios); echo "</pre>";
-    $dataNoRepeat = array_unique($arrayEstudios);
-    // echo "<pre>"; print_r($dataNoRepeat); echo "</pre>";
 @endphp
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
 <script>
@@ -34,28 +29,22 @@
     var estudiosChart = new Chart(estudios, {
         type: 'bar',
         data: {
-            labels: [<?php
-                    foreach($dataNoRepeat as $key => $value){
-                        if($value < '14'){
-                            echo "'NULO',";
-                        }else if($value <= '14' || $value < '29'){
-                            echo "'BAJO',";
-                        }else if($value <= '29' || $value < '42'){
-                            echo "'MEDIO',";
-                        }else if($value <= '42' || $value < '58'){
-                            echo "'ALTO',";
-                        }else if($value >= '58'){
-                            echo "'MUY ALTO',";
-                        }
-                    }
-                ?>],
+            labels: [
+                'NULO',
+                'BAJO',
+                'MEDIA',
+                'ALTO',
+                'MUY ALTO'
+            ],
             datasets: [{
                 label: 'Resultados de <?php echo count($estudios); ?> registros de usuarios',
                 data: [
                     <?php
-                        foreach($dataNoRepeat as $key => $value){
-                            echo "'".$sumEstudios[$value]."',";
-                        }
+                        echo $nulo.",";
+                        echo $bajo.",";
+                        echo $medio.",";
+                        echo $alto.",";
+                        echo $muyalto;
                     ?>
                 ],
                 backgroundColor: [

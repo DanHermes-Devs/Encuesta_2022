@@ -107,7 +107,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/registros', 'RegistroController@registroAdmin')->name('registro.index');
 
-    Route::get('/registros/export', 'RegistroController@export')->name('registro.export');
+    Route::get('/registros/export/{id}', 'RegistroController@export')->name('registro.export');
 
 
 

@@ -1,31 +1,26 @@
 <div class="col-12 col-md-4">
     <canvas id="organizacional" width="400" height="400"></canvas>
 </div>
-
 @php
-    error_reporting(0);
-    $arrayEstudios = array();
-    $sumEstudios = array();
-    
-    foreach ($estudios as $key => $value){
-        $estudio = $value->item_47+$value->item_48+$value->item_49+$value->item_50+$value->item_51+$value->item_52+$value->item_53+$value->item_54+$value->item_55+$value->item_56;
-        
-        // Introducir los estudios en el arreglo arrayEstudios
-        array_push($arrayEstudios, $estudio);
+    $nulo = 0;
+    $bajo = 0;
+    $medio = 0;
+    $alto = 0;
+    $muyalto = 0;
 
-        // Capturar cuantos son del mismo nivel academico
-        $estudios_academicos = array($estudio => count($value->item_47+$value->item_48+$value->item_49+$value->item_50+$value->item_51+$value->item_52+$value->item_53+$value->item_54+$value->item_55+$value->item_56));
-        // echo "<pre>"; print_r($estudios_academicos); echo "</pre>";
-        foreach($estudios_academicos as $index => $item){
-            $sumEstudios[$index] += $item;
+    foreach($Eorganizacional as $value){
+        if ($value->c_cat_5 < 10){
+            $nulo+=1;
+        }else if ($value->c_cat_5 <= 10 || $value->c_cat_5 < 14){
+            $bajo+=1;
+        }else if ($value->c_cat_5 <= 14 || $value->c_cat_5 < 18){
+            $medio+=1;
+        }else if ($value->c_cat_5 <= 18 || $value->c_cat_5 < 23){
+            $alto+=1;
+        }else if ($value->c_cat_5 >= 23){
+            $muyalto+=1;
         }
     }
-
-    
-
-    // echo "<pre>"; print_r($sumEstudios); echo "</pre>";
-    $dataNoRepeat = array_unique($arrayEstudios);
-    // echo "<pre>"; print_r($dataNoRepeat); echo "</pre>";
 @endphp
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
 <script>
@@ -34,28 +29,22 @@
     var estudiosChart = new Chart(estudios, {
         type: 'bar',
         data: {
-            labels: [<?php
-                    foreach($dataNoRepeat as $key => $value){
-                        if($value < '14'){
-                            echo "'NULO',";
-                        }else if($value <= '14' || $value < '29'){
-                            echo "'BAJO',";
-                        }else if($value <= '29' || $value < '42'){
-                            echo "'MEDIO',";
-                        }else if($value <= '42' || $value < '58'){
-                            echo "'ALTO',";
-                        }else if($value >= '58'){
-                            echo "'MUY ALTO',";
-                        }
-                    }
-                ?>],
+            labels: [
+                'NULO',
+                'BAJO',
+                'MEDIA',
+                'ALTO',
+                'MUY ALTO'
+            ],
             datasets: [{
                 label: 'Resultados de <?php echo count($estudios); ?> registros de usuarios',
                 data: [
                     <?php
-                        foreach($dataNoRepeat as $key => $value){
-                            echo "'".$sumEstudios[$value]."',";
-                        }
+                        echo $nulo.",";
+                        echo $bajo.",";
+                        echo $medio.",";
+                        echo $alto.",";
+                        echo $muyalto;
                     ?>
                 ],
                 backgroundColor: [

@@ -3,46 +3,36 @@
 </div>
 
 @php
-error_reporting(0);
-$arrayEstudios = [];
-$sumEstudios = [];
+    $nulo = 0;
+    $bajo = 0;
+    $medio = 0;
+    $alto = 0;
+    $muyalto = 0;
 
-foreach ($estudios as $key => $value) {
-    $estudio = $value->item_1 + $value->item_2 + $value->item_3 + $value->item_4 + $value->item_5;
-
-    // Introducir los estudios en el arreglo arrayEstudios
-    array_push($arrayEstudios, $estudio);
-
-    // Capturar cuantos son del mismo nivel academico
-    $estudios_academicos = [$estudio => count($value->item_1 + $value->item_2 + $value->item_3 + $value->item_4 + $value->item_5)];
-    // echo "<pre>"; print_r($estudios_academicos); echo "</pre>";
-    foreach ($estudios_academicos as $index => $item) {
-        $sumEstudios[$index] += $item;
+    foreach($Atrabajo as $value){
+        if ($value->c_cat_1 < 5){
+            $nulo+=1;
+        }else if ($value->c_cat_1 <= 5 || $value->c_cat_1 < 9){
+            $bajo+=1;
+        }else if ($value->c_cat_1 <= 9 || $value->c_cat_1 < 11){
+            $medio+=1;
+        }else if ($value->c_cat_1 <= 11 || $value->c_cat_1 < 14){
+            $alto+=1;
+        }else if ($value->c_cat_1 >= 14){
+            $muyalto+=1;
+        }
     }
-}
-
-// echo "<pre>"; print_r($sumEstudios); echo "</pre>";
-$dataNoRepeat = array_unique($arrayEstudios);
-// echo "<pre>"; print_r($dataNoRepeat); echo "</pre>";
 @endphp
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
 <script>
     var estudios = document.getElementById('ambiente').getContext('2d');
-    const labelAmbiente = [<?php
-    foreach ($dataNoRepeat as $key => $value) {
-        if ($value < 5) {
-            echo "'NULO',";
-        } elseif ($value <= '5' || $value < '9') {
-            echo "'BAJO',";
-        } elseif ($value <= '9' || $value < '11') {
-            echo "'MEDIO',";
-        } elseif ($value <= '11' || $value < '14') {
-            echo "'ALTO',";
-        } elseif ($value >= '14') {
-            echo "'MUY ALTO',";
-        }
-    }
-    ?>];
+    const labelAmbiente = [
+        'NULO',
+        'BAJO',
+        'MEDIA',
+        'ALTO',
+        'MUY ALTO'
+    ];
     const backColor2 = [];
     const borderColor2 = [];
     for (i = 0; i < labelAmbiente.length; i++) {
@@ -60,9 +50,11 @@ $dataNoRepeat = array_unique($arrayEstudios);
                 label: 'Resultados de <?php echo count($estudios); ?> registros de usuarios',
                 data: [
                     <?php
-                    foreach ($dataNoRepeat as $key => $value) {
-                        echo "'" . $sumEstudios[$value] . "',";
-                    }
+                        echo $nulo.",";
+                        echo $bajo.",";
+                        echo $medio.",";
+                        echo $alto.",";
+                        echo $muyalto;
                     ?>
                 ],
                 backgroundColor: backColor2,

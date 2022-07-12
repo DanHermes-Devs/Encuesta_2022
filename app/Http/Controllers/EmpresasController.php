@@ -291,17 +291,30 @@ class EmpresasController extends Controller
 
         $NombreEmpresa = Registro::where('id_empresa', $id)->with('empresa')->first();
 
+        // Calificaion Final
         $c_final = Calificaciones::select('c_final')->where('id_empresa', $id)->get();
 
         // Ambiente de trabajo
-        $Atrabajo = DB::table('registros')->selectRaw('SUM(item_1) + SUM(item_2) + SUM(item_3) + SUM(item_4) + SUM(item_5) as Atrabajo')->where('id_empresa', $id)->first()->Atrabajo;
-
+        $Atrabajo = Calificaciones::select('c_cat_1')->where('id_empresa', $id)->get();
+        
         // Factores propios de la actividad
-        $Fpropios = DB::table('registros')->selectRaw('SUM(item_1) + SUM(item_2) + SUM(item_3) + SUM(item_4) + SUM(item_5) + SUM(item_6) + SUM(item_7) + SUM(item_8) + SUM(item_9) + SUM(item_10) + 
-        SUM(item_11) + SUM(item_12) + SUM(item_13) + SUM(item_14) + SUM(item_15) + SUM(item_16) + SUM(item_23) + SUM(item_24) + SUM(item_25) + SUM(item_26) + SUM(item_27) + SUM(item_28) + SUM(item_29) + SUM(item_30) + SUM(item_35) + SUM(item_36) + SUM(item_65) + SUM(item_66) + SUM(item_67) + SUM(item_68) as Fpropios')->where('id_empresa', $id)->first()->Fpropios;
-
+        $Fpropios = Calificaciones::select('c_cat_2')->where('id_empresa', $id)->get();
+        
         // Organización del tiempo de trabajo
-        $Otiempo = DB::table('registros')->selectRaw('SUM(item_17) + SUM(item_18) + SUM(item_19) + SUM(item_20) + SUM(item_21) + SUM(item_22) as Otiempo')->where('id_empresa', $id)->first()->Otiempo;
+        $Otiempo = Calificaciones::select('c_cat_3')->where('id_empresa', $id)->get();
+
+        // Liderazgo y relaciones en el trabajo
+        $Lrelaciones = Calificaciones::select('c_cat_4')->where('id_empresa', $id)->get();
+
+        // Entorno Organizacional
+        $Eorganizacional = Calificaciones::select('c_cat_5')->where('id_empresa', $id)->get();
+
+        // Condiciones en el ambiente de trabajo
+        $Cambiente = Calificaciones::select('c_dominio_1')->where('id_empresa', $id)->get();
+        
+        // Carga de trabajo
+        $Ctrabajo = Calificaciones::select('c_dominio_2')->where('id_empresa', $id)->get();
+
 
         // Eventos traumáticos severos
         $ets_1Si = Registro::select('ets_1')->where('ets_1', 'Sí')->count();
@@ -368,7 +381,21 @@ class EmpresasController extends Controller
 
         $etsTotalNo = $ets_1No+$ets_2No+$ets_3No+$ets_4No+$ets_5No+$ets_6No+$ets_7No+$ets_8No+$ets_9No+$ets_10No+$ets_11No+$ets_12No+$ets_13No+$ets_14No+$ets_15No+$ets_16No+$ets_17No+$ets_18No+$ets_19No+$ets_20No;
 
-        return view('admin.empresas.graficas', compact('etsTotalSi', 'etsTotalNo', 'estudios', 'registros', 'NombreEmpresa', 'c_final', 'Atrabajo', 'Fpropios', 'Otiempo'));
+        return view('admin.empresas.graficas', compact(
+            'etsTotalSi', 
+            'etsTotalNo', 
+            'estudios', 
+            'registros', 
+            'NombreEmpresa', 
+            'c_final', 
+            'Atrabajo', 
+            'Fpropios', 
+            'Otiempo', 
+            'Lrelaciones', 
+            'Eorganizacional',
+            'Cambiente',
+            'Ctrabajo'
+        ));
 
 
     }

@@ -54,11 +54,16 @@
                                         @include('admin.empresas.graficas.organizacion')
                                         @include('admin.empresas.graficas.liderazgo')
                                         @include('admin.empresas.graficas.organizacional')
+                                        @include('admin.empresas.graficas.cambientetrabajo')
+                                        @include('admin.empresas.graficas.cargatrabajo')
                                     </div>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="nav-contact" role="tabpanel"
                                 aria-labelledby="nav-contact-tab">
+                                <div class="col-12 mt-4">
+                                    <a href="{{ route('registro.export', ['id' => 1]) }}" class="btn btn-success"><i class="fas fa-file-excel mr-2"></i>Exportar reporte</a>
+                                </div>
                                 <div class="col-12 col-md-12 mt-4">
                                     <table class="table table-stripped table-responsive table-bordered w-100">
 
@@ -83,6 +88,7 @@
                                                 <th scope="col" class="text-center">Estado Civil</th>
                                                 <th scope="col" class="text-center" width="10%">Tiempo que tardo en
                                                     contestar la encuesta</th>
+                                                <th scope="col" class="text-center">Resultados</th>
 
                                             </tr>
 
@@ -107,7 +113,9 @@
                                                         
                                                         echo date('H:i:s', $time1 - $time2);
                                                     @endphp</td>
-
+                                                    <td>
+                                                        <a target="_blank" href="/resultados/{{$registro->token}}" class="btn btn-success">Ver resultados</a>
+                                                    </td>
                                                 </tr>
                                             @endforeach
                                         </tbody>

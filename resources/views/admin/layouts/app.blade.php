@@ -237,7 +237,7 @@
 
                         {{-- Link a Reportes --}}
 
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
 
                             <a href="{{ route('registro.index') }}" class="nav-link">
 
@@ -247,7 +247,7 @@
 
                             </a>
 
-                        </li>
+                        </li> --}}
 
                         {{-- Fin Link a Reportes --}}
 
@@ -255,7 +255,7 @@
 
                         {{-- Link a Graficas --}}
 
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
 
                             <a href="{{ route('graficas') }}" class="nav-link">
 
@@ -265,7 +265,7 @@
 
                             </a>
 
-                        </li>
+                        </li> --}}
 
                         {{-- Fin Link a Graficas --}}
 

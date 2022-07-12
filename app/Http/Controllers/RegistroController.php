@@ -660,9 +660,12 @@ class RegistroController extends Controller
     }
 
     // Exportar registros generales
-    public function export()
+    public function export($id)
     {
-        return Excel::download(new RegistroExport, "Registros-".date("Y-m-d H:i:s").".xlsx");
+        $registro = Registro::where('id_empresa', $id)->get();
+        $empresa = Empresas::where('id', $id)->first();
+        // return Excel::download(new RegistroExport, "Registros-".date("Y-m-d H:i:s").".xlsx");
+        return (new RegistroExport($registro))->download("Registros de la empresa $empresa->nombre-".date("Y-m-d H:i:s").".xlsx");
     }
     
 }
