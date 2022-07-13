@@ -1,51 +1,50 @@
 <div class="col-12 col-md-4 mt-4">
-    <canvas id="area" width="400" height="400"></canvas>
+    <canvas id="faltacontrol" width="400" height="400"></canvas>
 </div>
-
 @php
-    error_reporting(0);
-    $arrayEstudios = array();
-    $sumEstudios = array();
-    
-    foreach ($estudios as $key => $value){
-        $estudio = $value->area;
-        
-        // Introducir los estudios en el arreglo arrayEstudios
-        array_push($arrayEstudios, $estudio);
+    $nulo = 0;
+    $bajo = 0;
+    $medio = 0;
+    $alto = 0;
+    $muyalto = 0;
 
-        // Capturar cuantos son del mismo nivel academico
-        $estudios_academicos = array($estudio => count($value->area));
-        // echo "<pre>"; print_r($estudios_academicos); echo "</pre>";
-        foreach($estudios_academicos as $index => $item){
-            $sumEstudios[$index] += $item;
+    foreach($Fcontrol as $value){
+        if ($value->c_dominio_3 < 11){
+            $nulo+=1;
+        }else if ($value->c_dominio_3 <= 11 || $value->c_dominio_3 < 16){
+            $bajo+=1;
+        }else if ($value->c_dominio_3 <= 16 || $value->c_dominio_3 < 21){
+            $medio+=1;
+        }else if ($value->c_dominio_3 <= 21 || $value->c_dominio_3 < 25){
+            $alto+=1;
+        }else if ($value->c_dominio_3 >= 25){
+            $muyalto+=1;
         }
     }
-
-    // echo "<pre>"; print_r($sumEstudios); echo "</pre>";
-    $dataNoRepeat = array_unique($arrayEstudios);
-    // echo "<pre>"; print_r($dataNoRepeat); echo "</pre>";
 @endphp
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
 <script>
 
-    var estudios = document.getElementById('area').getContext('2d');
+    var estudios = document.getElementById('faltacontrol').getContext('2d');
     var estudiosChart = new Chart(estudios, {
         type: 'bar',
         data: {
             labels: [
-                <?php
-                    foreach($dataNoRepeat as $key => $value){
-                        echo "'".$value."',";
-                    }
-                ?>
+                'NULO',
+                'BAJO',
+                'MEDIA',
+                'ALTO',
+                'MUY ALTO'
             ],
             datasets: [{
                 label: 'Resultados de <?php echo count($estudios); ?> registros de usuarios',
                 data: [
                     <?php
-                        foreach($dataNoRepeat as $key => $value){
-                            echo "'".$sumEstudios[$value]."',";
-                        }
+                        echo $nulo.",";
+                        echo $bajo.",";
+                        echo $medio.",";
+                        echo $alto.",";
+                        echo $muyalto;
                     ?>
                 ],
                 backgroundColor: [
@@ -75,7 +74,7 @@
                 },
                 title: {
                     display: true,
-                    text: 'Área',
+                    text: 'Falta de control sobre el trabajo',
                     font: {
                         size: 20
                     }

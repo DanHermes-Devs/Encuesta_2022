@@ -48,14 +48,66 @@
 
                                 <div class="col-12 col-md-12 mt-5 pt-4">
                                     <div class="row mt-4">
+                                        <div class="col-12 col-12 bg-dark p-4 text-center mb-4">
+                                            <h2 class="m-0">Graficas por Categoría</h2>
+                                        </div>
                                         @include('admin.empresas.graficas.cfinal')
                                         @include('admin.empresas.graficas.ambiente')
                                         @include('admin.empresas.graficas.factores')
                                         @include('admin.empresas.graficas.organizacion')
                                         @include('admin.empresas.graficas.liderazgo')
                                         @include('admin.empresas.graficas.organizacional')
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-md-12 mt-5 pt-4">
+                                    <div class="row">
+                                        <div class="col-12 col-12 bg-dark p-4 text-center mb-4">
+                                            <h2 class="m-0">Graficas por Dominio</h2>
+                                        </div>
                                         @include('admin.empresas.graficas.cambientetrabajo')
                                         @include('admin.empresas.graficas.cargatrabajo')
+                                        @include('admin.empresas.graficas.faltacontrol')
+                                        @include('admin.empresas.graficas.jornadatrabajo')
+                                        @include('admin.empresas.graficas.trabajofamilia')
+                                        @include('admin.empresas.graficas.liderazgodominio')
+                                        @include('admin.empresas.graficas.relacionestrabajo')
+                                        @include('admin.empresas.graficas.violencia')
+                                        @include('admin.empresas.graficas.reconocimientodesempeño')
+                                        @include('admin.empresas.graficas.insuficientesentido')
+                                    </div>
+                                </div>
+                                
+                                <div class="col-12 col-md-12 mt-5 pt-4">
+                                    <div class="row">
+                                        <div class="col-12 col-12 bg-dark p-4 text-center mb-4">
+                                            <h2 class="m-0">Graficas por Dimensión</h2>
+                                        </div>
+                                        @include('admin.empresas.graficas.condicionespeligrosas')
+                                        @include('admin.empresas.graficas.condicionesdeficientes')
+                                        @include('admin.empresas.graficas.trabajospeligrosos')
+                                        @include('admin.empresas.graficas.cargascuantitativas')
+                                        @include('admin.empresas.graficas.ritmostrabajo')
+                                        @include('admin.empresas.graficas.cargamental')
+                                        @include('admin.empresas.graficas.cargaspsicoemocionales')
+                                        @include('admin.empresas.graficas.cargasresponsabilidad')
+                                        @include('admin.empresas.graficas.cargascontradictorias')
+                                        @include('admin.empresas.graficas.faltacontroldimension')
+                                        @include('admin.empresas.graficas.limitadanula')
+                                        @include('admin.empresas.graficas.insuficienteparticipacion')
+                                        @include('admin.empresas.graficas.limitadainexistente')
+                                        @include('admin.empresas.graficas.jorandasextensas')
+                                        @include('admin.empresas.graficas.trabajofuera')
+                                        @include('admin.empresas.graficas.responsabilidadesfamiliares')
+                                        @include('admin.empresas.graficas.escazaclaridad')
+                                        @include('admin.empresas.graficas.caracteristicasliderazgo')
+                                        @include('admin.empresas.graficas.relacionessociales')
+                                        @include('admin.empresas.graficas.deficienterelacion')
+                                        @include('admin.empresas.graficas.violencialaboral')
+                                        @include('admin.empresas.graficas.nularetroalimentacion')
+                                        @include('admin.empresas.graficas.nuloreconocimiento')
+                                        @include('admin.empresas.graficas.limitadosentidopertenencia')
+                                        @include('admin.empresas.graficas.inestabilidadlaboral')
                                     </div>
                                 </div>
                             </div>

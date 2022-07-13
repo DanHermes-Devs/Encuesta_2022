@@ -382,6 +382,105 @@ class EmpresasController extends Controller
 
         $etsTotalNo = $ets_1No+$ets_2No+$ets_3No+$ets_4No+$ets_5No+$ets_6No+$ets_7No+$ets_8No+$ets_9No+$ets_10No+$ets_11No+$ets_12No+$ets_13No+$ets_14No+$ets_15No+$ets_16No+$ets_17No+$ets_18No+$ets_19No+$ets_20No;
 
+        // Falta de control sobre el trabajo
+        $Fcontrol = Calificaciones::select('c_dominio_3')->where('id_empresa', $id)->get();
+        
+        // Jornada de trabajo
+        $Jtrabajo = Calificaciones::select('c_dominio_4')->where('id_empresa', $id)->get();
+        
+        // Interferencia en la relación trabajo-familia
+        $Irelacion = Calificaciones::select('c_dominio_5')->where('id_empresa', $id)->get();
+        
+        // Liderazgo
+        $Liderazgo = Calificaciones::select('c_dominio_6')->where('id_empresa', $id)->get();
+        
+        // Relaciones en el trabajo	
+        $Rtrabajo = Calificaciones::select('c_dominio_7')->where('id_empresa', $id)->get();
+        
+        // Violencia
+        $Violencia = Calificaciones::select('c_dominio_8')->where('id_empresa', $id)->get();
+        
+        // Reconocimiento del desempeño
+        $Rdesempeño = Calificaciones::select('c_dominio_9')->where('id_empresa', $id)->get();
+        
+        // Insuficiente sentido de pertenencia e, inestabilidad
+        $Ipertenencia = Calificaciones::select('c_dominio_10')->where('id_empresa', $id)->get();
+        
+        // Condiciones peligrosas e inseguras
+        $Cpeligrosas = Calificaciones::select('c_dimension_1')->where('id_empresa', $id)->get();
+        
+        // Condiciones deficientes e insalubres
+        $Cdeficientes = Calificaciones::select('c_dimension_2')->where('id_empresa', $id)->get();
+        
+        // Trabajos peligrosos	
+        $Tpeligrosos = Calificaciones::select('c_dimension_3')->where('id_empresa', $id)->get();
+        
+        // Cargas cuantitativas	
+        $Ccuantitativa = Calificaciones::select('c_dimension_4')->where('id_empresa', $id)->get();
+        
+        // Ritmos de trabajo acelerado	
+        $Rtrabajoacelerado = Calificaciones::select('c_dimension_5')->where('id_empresa', $id)->get();
+        
+        // Carga Mental
+        $Cmental = Calificaciones::select('c_dimension_6')->where('id_empresa', $id)->get();
+        
+        // Cargas psicológicas emocionales	
+        $Cpsicologica = Calificaciones::select('c_dimension_7')->where('id_empresa', $id)->get();
+        
+        // Cargas de alta responsabilidad
+        $Calta = Calificaciones::select('c_dimension_8')->where('id_empresa', $id)->get();
+        
+        // Cargas contradictorias o inconsistentes
+        $Ccontradictorias = Calificaciones::select('c_dimension_9')->where('id_empresa', $id)->get();
+        
+        // Falta de control y autonomía sobre el trabajo
+        $Fcontrolautonomia = Calificaciones::select('c_dimension_10')->where('id_empresa', $id)->get();
+        
+        // Limitada o nula posibilidad de desarrollo
+        $Ldesarrollo = Calificaciones::select('c_dimension_11')->where('id_empresa', $id)->get();
+        
+        // Insuficiente participación y manejo del cambio	
+        $Iparticipacion = Calificaciones::select('c_dimension_12')->where('id_empresa', $id)->get();
+        
+        // Limitada o inexistente capacitación
+        $Lcapacitacion = Calificaciones::select('c_dimension_13')->where('id_empresa', $id)->get();
+        
+        // Jornadas de trabajo extensas	
+        $Jextensas = Calificaciones::select('c_dimension_14')->where('id_empresa', $id)->get();
+        
+        // Influencia del trabajo fuera del centro laboral
+        $Itrabajofuera = Calificaciones::select('c_dimension_15')->where('id_empresa', $id)->get();
+        
+        // Influencia de las responsabilidades familiares
+        $Iresponsabilidades = Calificaciones::select('c_dimension_16')->where('id_empresa', $id)->get();
+        
+        // Escaza claridad de funciones	
+        $Eclaridad = Calificaciones::select('c_dimension_17')->where('id_empresa', $id)->get();
+        
+        // Características del liderazgo
+        $Caracteristicas = Calificaciones::select('c_cat_6')->where('id_empresa', $id)->get();
+        
+        // Relaciones sociales en el trabajo
+        $Rsociales = Calificaciones::select('c_cat_7')->where('id_empresa', $id)->get();
+        
+        // Deficiente relación con los colaboradores que supervisa
+        $Drelaciones = Calificaciones::select('c_dimension_18')->where('id_empresa', $id)->get();
+        
+        // Violencia laboral
+        $ViolenciaLaboral = Calificaciones::select('c_dimension_19')->where('id_empresa', $id)->get();
+        
+        // Escasa o nula retroalimentación del desempeño
+        $Eretroalimentacion = Calificaciones::select('c_dimension_20')->where('id_empresa', $id)->get();
+        
+        // Escaso o nulo reconocimiento y compensación	
+        $Ereconocimiento = Calificaciones::select('c_dimension_21')->where('id_empresa', $id)->get();
+        
+        // Limitado sentido de pertenencia
+        $Lpertenencia = Calificaciones::select('c_dimension_22')->where('id_empresa', $id)->get();
+        
+        // Inestabilidad laboral
+        $Iestabilidad = Calificaciones::select('c_dimension_23')->where('id_empresa', $id)->get();
+        
         return view('admin.empresas.graficas', compact(
             'empresa',
             'etsTotalSi', 
@@ -396,7 +495,40 @@ class EmpresasController extends Controller
             'Lrelaciones', 
             'Eorganizacional',
             'Cambiente',
-            'Ctrabajo'
+            'Ctrabajo',
+            'Fcontrol',
+            'Jtrabajo',
+            'Irelacion',
+            'Liderazgo',
+            'Rtrabajo',
+            'Violencia',
+            'Rdesempeño',
+            'Ipertenencia',
+            'Cpeligrosas',
+            'Cdeficientes',
+            'Tpeligrosos',
+            'Ccuantitativa',
+            'Rtrabajoacelerado',
+            'Cmental',
+            'Cpsicologica',
+            'Calta',
+            'Ccontradictorias',
+            'Fcontrolautonomia',
+            'Ldesarrollo',
+            'Iparticipacion',
+            'Lcapacitacion',
+            'Jextensas',
+            'Itrabajofuera',
+            'Iresponsabilidades',
+            'Eclaridad',
+            'Caracteristicas',
+            'Rsociales',
+            'Drelaciones',
+            'ViolenciaLaboral',
+            'Eretroalimentacion',
+            'Ereconocimiento',
+            'Lpertenencia',
+            'Iestabilidad'
         ));
 
 
