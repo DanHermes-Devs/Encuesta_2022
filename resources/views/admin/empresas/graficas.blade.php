@@ -73,7 +73,7 @@
                                         @include('admin.empresas.graficas.liderazgodominio')
                                         @include('admin.empresas.graficas.relacionestrabajo')
                                         @include('admin.empresas.graficas.violencia')
-                                        @include('admin.empresas.graficas.reconocimientodesempeño')
+                                        @include('admin.empresas.graficas.reconocimientodesempeno')
                                         @include('admin.empresas.graficas.insuficientesentido')
                                     </div>
                                 </div>
