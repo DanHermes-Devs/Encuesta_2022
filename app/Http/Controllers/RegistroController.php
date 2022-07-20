@@ -667,5 +667,19 @@ class RegistroController extends Controller
         // return Excel::download(new RegistroExport, "Registros-".date("Y-m-d H:i:s").".xlsx");
         return (new RegistroExport($registro))->download("Registros de la empresa $empresa->nombre-".date("Y-m-d H:i:s").".xlsx");
     }
+
+    // Eliminar registro
+    public function delete($id)
+    {
+        $registro = Registro::find($id);
+
+        if($registro){
+            $registro->delete();
+            return response()->json(['message' => 'Registro eliminado correctamente.', 'status' => 'success']);
+        }else{
+            return response()->json(['message' => 'El registro no se ah eliminado.', 'status' => 'error']);
+        }
+
+    }
     
 }

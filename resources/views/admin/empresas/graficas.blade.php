@@ -24,9 +24,9 @@
                         <nav>
                             <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                 <a class="nav-link active" id="nav-profile-tab" data-toggle="tab" href="#nav-profile"
-                                    role="tab" aria-controls="nav-profile" aria-selected="true">Graficas</a>
+                                    role="tab" aria-controls="nav-profile" aria-selected="false">Graficas</a>
                                 <a class="nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact"
-                                    role="tab" aria-controls="nav-contact" aria-selected="false">Tabla de usuarios</a>
+                                    role="tab" aria-controls="nav-contact" aria-selected="true">Registros</a>
                             </div>
                         </nav>
                         <div class="tab-content" id="nav-tabContent">
@@ -77,7 +77,7 @@
                                         @include('admin.empresas.graficas.insuficientesentido')
                                     </div>
                                 </div>
-                                
+
                                 <div class="col-12 col-md-12 mt-5 pt-4">
                                     <div class="row">
                                         <div class="col-12 col-12 bg-dark p-4 text-center mb-4">
@@ -111,10 +111,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="nav-contact" role="tabpanel"
-                                aria-labelledby="nav-contact-tab">
+                            <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
                                 <div class="col-12 mt-4">
-                                    <a href="{{ route('registro.export', ['id' => $empresa->id]) }}" class="btn btn-success"><i class="fas fa-file-excel mr-2"></i>Exportar reporte</a>
+                                    <a href="{{ route('registro.export', ['id' => $empresa->id]) }}"
+                                        class="btn btn-success"><i class="fas fa-file-excel mr-2"></i>Exportar reporte</a>
                                 </div>
                                 <div class="col-12 col-md-12 mt-4">
                                     <table class="table table-stripped table-responsive table-bordered w-100">
@@ -140,7 +140,7 @@
                                                 <th scope="col" class="text-center">Estado Civil</th>
                                                 <th scope="col" class="text-center" width="10%">Tiempo que tardo en
                                                     contestar la encuesta</th>
-                                                <th scope="col" class="text-center">Resultados</th>
+                                                <th scope="col" class="text-center">Acciones</th>
 
                                             </tr>
 
@@ -166,7 +166,10 @@
                                                         echo date('H:i:s', $time1 - $time2);
                                                     @endphp</td>
                                                     <td>
-                                                        <a target="_blank" href="/resultados/{{$registro->token}}" class="btn btn-success">Ver resultados</a>
+                                                        <a target="_blank" href="/resultados/{{ $registro->token }}"
+                                                            class="btn btn-success">Ver resultados</a>
+                                                        <a href="javascript:void()" class="btn btn-danger deleteRegister"
+                                                            data-id="{{ $registro->id }}">Eliminar registro</a>
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -190,4 +193,61 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"></script>
 
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('body').on('click', '.deleteRegister', function(e) {
+
+                e.preventDefault();
+
+                var id = $(this).attr('data-id');
+
+                Swal.fire({
+
+                    title: '¿Estás seguro?',
+
+                    text: "¡No podrás revertir esto!",
+
+                    icon: 'warning',
+
+                    showCancelButton: true,
+
+                    confirmButtonColor: '#3085d6',
+
+                    cancelButtonColor: '#d33',
+
+                    confirmButtonText: 'Sí, eliminar',
+
+                    cancelButtonText: 'Cancelar'
+
+                }).then((result) => {
+
+                    if (result.value) {
+
+                        $.ajax({
+                            url: '/registro/delete/' + id,
+                            type: 'GET',
+                            success: function(data) {
+
+                                if (data.status == 'success') {
+                                    location.reload();
+                                } else {
+                                    alert(data.status)
+                                }
+
+                            },
+                            error: function(data) {
+
+                                console.log(data);
+
+                            }
+                        });
+
+                    }
+
+                });
+            })
+        });
+    </script>
 @endsection

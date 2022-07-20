@@ -116,6 +116,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/registros/export/{id}', 'RegistroController@export')->name('registro.export');
 
+    Route::get('/registro/delete/{id}', 'RegistroController@delete')->name('registro.delete');
+
 
 
     // Rutas para empresas
