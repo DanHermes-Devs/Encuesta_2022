@@ -362,7 +362,7 @@
                                     </div>
 
                                 </div>
-{{-- 
+
                                 <div class="col-12 col-md-12 mb-4 cards">
 
                                     <div class="form-group">
@@ -395,7 +395,7 @@
 
                                     </div>
 
-                                </div> --}}
+                                </div>
                             </div>
 
                             <div class="col-12 col-md-12">
@@ -450,7 +450,7 @@
 
             var inputs = $("." + type);
 
-            if (inputs.length < 10) {
+            if (inputs.length < 1000) {
 
                 if (type == "tipo_puesto") {
 
@@ -576,7 +576,7 @@
 
             } else {
 
-                alert("Maximo 10 opciones");
+                alert("Maximo 1000 opciones");
 
                 return;
 

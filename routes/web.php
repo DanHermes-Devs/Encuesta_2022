@@ -43,9 +43,15 @@ Route::get('/storage_link', function() {
 
 // Iseed para las tablas que ya tienen datos
 Route::get('/table_iseed', function() { 
-    Artisan::call('iseed empresas'); 
-    Artisan::call('iseed registros'); 
-    Artisan::call('iseed calificaciones'); 
+    Artisan::call('iseed empresas', [
+        '--force' => true
+     ]); 
+    Artisan::call('iseed registros', [
+        '--force' => true
+     ]); 
+    Artisan::call('iseed calificaciones', [
+        '--force' => true
+     ]); 
 });
 
 // Fresh y almcaenamiento de la base de datos

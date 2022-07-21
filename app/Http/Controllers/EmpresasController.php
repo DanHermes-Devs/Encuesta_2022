@@ -121,14 +121,14 @@ class EmpresasController extends Controller
                 }
             }
             $empresas->jornada_trabajo = json_encode($jornada_trabajo);
-            // if(isset($request->rotacion_turnos)){
-            //     $rotacion_turnos = array();
-            //     // Recorrer con un ciclo for para obtener los valores
-            //     for($i = 0; $i < $request->rotacion_turnos; $i++){
-            //         array_push($rotacion_turnos, $_POST['summaryRotacion_'.$i]);
-            //     }
-            // }
-            // $empresas->rotacion_turnos = json_encode($rotacion_turnos);
+            if(isset($request->rotacion_turnos)){
+                $rotacion_turnos = array();
+                // Recorrer con un ciclo for para obtener los valores
+                for($i = 0; $i < $request->rotacion_turnos; $i++){
+                    array_push($rotacion_turnos, $_POST['summaryRotacion_'.$i]);
+                }
+            }
+            $empresas->rotacion_turnos = json_encode($rotacion_turnos);
             $empresas->save();
             return response()->json(['message' => 'Empresa creada correctamente.', 'empresa' => $empresas, 'status' => 'success']);
         }
@@ -241,14 +241,14 @@ class EmpresasController extends Controller
                 }
             }
             $empresas->jornada_trabajo = json_encode($jornada_trabajo);
-            // if(isset($request->rotacion_turnos)){
-            //     $rotacion_turnos = array();
-            //     // Recorrer con un ciclo for para obtener los valores
-            //     for($i = 0; $i < $request->rotacion_turnos; $i++){
-            //         array_push($rotacion_turnos, $_POST['summaryRotacion_'.$i]);
-            //     }
-            // }
-            // $empresas->rotacion_turnos = json_encode($rotacion_turnos);
+            if(isset($request->rotacion_turnos)){
+                $rotacion_turnos = array();
+                // Recorrer con un ciclo for para obtener los valores
+                for($i = 0; $i < $request->rotacion_turnos; $i++){
+                    array_push($rotacion_turnos, $_POST['summaryRotacion_'.$i]);
+                }
+            }
+            $empresas->rotacion_turnos = json_encode($rotacion_turnos);
             $empresas->save();
             // Mandar mensaje flash en la vista con el mensaje de que se ha actualizado correctamente
             

@@ -32,6 +32,9 @@ class DatabaseSeeder extends Seeder
         User::factory(1)->create();
         Configuracion::factory(1)->create();
         AvisoPrivacidad::factory(1)->create();
+        $this->call(EmpresasTableSeeder::class);
+        $this->call(RegistrosTableSeeder::class);
+        $this->call(CalificacionesTableSeeder::class);
     }
 
 }
