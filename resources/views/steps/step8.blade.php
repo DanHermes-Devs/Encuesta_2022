@@ -286,7 +286,7 @@
 
 <div class="item_1_4 mb-4">
 
-    <label for="tituloa-item__1"><b>5.- ¿Pienso en las actividades familiares o personal es cuando estoy en mi trabajo?</b></label>
+    <label for="tituloa-item__1"><b>5.- ¿Pienso en las actividades familiares o personales cuando estoy en mi trabajo?</b></label>
 
     <div class="form-check">
 
