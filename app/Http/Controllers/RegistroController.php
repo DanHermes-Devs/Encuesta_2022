@@ -672,9 +672,11 @@ class RegistroController extends Controller
     public function delete($id)
     {
         $registro = Registro::find($id);
+        $calificacion = Calificaciones::where('id_registro', $id)->first();
 
         if($registro){
             $registro->delete();
+            $calificacion;
             return response()->json(['message' => 'Registro eliminado correctamente.', 'status' => 'success']);
         }else{
             return response()->json(['message' => 'El registro no se ah eliminado.', 'status' => 'error']);
