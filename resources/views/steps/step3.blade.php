@@ -38,11 +38,11 @@
 
 
 
-<div class="form-group">
+<div class="form-group mb-4">
 
     <label>Rotación de turnos</label>
 
-    <select class="form-control" id="rotacion_turnos" name="rotacion_turnos">
+    <select class="form-control mb-2" id="rotacion_turnos" name="rotacion_turnos">
 
         <option value="">--Elige una opción--</option>
 
@@ -54,13 +54,19 @@
 
     </select>
 
+    <small class="card-alert mt-2">
+        <p>
+            <b>NOTA</b>: Rotar, de ahí lo de “turnos rotativos”. Ir cambiando de horario de trabajo.
+        </p>
+    </small>
+
 </div>
 
 
 
 <div class="form-group">
 
-    <label>Eperiencia Laboral</label>
+    <label>Experiencia Laboral</label>
 
     <select class="form-control" id="experiencia_laboral" name="experiencia_laboral">
 

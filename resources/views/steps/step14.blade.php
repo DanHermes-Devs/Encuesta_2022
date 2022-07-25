@@ -568,6 +568,10 @@
 
     </div>
 
+    <small class="card-alert mt-2">
+        <p><b>NOTA</b>: La rotación de personal describe el cambio de empleados de una empresa. Es un proceso que se extiende desde la terminación de un contrato hasta el reclutamiento y la contratación de nuevos empleados.</p>
+    </small>
+
 </div>
 
 

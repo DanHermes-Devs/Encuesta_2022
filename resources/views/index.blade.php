@@ -17,6 +17,16 @@
 
     }
 
+    .card-alert p {
+        color: #0c5460;
+        background-color: #d1ecf1;
+        border-color: #bee5eb;
+        padding: 0.5rem;
+        border-radius: 0.25rem;
+        font-size: .8rem;
+        margin-top: 0.8rem;
+    }
+
 
 
     label {
