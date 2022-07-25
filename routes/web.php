@@ -2,7 +2,7 @@
 
 
 
-define('STDIN',fopen("php://stdin","r"));
+// define('STDIN',fopen("php://stdin","r"));
 
 use App\Registro;
 

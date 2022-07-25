@@ -62,6 +62,24 @@
 
 </div>
 
+<div class="form-group mb-4">
+
+    <label>Rotación de personal</label>
+
+    <select class="form-control mb-2" id="rotacion_personal" name="rotacion_personal">
+
+        <option value="">--Elige una opción--</option>
+
+        @foreach ($rotacion_personal as $rotacion)
+
+            <option value="{{ $rotacion }}">{{ $rotacion }}</option>
+
+        @endforeach
+
+    </select>
+
+</div>
+
 
 
 <div class="form-group">

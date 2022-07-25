@@ -25,6 +25,7 @@ class Registro extends Model
         'tipo_contratacion',
         'jornada_trabajo',
         'rotacion_turnos',
+        'rotacion_personal',
         'experiencia_laboral',
         'item_1',
         'item_2',

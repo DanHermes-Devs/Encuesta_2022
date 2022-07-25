@@ -22,7 +22,8 @@ class Empresas extends Model
         'area',
         'tipo_contratacion',
         'jornada_trabajo',
-        'rotacion_turnos'
+        'rotacion_turnos',
+        'rotacion_personal',
     ];
 
     public function registros()

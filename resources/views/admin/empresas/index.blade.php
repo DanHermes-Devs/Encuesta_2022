@@ -363,6 +363,7 @@
 
                                 </div>
 
+                                {{-- Rotacion de turnos --}}
                                 <div class="col-12 col-md-12 mb-4 cards">
 
                                     <div class="form-group">
@@ -396,6 +397,43 @@
                                     </div>
 
                                 </div>
+                                {{-- Rotacion de turnos --}}
+
+                                {{-- Rotacion de personal --}}
+                                <div class="col-12 col-md-12 mb-4 cards">
+
+                                    <div class="form-group">
+
+                                        <label for="my-input">Rotacion de personal</label>
+
+                                        <input type="hidden" name="rotacion_personal" value="1">
+
+                                        <div class="form-group__content input-group mb-3 rotacion_personal">
+
+                                            <div class="input-group-append">
+
+                                                <span class="input-group-text">
+
+                                                    <span class="badge badge-danger"
+                                                        onclick="removeInput(0,'rotacion_personal')"><i
+                                                            class="fas fa-times"></i></span>
+
+                                                </span>
+
+                                            </div>
+
+                                            <input type="text" class="form-control" name="summaryRotacionPersonal_0">
+
+                                        </div>
+
+                                        <button class="btn btn-success btn-sm mb-2" type="button" id="addOption"
+                                            onclick="addInput(this, 'rotacion_personal')"><i
+                                                class="fas fa-plus mr-2"></i>Añadir</button>
+
+                                    </div>
+
+                                </div>
+                                {{-- Rotacion de personal --}}
                             </div>
 
                             <div class="col-12 col-md-12">
@@ -565,6 +603,30 @@
                             </div>
 
                             <input type="text" class="form-control" name="summaryRotacion_${inputs.length}">
+
+                        </div>
+
+                    `);
+
+                }
+
+                if (type == "rotacion_personal") {
+
+                    $(elem).before(`
+
+                        <div class="form-group__content input-group mb-3 rotacion_personal">
+
+                            <div class="input-group-append">
+
+                                <span class="input-group-text">
+
+                                    <span class="badge badge-danger" onclick="removeInput(${inputs.length},'rotacion_personal')"><i class="fas fa-times"></i></span>
+
+                                </span>
+
+                            </div>
+
+                            <input type="text" class="form-control" name="summaryRotacionPersonal_${inputs.length}">
 
                         </div>
 

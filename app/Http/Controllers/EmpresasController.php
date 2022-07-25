@@ -50,7 +50,7 @@ class EmpresasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {        
         $messages = [
             // Validar campos
             'nombre.required' => 'El nombre de la empresa es requerido',
@@ -129,6 +129,14 @@ class EmpresasController extends Controller
                 }
             }
             $empresas->rotacion_turnos = json_encode($rotacion_turnos);
+            if(isset($request->rotacion_personal)){
+                $rotacion_personal = array();
+                // Recorrer con un ciclo for para obtener los valores
+                for($i = 0; $i < $request->rotacion_personal; $i++){
+                    array_push($rotacion_personal, $_POST['summaryRotacionPersonal_'.$i]);
+                }
+            }
+            $empresas->rotacion_personal = json_encode($rotacion_personal);
             $empresas->save();
             return response()->json(['message' => 'Empresa creada correctamente.', 'empresa' => $empresas, 'status' => 'success']);
         }
@@ -171,6 +179,7 @@ class EmpresasController extends Controller
      */
     public function update(Request $request, Empresas $empresas)
     {
+        
         // Enoncontrar empresa primero
         $empresas = Empresas::find($request->id);
         $messages = [
@@ -249,6 +258,14 @@ class EmpresasController extends Controller
                 }
             }
             $empresas->rotacion_turnos = json_encode($rotacion_turnos);
+            if(isset($request->rotacion_personal)){
+                $rotacion_personal = array();
+                // Recorrer con un ciclo for para obtener los valores
+                for($i = 0; $i < $request->rotacion_personal; $i++){
+                    array_push($rotacion_personal, $_POST['summaryRotacionPersonal_'.$i]);
+                }
+            }
+            $empresas->rotacion_personal = json_encode($rotacion_personal);
             $empresas->save();
             // Mandar mensaje flash en la vista con el mensaje de que se ha actualizado correctamente
             

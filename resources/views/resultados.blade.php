@@ -248,6 +248,16 @@
 
                 </p>
 
+                <p class="mb-3">
+
+                    <b>Rotación de personal:</b>
+
+                    <br>
+
+                    {{ $registro->rotacion_personal }}
+
+                </p>
+
 
 
                 <p class="mb-3">

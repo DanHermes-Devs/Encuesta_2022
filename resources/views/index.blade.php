@@ -225,6 +225,7 @@
                         $jornada_trabajo = json_decode($empresa->jornada_trabajo);
                         
                         $rotacion_turnos = json_decode($empresa->rotacion_turnos);
+                        $rotacion_personal = json_decode($empresa->rotacion_personal);
                         
                         // Usar carbon para fechas
                         $fecha_actual = Carbon\Carbon::now();

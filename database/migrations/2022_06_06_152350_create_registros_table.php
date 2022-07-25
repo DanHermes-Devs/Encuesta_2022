@@ -29,6 +29,7 @@ class CreateRegistrosTable extends Migration
             $table->text('tipo_contratacion')->nullable();
             $table->text('jornada_trabajo')->nullable();
             $table->text('rotacion_turnos')->nullable();
+            $table->text('rotacion_personal')->nullable();
             $table->text('experiencia_laboral')->nullable();
             $table->integer('item_1')->nullable();
             $table->integer('item_2')->nullable();

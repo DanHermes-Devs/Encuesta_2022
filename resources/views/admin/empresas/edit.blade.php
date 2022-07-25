@@ -4,7 +4,7 @@
 
 <link rel="stylesheet" href="{{ asset('css/waitMe.min.css') }}">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.min.css" />
 
 <style>
     .badge.badge-danger {
@@ -20,27 +20,28 @@
 
     trix-editor {
 
-        min-height: 400px!important;
+        min-height: 400px !important;
 
     }
 
-    .gap-1{
+    .gap-1 {
         gap: 1rem;
     }
 
-    .cards{
+    .cards {
         border: 1px solid #ccc;
-        padding: 1rem!important;
+        padding: 1rem !important;
     }
 </style>
 
 @section('content')
     @php
-        $tipo_puestos = json_decode($empresas->tipo_puesto);
-        $areas = json_decode($empresas->area);
-        $tipo_contrataciones = json_decode($empresas->tipo_contratacion);
-        $jornada_trabajos = json_decode($empresas->jornada_trabajo);
-        $rotacion_turnos = json_decode($empresas->rotacion_turnos);
+    $tipo_puestos = json_decode($empresas->tipo_puesto);
+    $areas = json_decode($empresas->area);
+    $tipo_contrataciones = json_decode($empresas->tipo_contratacion);
+    $jornada_trabajos = json_decode($empresas->jornada_trabajo);
+    $rotacion_turnos = json_decode($empresas->rotacion_turnos);
+    $rotacion_personal = json_decode($empresas->rotacion_personal);
     @endphp
     <div class="content">
 
@@ -57,13 +58,14 @@
                 <div class="row mt-5">
                     <div class="col-12">
 
-                        @if(session('update'))
+                        @if (session('update'))
                             <div class="alert alert-success alert-block">
                                 <button type="button" class="close" data-dismiss="alert">×</button>
                                 <strong>{{ session('update') }}</strong>
                             </div>
                         @endif
-                        <form method="POST" action="{{ route('empresas.update', $empresas->id) }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('empresas.update', $empresas->id) }}"
+                            enctype="multipart/form-data">
 
                             @csrf
                             @method('PUT')
@@ -97,9 +99,9 @@
 
                                             <div class="d-flex gap-1 mt-2">
                                                 <small class="badge badge-warning">Tamaño máximo: 2MB</small>
-    
+
                                                 <small class="badge badge-warning">Formato: jpeg, jpg o png</small>
-    
+
                                                 <small class="badge badge-warning">Medidas: 300x300 pixeles</small>
                                             </div>
 
@@ -125,9 +127,9 @@
 
                                             <div class="d-flex gap-1 mt-2">
                                                 <small class="badge badge-warning">Tamaño máximo: 2MB</small>
-    
+
                                                 <small class="badge badge-warning">Formato: jpeg, jpg o png</small>
-    
+
                                                 <small class="badge badge-warning">Medidas: 1920x1080 pixeles</small>
                                             </div>
 
@@ -176,10 +178,13 @@
 
                                             <label for="logo">Activo <small class="text-red">(Requerido)</small></label>
 
-                                            <select class="form-control" id="activo" name="activo" value="{{ $empresas->activo }}">
+                                            <select class="form-control" id="activo" name="activo"
+                                                value="{{ $empresas->activo }}">
                                                 <option value="">-- Selecciona una opción --</option>
-                                                <option value="1" {{ $empresas->activo == 1 ? ' selected' : '' }}>Sí</option>
-                                                <option value="0" {{ $empresas->activo == 0 ? ' selected' : '' }}>No</option>
+                                                <option value="1" {{ $empresas->activo == 1 ? ' selected' : '' }}>Sí
+                                                </option>
+                                                <option value="0" {{ $empresas->activo == 0 ? ' selected' : '' }}>No
+                                                </option>
                                             </select>
 
                                         </div>
@@ -204,13 +209,17 @@
 
                                                         <span class="input-group-text">
 
-                                                            <span class="badge badge-danger" onclick="removeInput({{ $key }},'tipo_puesto')"><i class="fas fa-times"></i></span>
+                                                            <span class="badge badge-danger"
+                                                                onclick="removeInput({{ $key }},'tipo_puesto')"><i
+                                                                    class="fas fa-times"></i></span>
 
                                                         </span>
 
                                                     </div>
 
-                                                    <input type="text" class="form-control"  name="summaryPuesto_{{ $key }}" value="{{ $tipo_puesto }}">
+                                                    <input type="text" class="form-control"
+                                                        name="summaryPuesto_{{ $key }}"
+                                                        value="{{ $tipo_puesto }}">
 
                                                 </div>
                                             @endforeach
@@ -230,7 +239,7 @@
                                             <label for="my-input">Área</label>
 
                                             @foreach ($areas as $key => $area)
-                                                <input type="hidden" name="area" value="{{ $key+1 }}">
+                                                <input type="hidden" name="area" value="{{ $key + 1 }}">
 
                                                 <div class="form-group__content input-group mb-3 area">
 
@@ -246,7 +255,9 @@
 
                                                     </div>
 
-                                                    <input type="text" class="form-control" name="summaryArea_{{ $key }}" value="{{ $area }}">
+                                                    <input type="text" class="form-control"
+                                                        name="summaryArea_{{ $key }}"
+                                                        value="{{ $area }}">
 
                                                 </div>
                                             @endforeach
@@ -265,8 +276,9 @@
 
                                             <label for="my-input">Tipo de contratación</label>
 
-                                            @foreach ($tipo_contrataciones as $key => $tipo_contratacion )
-                                                <input type="hidden" name="tipo_contratacion" value="{{ $key+1 }}">
+                                            @foreach ($tipo_contrataciones as $key => $tipo_contratacion)
+                                                <input type="hidden" name="tipo_contratacion"
+                                                    value="{{ $key + 1 }}">
 
                                                 <div class="form-group__content input-group mb-3 tipo_contratacion">
 
@@ -282,7 +294,9 @@
 
                                                     </div>
 
-                                                    <input type="text" class="form-control" name="summaryContratacion_{{ $key }}" value="{{ $tipo_contratacion }}">
+                                                    <input type="text" class="form-control"
+                                                        name="summaryContratacion_{{ $key }}"
+                                                        value="{{ $tipo_contratacion }}">
 
                                                 </div>
                                             @endforeach
@@ -302,7 +316,8 @@
                                             <label for="my-input">Jornada de trabajo</label>
 
                                             @foreach ($jornada_trabajos as $key => $jornada)
-                                                <input type="hidden" name="jornada_trabajo" value="{{ $key+1 }}">
+                                                <input type="hidden" name="jornada_trabajo"
+                                                    value="{{ $key + 1 }}">
 
                                                 <div class="form-group__content input-group mb-3 jornada_trabajo">
 
@@ -318,7 +333,9 @@
 
                                                     </div>
 
-                                                    <input type="text" class="form-control" name="summaryJornada_{{ $key }}" value="{{ $jornada }}">
+                                                    <input type="text" class="form-control"
+                                                        name="summaryJornada_{{ $key }}"
+                                                        value="{{ $jornada }}">
                                                 </div>
                                             @endforeach
 
@@ -338,7 +355,8 @@
                                             <label for="my-input">Rotacion de turnos</label>
 
                                             @foreach ($rotacion_turnos as $key => $rotacion)
-                                                <input type="hidden" name="rotacion_turnos" value="{{ $key+1 }}">
+                                                <input type="hidden" name="rotacion_turnos"
+                                                    value="{{ $key + 1 }}">
 
                                                 <div class="form-group__content input-group mb-3 rotacion_turnos">
 
@@ -354,35 +372,82 @@
 
                                                     </div>
 
-                                                    <input type="text" class="form-control" name="summaryRotacion_{{ $key }}" value="{{ $rotacion }}">
+                                                    <input type="text" class="form-control"
+                                                        name="summaryRotacion_{{ $key }}"
+                                                        value="{{ $rotacion }}">
 
                                                 </div>
                                             @endforeach
 
-                                            <button class="btn btn-success btn-sm mb-2" type="button" id="addOption" onclick="addInput(this, 'rotacion_turnos')"><i class="fas fa-plus mr-2"></i>Añadir</button>
+                                            <button class="btn btn-success btn-sm mb-2" type="button" id="addOption"
+                                                onclick="addInput(this, 'rotacion_turnos')"><i
+                                                    class="fas fa-plus mr-2"></i>Añadir</button>
 
                                         </div>
 
                                     </div>
+
+                                    {{-- Rotacion de personal --}}
+                                    <div class="col-12 col-md-12 mb-4 cards">
+
+                                        <div class="form-group">
+
+                                            <label for="my-input">Rotacion de personal</label>
+
+                                            @foreach ($rotacion_personal as $key => $rotacion)
+                                                <input type="hidden" name="rotacion_personal"
+                                                    value="{{ $key + 1 }}">
+
+                                                <div class="form-group__content input-group mb-3 rotacion_personal">
+
+                                                    <div class="input-group-append">
+
+                                                        <span class="input-group-text">
+
+                                                            <span class="badge badge-danger"
+                                                                onclick="removeInput({{ $key }},'rotacion_personal')"><i
+                                                                    class="fas fa-times"></i></span>
+
+                                                        </span>
+
+                                                    </div>
+
+                                                    <input type="text" class="form-control"
+                                                        name="summaryRotacionPersonal_{{ $key }}"
+                                                        value="{{ $rotacion }}">
+
+                                                </div>
+                                            @endforeach
+
+                                            <button class="btn btn-success btn-sm mb-2" type="button" id="addOption"
+                                                onclick="addInput(this, 'rotacion_personal')"><i
+                                                    class="fas fa-plus mr-2"></i>Añadir</button>
+
+                                        </div>
+
+                                    </div>
+                                    {{-- Rotacion de personal --}}
                                 </div>
 
                                 <div class="col-12 col-md-12">
                                     <div class="form-group">
                                         <label for="aviso_privacidad">Aviso de privacidad</label>
-                                        <input id="aviso" type="hidden" name="aviso" value="{{ $empresas->aviso }}">
+                                        <input id="aviso" type="hidden" name="aviso"
+                                            value="{{ $empresas->aviso }}">
                                         <trix-editor input="aviso"></trix-editor>
                                     </div>
                                 </div>
 
 
-                                <input type="hidden" class="form-control" name="token" id="token" value="{{ $empresas->token }}">
+                                <input type="hidden" class="form-control" name="token" id="token"
+                                    value="{{ $empresas->token }}">
 
                             </div>
 
                             <div class="col-12">
                                 <div class="row justify-content-end">
                                     {{-- Enlace para ir atras --}}
-                                    <a href="{{ route("empresas")}}" class="mr-4 btn btn-danger">Volver atras</a>
+                                    <a href="{{ route('empresas') }}" class="mr-4 btn btn-danger">Volver atras</a>
 
                                     <button type="submit" class="btn btn-success guardarEmpresa">Editar empresa</button>
                                 </div>
@@ -527,6 +592,30 @@
                                 <span class="input-group-text">
 
                                     <span class="badge badge-danger" onclick="removeInput(${inputs.length},'rotacion_turnos')"><i class="fas fa-times"></i></span>
+
+                                </span>
+
+                            </div>
+
+                            <input type="text" class="form-control" name="summaryRotacionPersonal__${inputs.length}">
+
+                        </div>
+
+                    `);
+
+                }
+
+                if (type == "rotacion_personal") {
+
+                    $(elem).before(`
+
+                        <div class="form-group__content input-group mb-3 rotacion_personal">
+
+                            <div class="input-group-append">
+
+                                <span class="input-group-text">
+
+                                    <span class="badge badge-danger" onclick="removeInput(${inputs.length},'rotacion_personal')"><i class="fas fa-times"></i></span>
 
                                 </span>
 
