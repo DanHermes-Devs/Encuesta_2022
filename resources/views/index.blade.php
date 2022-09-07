@@ -215,21 +215,19 @@
 
                 @if ($empresa)
                     @php
-                        
-                        $tipo_puesto = json_decode($empresa->tipo_puesto);
-                        
+
                         $area = json_decode($empresa->area);
-                        
+
                         $tipo_contratacion = json_decode($empresa->tipo_contratacion);
-                        
+                        $tipo_contratacion_two = json_decode($empresa->tipo_contratacion_two);
+
                         $jornada_trabajo = json_decode($empresa->jornada_trabajo);
-                        
+
                         $rotacion_turnos = json_decode($empresa->rotacion_turnos);
-                        $rotacion_personal = json_decode($empresa->rotacion_personal);
-                        
+
                         // Usar carbon para fechas
                         $fecha_actual = Carbon\Carbon::now();
-                        
+
                     @endphp
 
                     <div class="card_steps">
@@ -299,6 +297,9 @@
 
                                 <a href="javascript:void(0)" class="display-section font-color-tab mx-2" id="step17"
                                     onclick="cambiarSeccion('step_17', 'step17')"></a>
+
+                                <a href="javascript:void(0)" class="display-section font-color-tab mx-2" id="step_EA"
+                                    onclick="cambiarSeccion('stepEA', 'step_EA')"></a>
 
                                 <a href="javascript:void(0)" class="display-section font-color-tab mx-2"
                                     id="stepInstrucciones"
@@ -443,6 +444,12 @@
                                 <div class="tab-personal" id="step_17" style="display: none">
 
                                     @include('steps.step17')
+
+                                </div>
+
+                                <div class="tab-personal" id="stepEA" style="display: none">
+
+                                    @include('steps.stepEA')
 
                                 </div>
 
@@ -593,6 +600,15 @@
 
             $('#' + idBoton).addClass('font-color-tab-selected');
 
+            const scroolTop = () => {
+                window.scroll({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+
+            document.querySelector('#' + valor).onclick = scroolTop;
+
             // $('#' + valor).click(function(){
             //     $('body, html').animate({
             //         scrollTop: '0px'
@@ -696,19 +712,22 @@
                             });
 
 
-                            // Mostrar los errores en cada input
+                            // Mostrar los errores en general
+                            $("#saveform_errList").html("");
+                            $("#saveform_errList").addClass("alert alert-danger");;
                             $.each(data.error, function(key, err_values) {
-                                $(`#${key}`).addClass('is-invalid');
-                                $("[name='" + key + "']").parent().addClass('has-error');
-                                // Si es un input radio, mostrar el mensaje de error de diferente manera
-                                if ($("[name='" + key + "']").attr('type') == 'radio') {
-                                    // $("[name='" + key + "'][value='" + err_values + "']").parent().addClass('has-error');
-                                    $("[name='" + key + "']").parent().parent().append(
-                                        `<div class="invalid-feedback">${err_values}</div>`
-                                        );
-                                } else {
-                                    $("[name='" + key + "']").parent().append( `<div class="invalid-feedback">${err_values}</div>`);
-                                }
+                                $("#saveform_errList").append(`<li>${err_values}</li>`);
+                                // $(`#${key}`).addClass('is-invalid');
+                                // $("[name='" + key + "']").parent().addClass('has-error');
+                                // // Si es un input radio, mostrar el mensaje de error de diferente manera
+                                // if ($("[name='" + key + "']").attr('type') == 'radio') {
+                                //     // $("[name='" + key + "'][value='" + err_values + "']").parent().addClass('has-error');
+                                //     $("[name='" + key + "']").parent().parent().append(
+                                //         `<div class="invalid-feedback">${err_values}</div>`
+                                //         );
+                                // } else {
+                                //     $("[name='" + key + "']").parent().append( `<div class="invalid-feedback">${err_values}</div>`);
+                                // }
                             });
 
 
@@ -726,27 +745,33 @@
 
             });
 
+            $("#jornada_trabajo").change(function() {
+                let valor = $(this).val();
 
-            $("input[name='item_jefe']").change(function() {
+                if(valor === 'Otro'){
+                    $('#otro').removeClass('d-none');
+                }else{
+                    $('#otro').addClass('d-none');
+                }
+            });
 
+            $("input[name='evtraumatico']").change(function() {
                 var valor = $(this).val();
 
                 if (valor == 'Sí') {
-
-                    $("#radio_input_1").css("display", "block");
+                    $("#radio_input_2").css("display", "block");
                     $('#stepInstrucciones').show();
+                    $('#stepInstrucciones_btn').show();
                     $('#btn_atras_1').show();
                     $('#formInputs').show();
                     $('#step18').show();
                     $('#step19').show();
                     $('#step20').show();
-                    $('#stepInstrucciones_btn').show();
                     $('#stepFinales').hide();
                     $('#btn_atras_2').hide();
 
                 } else {
-
-                    $("#radio_input_1").css("display", "none");
+                    $("#radio_input_2").css("display", "none");
                     $('#stepInstrucciones').hide();
                     $('#btn_atras_1').hide();
                     $('#formInputs').hide();
@@ -756,6 +781,29 @@
                     $('#stepInstrucciones_btn').hide();
                     $('#stepFinales').show();
                     $('#btn_atras_2').show();
+                    $('#radio_input_1').find('input[type="radio"]').prop('checked', false);
+                    $('#radio_input_2').find('input[type="radio"]').prop('checked', false);
+                    $('.step18_1').find('input[type="radio"]').prop('checked', false);
+                    $('.step19_1').find('input[type="radio"]').prop('checked', false);
+                    $('.step20_1').find('input[type="radio"]').prop('checked', false);
+                    $('#formInputs').find('input[type="radio"]').prop('checked', false);
+
+                }
+            })
+
+
+            $("input[name='item_jefe']").change(function() {
+
+                var valor = $(this).val();
+
+                if (valor == 'Sí') {
+
+                    $("#radio_input_1").css("display", "block");
+                    $('#formInputs').show();
+
+                } else {
+
+                    $("#radio_input_1").css("display", "none");
                     $('#radio_input_1').find('input[type="radio"]').prop('checked', false);
                     $('#radio_input_2').find('input[type="radio"]').prop('checked', false);
                     $('.step18_1').find('input[type="radio"]').prop('checked', false);
@@ -776,29 +824,12 @@
                 if (valor == 'Sí') {
 
                     $("#radio_input_2").css("display", "block");
-                    $('#stepInstrucciones').show();
-                    $('#btn_atras_1').show();
                     $('#formInputs').show();
-                    $('#step18').show();
-                    $('#step19').show();
-                    $('#step20').show();
-                    $('#stepInstrucciones_btn').show();
-                    $('#stepFinales').hide();
-                    $('#btn_atras_1').show();
-                    $('#btn_atras_2').hide();
 
                 } else {
 
                     $("#radio_input_2").css("display", "none");
-                    $('#stepInstrucciones').hide();
-                    $('#btn_atras_1').hide();
                     $('#formInputs').hide();
-                    $('#step18').hide();
-                    $('#step19').hide();
-                    $('#step20').hide();
-                    $('#stepInstrucciones_btn').hide();
-                    $('#stepFinales').show();
-                    $('#btn_atras_2').show();
                     $('#radio_input_1').find('input[type="radio"]').prop('checked', false);
                     $('#radio_input_2').find('input[type="radio"]').prop('checked', false);
                     $('.step18_1').find('input[type="radio"]').prop('checked', false);

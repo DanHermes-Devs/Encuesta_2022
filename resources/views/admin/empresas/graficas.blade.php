@@ -40,6 +40,7 @@
                                         @include('admin.empresas.graficas.evento_traumatico')
                                         @include('admin.empresas.graficas.edad')
                                         @include('admin.empresas.graficas.tipo_puesto')
+                                        @include('admin.empresas.graficas.tipo_empleado')
                                         @include('admin.empresas.graficas.area')
                                         @include('admin.empresas.graficas.experiencia')
                                         @include('admin.empresas.graficas.antiguedad')
@@ -131,8 +132,6 @@
 
                                                 <th scope="col" class="text-center">Estudios</th>
 
-                                                <th scope="col" class="text-center">Tipo de puesto</th>
-
                                                 <th scope="col" class="text-center">Área</th>
 
                                                 <th scope="col" class="text-center">Antigüedad</th>
@@ -153,7 +152,6 @@
                                                     <td>{{ $registro->email }}</td>
                                                     <td>{{ $registro->edad }}</td>
                                                     <td>{{ $registro->estudios }}</td>
-                                                    <td>{{ $registro->tipo_puesto }}</td>
                                                     <td>{{ $registro->area }}</td>
                                                     <td>{{ $registro->antiguedad }}</td>
                                                     <td>{{ $registro->estado_civil }}</td>
@@ -162,7 +160,7 @@
                                                     <td>@php
                                                         $time2 = strtotime($registro->fecha_inicio->format('h:i:s'));
                                                         $time1 = strtotime($registro->created_at->format('h:i:s'));
-                                                        
+
                                                         echo date('H:i:s', $time1 - $time2);
                                                     @endphp</td>
                                                     <td>

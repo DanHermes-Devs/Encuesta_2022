@@ -192,21 +192,22 @@
 
                 <p class="mb-3">
 
-                    <b>Tipo de puesto:</b>
-
-                    <br>
-
-                    {{ $registro->tipo_puesto }}
-
-                </p>
-
-                <p class="mb-3">
-
                     <b>Área:</b>
 
                     <br>
 
                     {{ $registro->area }}
+
+                </p>
+                
+                
+                <p class="mb-3">
+
+                    <b>Tipo de Puesto:</b>
+
+                    <br>
+
+                    {{ $registro->tipo_contratacion }}
 
                 </p>
 
@@ -218,7 +219,7 @@
 
                     <br>
 
-                    {{ $registro->tipo_contratacion }}
+                    {{ $registro->tipo_contratacion_two }}
 
                 </p>
 
@@ -234,8 +235,11 @@
 
                     <br>
 
-                    {{ $registro->jornada_trabajo }}
-
+                    @if ( $registro->jornada_trabajo === 'Otro' )
+                        {{ $registro->jornada_trabajo }}: {{ $registro->jornada_trabajo_opcional }}
+                        @else
+                        {{ $registro->jornada_trabajo }}
+                    @endif
                 </p>
 
                 <p class="mb-3">
@@ -247,17 +251,6 @@
                     {{ $registro->rotacion_turnos }}
 
                 </p>
-
-                <p class="mb-3">
-
-                    <b>Rotación de personal:</b>
-
-                    <br>
-
-                    {{ $registro->rotacion_personal }}
-
-                </p>
-
 
 
                 <p class="mb-3">

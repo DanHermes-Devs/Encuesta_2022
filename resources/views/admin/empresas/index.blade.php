@@ -4,7 +4,7 @@
 
 <link rel="stylesheet" href="{{ asset('css/waitMe.min.css') }}">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.min.css" />
 
 <style>
     .badge.badge-danger {
@@ -20,7 +20,7 @@
 
     trix-editor {
 
-        min-height: 400px!important;
+        min-height: 400px !important;
 
     }
 
@@ -28,13 +28,13 @@
         margin-bottom: 3rem;
     }
 
-    .gap-1{
+    .gap-1 {
         gap: 1rem;
     }
 
-    .cards{
+    .cards {
         border: 1px solid #ccc;
-        padding: 1rem!important;
+        padding: 1rem !important;
     }
 </style>
 
@@ -228,7 +228,7 @@
 
 
                             <div class="col-12 col-md-6">
-                                <div class="col-12 col-md-12 mb-4 cards">
+                                {{-- <div class="col-12 col-md-12 mb-4 cards">
 
                                     <div class="form-group">
 
@@ -260,7 +260,7 @@
 
                                     </div>
 
-                                </div>
+                                </div> --}}
 
                                 <div class="col-12 col-md-12 mb-4 cards">
 
@@ -299,7 +299,7 @@
 
                                     <div class="form-group">
 
-                                        <label for="my-input">Tipo de contratación</label>
+                                        <label for="my-input">Tipo de Puesto</label>
 
                                         <input type="hidden" name="tipo_contratacion" value="1">
 
@@ -323,6 +323,40 @@
 
                                         <button class="btn btn-success btn-sm mb-2" type="button" id="addOption"
                                             onclick="addInput(this, 'tipo_contratacion')"><i
+                                                class="fas fa-plus mr-2"></i>Añadir</button>
+
+                                    </div>
+
+                                </div>
+                                
+                                <div class="col-12 col-md-12 mb-4 cards">
+
+                                    <div class="form-group">
+
+                                        <label for="my-input">Tipo de Contratación</label>
+
+                                        <input type="hidden" name="tipo_contratacion_two" value="1">
+
+                                        <div class="form-group__content input-group mb-3 tipo_contratacion_two">
+
+                                            <div class="input-group-append">
+
+                                                <span class="input-group-text">
+
+                                                    <span class="badge badge-danger"
+                                                        onclick="removeInput(0,'tipo_contratacion_two')"><i
+                                                            class="fas fa-times"></i></span>
+
+                                                </span>
+
+                                            </div>
+
+                                            <input type="text" class="form-control" name="summaryContratacionTW_0">
+
+                                        </div>
+
+                                        <button class="btn btn-success btn-sm mb-2" type="button" id="addOption"
+                                            onclick="addInput(this, 'tipo_contratacion_two')"><i
                                                 class="fas fa-plus mr-2"></i>Añadir</button>
 
                                     </div>
@@ -400,7 +434,7 @@
                                 {{-- Rotacion de turnos --}}
 
                                 {{-- Rotacion de personal --}}
-                                <div class="col-12 col-md-12 mb-4 cards">
+                                {{-- <div class="col-12 col-md-12 mb-4 cards">
 
                                     <div class="form-group">
 
@@ -432,7 +466,7 @@
 
                                     </div>
 
-                                </div>
+                                </div> --}}
                                 {{-- Rotacion de personal --}}
                             </div>
 
@@ -490,30 +524,6 @@
 
             if (inputs.length < 1000) {
 
-                if (type == "tipo_puesto") {
-
-                    $(elem).before(`
-
-                        <div class="form-group__content input-group mb-3 tipo_puesto">
-
-                            <div class="input-group-append">
-
-                                <span class="input-group-text">
-
-                                    <span class="badge badge-danger" onclick="removeInput(${inputs.length},'tipo_puesto')"><i class="fas fa-times"></i></span>
-
-                                </span>
-
-                            </div>
-
-                            <input type="text" class="form-control" name="summaryPuesto_${inputs.length}">
-
-                        </div>
-
-                    `);
-
-                }
-
                 if (type == "area") {
 
                     $(elem).before(`
@@ -562,6 +572,30 @@
 
                 }
 
+                if (type == "tipo_contratacion_two") {
+
+                    $(elem).before(`
+
+    <div class="form-group__content input-group mb-3 tipo_contratacion_two">
+
+        <div class="input-group-append">
+
+            <span class="input-group-text">
+
+                <span class="badge badge-danger" onclick="removeInput(${inputs.length},'tipo_contratacion_two')"><i class="fas fa-times"></i></span>
+
+            </span>
+
+        </div>
+
+        <input type="text" class="form-control" name="summaryContratacionTW_${inputs.length}">
+
+    </div>
+
+`);
+
+                }
+
                 if (type == "jornada_trabajo") {
 
                     $(elem).before(`
@@ -603,30 +637,6 @@
                             </div>
 
                             <input type="text" class="form-control" name="summaryRotacion_${inputs.length}">
-
-                        </div>
-
-                    `);
-
-                }
-
-                if (type == "rotacion_personal") {
-
-                    $(elem).before(`
-
-                        <div class="form-group__content input-group mb-3 rotacion_personal">
-
-                            <div class="input-group-append">
-
-                                <span class="input-group-text">
-
-                                    <span class="badge badge-danger" onclick="removeInput(${inputs.length},'rotacion_personal')"><i class="fas fa-times"></i></span>
-
-                                </span>
-
-                            </div>
-
-                            <input type="text" class="form-control" name="summaryRotacionPersonal_${inputs.length}">
 
                         </div>
 

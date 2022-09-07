@@ -24,28 +24,6 @@
 
 </div>
 
-
-
-<div class="form-group">
-
-    <label>Tipo de puesto</label>
-
-    <select class="form-control" id="tipo_puesto" name="tipo_puesto">
-
-        <option value="">--Elige una opción--</option>
-
-        @foreach ($tipo_puesto as $puesto)
-
-            <option value="{{ $puesto }}">{{ $puesto }}</option>
-
-        @endforeach
-
-    </select>
-
-</div>
-
-
-
 <div class="form-group">
 
     <label>Área</label>
@@ -57,6 +35,24 @@
         @foreach ($area as $a)
 
             <option value="{{ $a }}">{{ $a }}</option>
+
+        @endforeach
+
+    </select>
+
+</div>
+
+<div class="form-group">
+
+    <label>Tipo de Puesto</label>
+
+    <select class="form-control" id="tipo_contratacion" name="tipo_contratacion">
+
+        <option value="">--Elige una opción--</option>
+
+        @foreach ($tipo_contratacion as $tipo_contra)
+
+            <option value="{{ $tipo_contra }}">{{ $tipo_contra }}</option>
 
         @endforeach
 

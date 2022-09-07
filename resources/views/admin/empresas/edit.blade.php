@@ -36,12 +36,12 @@
 
 @section('content')
     @php
-    $tipo_puestos = json_decode($empresas->tipo_puesto);
     $areas = json_decode($empresas->area);
     $tipo_contrataciones = json_decode($empresas->tipo_contratacion);
+    $tipo_contratacion_two = json_decode($empresas->tipo_contratacion_two);
     $jornada_trabajos = json_decode($empresas->jornada_trabajo);
     $rotacion_turnos = json_decode($empresas->rotacion_turnos);
-    $rotacion_personal = json_decode($empresas->rotacion_personal);
+    $tipo_empleado = json_decode($empresas->tipo_empleado);
     @endphp
     <div class="content">
 
@@ -198,44 +198,6 @@
 
                                         <div class="form-group">
 
-                                            <label for="my-input">Tipo de puesto</label>
-
-                                            @foreach ($tipo_puestos as $key => $tipo_puesto)
-                                                <input type="hidden" name="tipo_puesto" value="{{ $key + 1 }}">
-
-                                                <div class="form-group__content input-group mb-3 tipo_puesto">
-
-                                                    <div class="input-group-append">
-
-                                                        <span class="input-group-text">
-
-                                                            <span class="badge badge-danger"
-                                                                onclick="removeInput({{ $key }},'tipo_puesto')"><i
-                                                                    class="fas fa-times"></i></span>
-
-                                                        </span>
-
-                                                    </div>
-
-                                                    <input type="text" class="form-control"
-                                                        name="summaryPuesto_{{ $key }}"
-                                                        value="{{ $tipo_puesto }}">
-
-                                                </div>
-                                            @endforeach
-
-                                            <button class="btn btn-success btn-sm mb-2" type="button" id="addOption"
-                                                onclick="addInput(this, 'tipo_puesto')"><i
-                                                    class="fas fa-plus mr-2"></i>Añadir</button>
-
-                                        </div>
-
-                                    </div>
-
-                                    <div class="col-12 col-md-12 mb-4 cards">
-
-                                        <div class="form-group">
-
                                             <label for="my-input">Área</label>
 
                                             @foreach ($areas as $key => $area)
@@ -274,7 +236,7 @@
 
                                         <div class="form-group">
 
-                                            <label for="my-input">Tipo de contratación</label>
+                                            <label for="my-input">Tipo de Puesto</label>
 
                                             @foreach ($tipo_contrataciones as $key => $tipo_contratacion)
                                                 <input type="hidden" name="tipo_contratacion"
@@ -303,6 +265,45 @@
 
                                             <button class="btn btn-success btn-sm mb-2" type="button" id="addOption"
                                                 onclick="addInput(this, 'tipo_contratacion')"><i
+                                                    class="fas fa-plus mr-2"></i>Añadir</button>
+
+                                        </div>
+
+                                    </div>
+                                    
+                                    <div class="col-12 col-md-12 mb-4 cards">
+
+                                        <div class="form-group">
+
+                                            <label for="my-input">Tipo de Contratación</label>
+
+                                            @foreach ($tipo_contratacion_two as $key => $tipo_contratacion_tw)
+                                                <input type="hidden" name="tipo_contratacion_two"
+                                                    value="{{ $key + 1 }}">
+
+                                                <div class="form-group__content input-group mb-3 tipo_contratacion_two">
+
+                                                    <div class="input-group-append">
+
+                                                        <span class="input-group-text">
+
+                                                            <span class="badge badge-danger"
+                                                                onclick="removeInput({{ $key }},'tipo_contratacion_two')"><i
+                                                                    class="fas fa-times"></i></span>
+
+                                                        </span>
+
+                                                    </div>
+
+                                                    <input type="text" class="form-control"
+                                                        name="summaryContratacionTW_{{ $key }}"
+                                                        value="{{ $tipo_contratacion_tw }}">
+
+                                                </div>
+                                            @endforeach
+
+                                            <button class="btn btn-success btn-sm mb-2" type="button" id="addOption"
+                                                onclick="addInput(this, 'tipo_contratacion_two')"><i
                                                     class="fas fa-plus mr-2"></i>Añadir</button>
 
                                         </div>
@@ -386,47 +387,6 @@
                                         </div>
 
                                     </div>
-
-                                    {{-- Rotacion de personal --}}
-                                    <div class="col-12 col-md-12 mb-4 cards">
-
-                                        <div class="form-group">
-
-                                            <label for="my-input">Rotacion de personal</label>
-
-                                            @foreach ($rotacion_personal as $key => $rotacion)
-                                                <input type="hidden" name="rotacion_personal"
-                                                    value="{{ $key + 1 }}">
-
-                                                <div class="form-group__content input-group mb-3 rotacion_personal">
-
-                                                    <div class="input-group-append">
-
-                                                        <span class="input-group-text">
-
-                                                            <span class="badge badge-danger"
-                                                                onclick="removeInput({{ $key }},'rotacion_personal')"><i
-                                                                    class="fas fa-times"></i></span>
-
-                                                        </span>
-
-                                                    </div>
-
-                                                    <input type="text" class="form-control"
-                                                        name="summaryRotacionPersonal_{{ $key }}"
-                                                        value="{{ $rotacion }}">
-
-                                                </div>
-                                            @endforeach
-
-                                            <button class="btn btn-success btn-sm mb-2" type="button" id="addOption"
-                                                onclick="addInput(this, 'rotacion_personal')"><i
-                                                    class="fas fa-plus mr-2"></i>Añadir</button>
-
-                                        </div>
-
-                                    </div>
-                                    {{-- Rotacion de personal --}}
                                 </div>
 
                                 <div class="col-12 col-md-12">
@@ -485,30 +445,6 @@
 
             if (inputs.length < 1000) {
 
-                if (type == "tipo_puesto") {
-
-                    $(elem).before(`
-
-                        <div class="form-group__content input-group mb-3 tipo_puesto">
-
-                            <div class="input-group-append">
-
-                                <span class="input-group-text">
-
-                                    <span class="badge badge-danger" onclick="removeInput(${inputs.length},'tipo_puesto')"><i class="fas fa-times"></i></span>
-
-                                </span>
-
-                            </div>
-
-                            <input type="text" class="form-control" name="summaryPuesto_${inputs.length}">
-
-                        </div>
-
-                    `);
-
-                }
-
                 if (type == "area") {
 
                     $(elem).before(`
@@ -550,6 +486,30 @@
                             </div>
 
                             <input type="text" class="form-control" name="summaryContratacion_${inputs.length}">
+
+                        </div>
+
+                    `);
+
+                }
+                
+                if (type == "tipo_contratacion_two") {
+
+                    $(elem).before(`
+
+                        <div class="form-group__content input-group mb-3 tipo_contratacion_two">
+
+                            <div class="input-group-append">
+
+                                <span class="input-group-text">
+
+                                    <span class="badge badge-danger" onclick="removeInput(${inputs.length},'tipo_contratacion_two')"><i class="fas fa-times"></i></span>
+
+                                </span>
+
+                            </div>
+
+                            <input type="text" class="form-control" name="summaryContratacionTW_${inputs.length}">
 
                         </div>
 
@@ -605,29 +565,7 @@
 
                 }
 
-                if (type == "rotacion_personal") {
 
-                    $(elem).before(`
-
-                        <div class="form-group__content input-group mb-3 rotacion_personal">
-
-                            <div class="input-group-append">
-
-                                <span class="input-group-text">
-
-                                    <span class="badge badge-danger" onclick="removeInput(${inputs.length},'rotacion_personal')"><i class="fas fa-times"></i></span>
-
-                                </span>
-
-                            </div>
-
-                            <input type="text" class="form-control" name="summaryRotacion_${inputs.length}">
-
-                        </div>
-
-                    `);
-
-                }
 
                 $('[name="' + type + '"]').val(inputs.length + 1);
 

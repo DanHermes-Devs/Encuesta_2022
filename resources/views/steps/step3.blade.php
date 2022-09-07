@@ -2,11 +2,11 @@
 
     <label>Tipo de contratación</label>
 
-    <select class="form-control" id="tipo_contratacion" name="tipo_contratacion">
+    <select class="form-control" id="tipo_contratacion_two" name="tipo_contratacion_two">
 
         <option value="">--Elige una opción--</option>
 
-        @foreach ($tipo_contratacion as $contratos)
+        @foreach ($tipo_contratacion_two as $contratos)
 
             <option value="{{ $contratos }}">{{ $contratos }}</option>
 
@@ -22,7 +22,7 @@
 
     <label>Jornada de trabajo</label>
 
-    <select class="form-control" id="jornada_trabajo" name="jornada_trabajo">
+    <select class="form-control @if ($empresa->token === 'f3we8ohe-h677-alf7-f8ij-es1pgtnm8kj') mb-3 @endif" id="jornada_trabajo" name="jornada_trabajo">
 
         <option value="">--Elige una opción--</option>
 
@@ -33,6 +33,13 @@
         @endforeach
 
     </select>
+
+    @if ($empresa->token === 'f3we8ohe-h677-alf7-f8ij-es1pgtnm8kj')
+        <div class="form-group d-none" id="otro">
+            <label>Otro:</label>
+            <input type="text" name="jornada_trabajo_opcional" class="form-control">
+        </div>
+    @endif
 
 </div>
 
@@ -59,24 +66,6 @@
             <b>NOTA</b>: Rotar, de ahí lo de “turnos rotativos”. Ir cambiando de horario de trabajo.
         </p>
     </small>
-
-</div>
-
-<div class="form-group mb-4">
-
-    <label>Rotación de personal</label>
-
-    <select class="form-control mb-2" id="rotacion_personal" name="rotacion_personal">
-
-        <option value="">--Elige una opción--</option>
-
-        @foreach ($rotacion_personal as $rotacion)
-
-            <option value="{{ $rotacion }}">{{ $rotacion }}</option>
-
-        @endforeach
-
-    </select>
 
 </div>
 

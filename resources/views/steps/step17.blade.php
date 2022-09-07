@@ -19,7 +19,7 @@
 
         <label class="form-check-label" for="item_jefe_2">
 
-            No  
+            No
 
         </label>
 
@@ -103,7 +103,7 @@
 
     </div>
 
-    
+
 
     <div class="item_1_2 mb-4">
 
@@ -173,7 +173,7 @@
 
     </div>
 
-    
+
 
     <div class="item_1_3 mb-4">
 
@@ -243,7 +243,7 @@
 
     </div>
 
-    
+
 
     <div class="item_1_3 mb-4">
 
@@ -321,7 +321,8 @@
 
     <button type="button" class="btn_atras" onclick="cambiarSeccion('step_16', 'step16')">Atrás</button>
 
-    <button type="button" class="btn_siguiente" onclick="cambiarSeccion('step_instrucciones', 'stepInstrucciones')" style="display: none;" id="stepInstrucciones_btn">Siguiente</button>
-    <button type="button" class="btn_siguiente" onclick="cambiarSeccion('step_21', 'step21')" id="stepFinales">Siguiente</button>
+    <button type="button" class="btn_siguiente" onclick="cambiarSeccion('stepEA', 'step_EA')">
+        Siguiente
+    </button>
 
 </div>

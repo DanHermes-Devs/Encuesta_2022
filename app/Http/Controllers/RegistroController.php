@@ -28,8 +28,7 @@ class RegistroController extends Controller
 
     public function registroDatos(Request $request)
     {
-
-        if($request->item_sc == "Sí"){
+        if($request->evtraumatico == "Sí"){
             // Validar campos
             $messages=[
                 'email.required' => 'El campo Correo electrónico es obligatorio.',
@@ -40,11 +39,10 @@ class RegistroController extends Controller
                 'edad.required' => 'El campo Edad en años es obligatorio.',
                 'antiguedad.required' => 'El campo Antigüedad en puesto actual es obligatorio.',
                 'estudios.required' => 'El campo Estudios es obligatorio.',
-                'tipo_puesto.required' => 'El campo Tipo de puesto es obligatorio.',
                 'area.required' => 'El campo Área es obligatorio.',
-                'tipo_contratacion.required' => 'El campo Tipo de contratación es obligatorio.',
+                'tipo_contratacion.required' => 'El campo Tipo de Puesto es obligatorio.',
+                'tipo_contratacion_two.required' => 'El campo Tipo de contratación es obligatorio.',
                 'jornada_trabajo.required' => 'El campo Jornada de trabajo es obligatorio.',
-                'rotacion_turnos.required' => 'El campo Rotación de turnos es obligatorio.',
                 'experiencia_laboral.required' => 'El campo Eperiencia laboral es obligatorio.',
                 'item_1.required' => 'El campo ¿El espacio donde trabajo me permite realizar mis actividades de manera segura e higiénica? es obligatorio.',
                 'item_2.required' => 'El campo ¿Mi trabajo me exige hacer mucho esfuerzo físico? es obligatorio.',
@@ -141,11 +139,11 @@ class RegistroController extends Controller
                 'edad' => 'required',
                 'antiguedad' => 'required',
                 'estudios' => 'required',
-                'tipo_puesto' => 'required',
                 'area' => 'required',
                 'tipo_contratacion' => 'required',
+                'tipo_contratacion_two' => 'required',
+                'rotacion_turnos' => 'required',
                 'jornada_trabajo' => 'required',
-                // 'rotacion_turnos' => 'required',
                 'experiencia_laboral' => 'required',
                 'item_1' => 'required',
                 'item_2' => 'required',
@@ -233,7 +231,7 @@ class RegistroController extends Controller
                 'ets_18' => 'required',
                 'ets_19' => 'required',
                 'ets_20' => 'required',
-    
+
             ], $messages);
         }else{
             $messages=[
@@ -245,11 +243,10 @@ class RegistroController extends Controller
                 'edad.required' => 'El campo Edad en años es obligatorio.',
                 'antiguedad.required' => 'El campo Antigüedad en puesto actual es obligatorio.',
                 'estudios.required' => 'El campo Estudios es obligatorio.',
-                'tipo_puesto.required' => 'El campo Tipo de puesto es obligatorio.',
                 'area.required' => 'El campo Área es obligatorio.',
-                'tipo_contratacion.required' => 'El campo Tipo de contratación es obligatorio.',
+                'tipo_contratacion.required' => 'El campo Tipo de Puesto es obligatorio.',
+                'tipo_contratacion_two.required' => 'El campo Tipo de contratación es obligatorio.',
                 'jornada_trabajo.required' => 'El campo Jornada de trabajo es obligatorio.',
-                'rotacion_turnos.required' => 'El campo Rotación de turnos es obligatorio.',
                 'experiencia_laboral.required' => 'El campo Eperiencia laboral es obligatorio.',
                 'item_1.required' => 'El campo ¿El espacio donde trabajo me permite realizar mis actividades de manera segura e higiénica? es obligatorio.',
                 'item_2.required' => 'El campo ¿Mi trabajo me exige hacer mucho esfuerzo físico? es obligatorio.',
@@ -335,8 +332,8 @@ class RegistroController extends Controller
                 // 'ets_18.required' => 'El campo ¿Ha tenido dificultad para concentrarse? es obligatorio.',
                 // 'ets_19.required' => 'El campo ¿Ha estado nervioso o constantemente en alerta? es obligatorio.',
                 // 'ets_20.required' => 'El campo ¿Se ha sobresaltado fácilmente por cualquier cosa? es obligatorio.',
-    
-    
+
+
             ];
             $validator = Validator::make($request->all(), [
                 'email' => 'required|email|unique:registros',
@@ -345,11 +342,11 @@ class RegistroController extends Controller
                 'edad' => 'required',
                 'antiguedad' => 'required',
                 'estudios' => 'required',
-                'tipo_puesto' => 'required',
                 'area' => 'required',
                 'tipo_contratacion' => 'required',
+                'tipo_contratacion_two' => 'required',
+                'rotacion_turnos' => 'required',
                 'jornada_trabajo' => 'required',
-                // 'rotacion_turnos' => 'required',
                 'experiencia_laboral' => 'required',
                 'item_1' => 'required',
                 'item_2' => 'required',
@@ -437,7 +434,7 @@ class RegistroController extends Controller
                 // 'ets_18' => 'required',
                 // 'ets_19' => 'required',
                 // 'ets_20' => 'required',
-    
+
             ], $messages);
         }
 
@@ -445,136 +442,136 @@ class RegistroController extends Controller
             return response()->json([
                 'error' => $validator->messages(),
                 'message' => 'Algunos campos estan vacios, favor de verificar.',
-                'status' => 400    
+                'status' => 400
             ]);
         }else{
             $registro = Registro::create($request->all());
             // Obtener id del registro realizado
             $id_registro = $registro->id;
-    
+
             $calificaciones = new Calificaciones;
             $calificaciones->c_final = $request->item_1+$request->item_2+$request->item_3+$request->item_4+$request->item_5+$request->item_6+$request->item_7+$request->item_8+$request->item_9+$request->item_10+$request->item_11+$request->item_12+$request->item_13+$request->item_14+$request->item_15+$request->item_16+$request->item_17+$request->item_18+$request->item_19+$request->item_20+$request->item_21+$request->item_22+$request->item_23+$request->item_24+$request->item_25+$request->item_26+$request->item_27+$request->item_28+$request->item_29+$request->item_30+$request->item_31+$request->item_32+$request->item_33+$request->item_34+$request->item_35+$request->item_36+$request->item_37+$request->item_38+$request->item_39+$request->item_40+$request->item_41+$request->item_42+$request->item_43+$request->item_44+$request->item_45+$request->item_46+$request->item_47+$request->item_48+$request->item_49+$request->item_50+$request->item_51+$request->item_52+$request->item_53+$request->item_54+$request->item_55+$request->item_56+$request->item_57+$request->item_58+$request->item_59+$request->item_60+$request->item_61+$request->item_62+$request->item_63+$request->item_64+$request->item_65+$request->item_66+$request->item_67+$request->item_68+$request->item_69+$request->item_70+$request->item_71+$request->item_72;
-    
+
             // Ambiente de trabajo
             $Atrabajo = $request->item_1+$request->item_2+$request->item_3+$request->item_4+$request->item_5;
-    
+
             // Factores propios de la actividad
             $Fpropios = $request->item_1+$request->item_2+$request->item_3+$request->item_4+$request->item_5+$request->item_6+$request->item_7+$request->item_8+$request->item_9+$request->item_10+$request->item_11+$request->item_12+$request->item_13+$request->item_14+$request->item_15+$request->item_16+$request->item_23+$request->item_24+$request->item_25+$request->item_26+$request->item_27+$request->item_28+$request->item_29+$request->item_30+$request->item_35+$request->item_36+$request->item_65+$request->item_66+$request->item_67+$request->item_68;
-    
+
             // Organización del tiempo de trabajo
             $Otiempo = $request->item_17+$request->item_18+$request->item_19+$request->item_20+$request->item_21+$request->item_22;
-    
+
             // Liderazgo y relaciones en el trabajo
             $Lrelaciones = $request->item_31+$request->item_32+$request->item_33+$request->item_34+$request->item_35+$request->item_36+$request->item_37+$request->item_38+$request->item_39+$request->item_40+$request->item_41+$request->item_42+$request->item_43+$request->item_44+$request->item_45+$request->item_46+$request->item_57+$request->item_58+$request->item_59+$request->item_60+$request->item_61+$request->item_62+$request->item_63+$request->item_64+$request->item_65+$request->item_66+$request->item_67+$request->item_68+$request->item_69+$request->item_70+$request->item_71+$request->item_72;
-    
+
             // Entorno organizacional
             $Eorganizacional = $request->item_47+$request->item_48+$request->item_49+$request->item_50+$request->item_51+$request->item_52+$request->item_53+$request->item_54+$request->item_55+$request->item_56;
-    
+
             // Condiciones en el ambiente de trabajo
             $Cambiente = $request->item_1+$request->item_2+$request->item_3+$request->item_4+$request->item_5;
-    
+
             // Carga de trabajo
             $Ctrabajo = $request->item_6+$request->item_7+$request->item_8+$request->item_9+$request->item_10+$request->item_11+$request->item_12+$request->item_13+$request->item_14+$request->item_15+$request->item_16+$request->item_65+$request->item_66+$request->item_67+$request->item_68;
-    
+
             // Falta de control sobre el trabajo
             $Fcontrol = $request->item_23+$request->item_24+$request->item_25+$request->item_26+$request->item_27+$request->item_28+$request->item_29+$request->item_30+$request->item_35+$request->item_36;
-    
+
             // Jornada de trabajo
             $Jtrabajo = $request->item_17+$request->item_18;
-    
+
             // Interferencia en la relación trabajo-familia
             $Irelacion = $request->item_19+$request->item_20+$request->item_21+$request->item_22;
-    
+
             // Liderazgo
             $Liderazgo = $request->item_31+$request->item_32+$request->item_33+$request->item_34+$request->item_37+$request->item_38+$request->item_39+$request->item_40+$request->item_41;
-    
+
             // Relaciones en el trabajo
             $Rtrabajo = $request->item_42+$request->item_43+$request->item_44+$request->item_45+$request->item_46+$request->item_69+$request->item_70+$request->item_71+$request->item_72;
-    
+
             // Violencia
             $Violencia = $request->item_57+$request->item_58+$request->item_59+$request->item_60+$request->item_61+$request->item_62+$request->item_63+$request->item_64;
-    
+
             // Reconocimiento del desempeño
             $Rdesempeño = $request->item_47+$request->item_48+$request->item_49+$request->item_50+$request->item_51+$request->item_52;
-    
+
             // Insuficiente sentido de pertenencia e, inestabilidad
             $Ipertenencia = $request->item_53+$request->item_54+$request->item_55+$request->item_56;
-    
+
             // Condiciones peligrosas e inseguras
             $Cpeligrosas = $request->item_1+$request->item_3;
-    
+
             // Condiciones deficientes e insalubres
             $Cdeficientes = $request->item_2+$request->item_4;
-    
+
             // Trabajos peligrosos 2
             $Tpeligrosos = $request->item_5;
-    
+
             // Cargas cuantitativas
             $Ccuantitativa = $request->item_6+$request->item_12;
-    
+
             // Ritmos de trabajo acelerado
             $Rtrabajoacelerado = $request->item_7+$request->item_8;
-    
+
             // Carga mental
             $Cmental = $request->item_9+$request->item_10+$request->item_11;
-    
+
             // Cargas psicológicas emocionales
             $Cpsicologica = $request->item_65+$request->item_66+$request->item_67+$request->item_68;
-    
+
             // Cargas de alta responsabilidad
             $Calta = $request->item_13+$request->item_14;
-    
+
             // Cargas contradictorias o inconsistentes
             $Ccontradictorias = $request->item_15+$request->item_16;
-    
+
             // Falta de control y autonomía sobre el trabajo
             $Fcontrolautonomia = $request->item_25+$request->item_26+$request->item_27+$request->item_28;
-    
+
             // Limitada o nula posibilidad de desarrollo
             $Ldesarrollo = $request->item_23+$request->item_24;
-    
+
             // Insuficiente participación y manejo del cambio
             $Iparticipacion = $request->item_29+$request->item_30;
-    
+
             // Limitada o inexistente capacitación
             $Lcapacitacion = $request->item_35+$request->item_36;
-    
+
             // Jornadas de trabajo extensas
             $Jextensas = $request->item_17+$request->item_18;
-    
+
             // Influencia del trabajo fuera del centro laboral
             $Itrabajofuera = $request->item_19+$request->item_20;
-    
+
             // Influencia de las responsabilidades familiares
             $Iresponsabilidades = $request->item_21+$request->item_22;
-    
+
             // Escaza claridad de funciones
             $Eclaridad = $request->item_31+$request->item_32+$request->item_33+$request->item_34;
-    
+
             // Características del liderazgo
             $Caracteristicas = $request->item_37+$request->item_38+$request->item_39+$request->item_40+$request->item_41;
-    
+
             // Relaciones sociales en el trabajo
             $Rsociales = $request->item_42+$request->item_43+$request->item_44+$request->item_45+$request->item_46;
-    
+
             // Deficiente relación con los colaboradores que supervisa
             $Drelaciones = $request->item_69+$request->item_70+$request->item_71+$request->item_72;
-    
+
             // Violencia laboral
             $ViolenciaLaboral = $request->item_57+$request->item_58+$request->item_59+$request->item_60+$request->item_61+$request->item_62+$request->item_63+$request->item_64;
-    
+
             // Escasa o nula retroalimentación del desempeño
             $Eretroalimentacion = $request->item_47+$request->item_48;
-    
+
             // Escaso o nulo reconocimiento y compensación
             $Ereconocimiento = $request->item_49+$request->item_50+$request->item_51+$request->item_52;
-    
+
             // Limitado sentido de pertenencia
             $Lpertenencia = $request->item_55+$request->item_56;
-    
+
             // Inestabilidad laboral
             $Iestabilidad = $request->item_53+$request->item_54;
-    
+
             // Token empresa
             $tokenEmpresa = $request->id_empresa;
             $calificaciones->id_empresa = $tokenEmpresa;
@@ -587,7 +584,7 @@ class RegistroController extends Controller
             $calificaciones->c_cat_5 = $Eorganizacional;
             $calificaciones->c_cat_6 = $Caracteristicas;
             $calificaciones->c_cat_7 = $Rsociales;
-    
+
             // Dominio
             $calificaciones->c_dominio_1 = $Cambiente;
             $calificaciones->c_dominio_2 = $Ctrabajo;
@@ -599,7 +596,7 @@ class RegistroController extends Controller
             $calificaciones->c_dominio_8 = $Violencia;
             $calificaciones->c_dominio_9 = $Rdesempeño;
             $calificaciones->c_dominio_10 = $Ipertenencia;
-    
+
             // Dimension
             $calificaciones->c_dimension_1 = $Cpeligrosas;
             $calificaciones->c_dimension_2 = $Cdeficientes;
@@ -624,11 +621,11 @@ class RegistroController extends Controller
             $calificaciones->c_dimension_21 = $Ereconocimiento;
             $calificaciones->c_dimension_22 = $Lpertenencia;
             $calificaciones->c_dimension_23 = $Iestabilidad;
-    
+
             $calificaciones->save();
             return response()->json(['data' => $registro, 'message' => 'Registro creado correctamente', 'status' => 201]);
         }
-        
+
     }
 
     public function resultados($token)
@@ -683,5 +680,5 @@ class RegistroController extends Controller
         }
 
     }
-    
+
 }

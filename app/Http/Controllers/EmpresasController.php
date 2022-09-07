@@ -50,7 +50,8 @@ class EmpresasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {        
+    {
+        
         $messages = [
             // Validar campos
             'nombre.required' => 'El nombre de la empresa es requerido',
@@ -88,14 +89,8 @@ class EmpresasController extends Controller
             $empresas->descripcion = $request->descripcion;
             $empresas->activo = $request->activo;
             $empresas->aviso = $request->aviso;
-            if(isset($request->tipo_puesto)){
-                $tipo_puesto = array();
-                // Recorrer con un ciclo for para obtener los valores
-                for($i = 0; $i < $request->tipo_puesto; $i++){
-                    array_push($tipo_puesto, $_POST['summaryPuesto_'.$i]);
-                }
-            }
-            $empresas->tipo_puesto = json_encode($tipo_puesto);
+
+
             if(isset($request->area)){
                 $area = array();
                 // Recorrer con un ciclo for para obtener los valores
@@ -104,7 +99,8 @@ class EmpresasController extends Controller
                 }
             }
             $empresas->area = json_encode($area);
-            $empresas->tipo_puesto = json_encode($tipo_puesto);
+            // Area
+
             if(isset($request->tipo_contratacion)){
                 $tipo_contratacion = array();
                 // Recorrer con un ciclo for para obtener los valores
@@ -113,6 +109,18 @@ class EmpresasController extends Controller
                 }
             }
             $empresas->tipo_contratacion = json_encode($tipo_contratacion);
+            // Contratacion 1
+            
+            if(isset($request->tipo_contratacion_two)){
+                $tipo_contratacion_two = array();
+                // Recorrer con un ciclo for para obtener los valores
+                for($i = 0; $i < $request->tipo_contratacion_two; $i++){
+                    array_push($tipo_contratacion_two, $_POST['summaryContratacionTW_'.$i]);
+                }
+            }
+            $empresas->tipo_contratacion_two = json_encode($tipo_contratacion_two);
+            // Contratacion 2
+
             if(isset($request->jornada_trabajo)){
                 $jornada_trabajo = array();
                 // Recorrer con un ciclo for para obtener los valores
@@ -121,6 +129,8 @@ class EmpresasController extends Controller
                 }
             }
             $empresas->jornada_trabajo = json_encode($jornada_trabajo);
+            // Jornada trabajo
+
             if(isset($request->rotacion_turnos)){
                 $rotacion_turnos = array();
                 // Recorrer con un ciclo for para obtener los valores
@@ -129,18 +139,13 @@ class EmpresasController extends Controller
                 }
             }
             $empresas->rotacion_turnos = json_encode($rotacion_turnos);
-            if(isset($request->rotacion_personal)){
-                $rotacion_personal = array();
-                // Recorrer con un ciclo for para obtener los valores
-                for($i = 0; $i < $request->rotacion_personal; $i++){
-                    array_push($rotacion_personal, $_POST['summaryRotacionPersonal_'.$i]);
-                }
-            }
-            $empresas->rotacion_personal = json_encode($rotacion_personal);
+            // Rotacion Turnos
+
+
             $empresas->save();
             return response()->json(['message' => 'Empresa creada correctamente.', 'empresa' => $empresas, 'status' => 'success']);
         }
-        
+
     }
 
     /**
@@ -179,7 +184,7 @@ class EmpresasController extends Controller
      */
     public function update(Request $request, Empresas $empresas)
     {
-        
+
         // Enoncontrar empresa primero
         $empresas = Empresas::find($request->id);
         $messages = [
@@ -217,14 +222,7 @@ class EmpresasController extends Controller
             $empresas->descripcion = $request->descripcion;
             $empresas->activo = $request->activo;
             $empresas->aviso = $request->aviso;
-            if(isset($request->tipo_puesto)){
-                $tipo_puesto = array();
-                // Recorrer con un ciclo for para obtener los valores
-                for($i = 0; $i < $request->tipo_puesto; $i++){
-                    array_push($tipo_puesto, $_POST['summaryPuesto_'.$i]);
-                }
-            }
-            $empresas->tipo_puesto = json_encode($tipo_puesto);
+
             if(isset($request->area)){
                 $area = array();
                 // Recorrer con un ciclo for para obtener los valores
@@ -233,7 +231,7 @@ class EmpresasController extends Controller
                 }
             }
             $empresas->area = json_encode($area);
-            $empresas->tipo_puesto = json_encode($tipo_puesto);
+
             if(isset($request->tipo_contratacion)){
                 $tipo_contratacion = array();
                 // Recorrer con un ciclo for para obtener los valores
@@ -242,6 +240,16 @@ class EmpresasController extends Controller
                 }
             }
             $empresas->tipo_contratacion = json_encode($tipo_contratacion);
+            
+            if(isset($request->tipo_contratacion_two)){
+                $tipo_contratacion_two = array();
+                // Recorrer con un ciclo for para obtener los valores
+                for($i = 0; $i < $request->tipo_contratacion_two; $i++){
+                    array_push($tipo_contratacion_two, $_POST['summaryContratacionTW_'.$i]);
+                }
+            }
+            $empresas->tipo_contratacion_two = json_encode($tipo_contratacion_two);
+
             if(isset($request->jornada_trabajo)){
                 $jornada_trabajo = array();
                 // Recorrer con un ciclo for para obtener los valores
@@ -250,6 +258,7 @@ class EmpresasController extends Controller
                 }
             }
             $empresas->jornada_trabajo = json_encode($jornada_trabajo);
+
             if(isset($request->rotacion_turnos)){
                 $rotacion_turnos = array();
                 // Recorrer con un ciclo for para obtener los valores
@@ -258,17 +267,10 @@ class EmpresasController extends Controller
                 }
             }
             $empresas->rotacion_turnos = json_encode($rotacion_turnos);
-            if(isset($request->rotacion_personal)){
-                $rotacion_personal = array();
-                // Recorrer con un ciclo for para obtener los valores
-                for($i = 0; $i < $request->rotacion_personal; $i++){
-                    array_push($rotacion_personal, $_POST['summaryRotacionPersonal_'.$i]);
-                }
-            }
-            $empresas->rotacion_personal = json_encode($rotacion_personal);
+
             $empresas->save();
             // Mandar mensaje flash en la vista con el mensaje de que se ha actualizado correctamente
-            
+
             // return view('admin.empresas.edit')->with(['empresas' => $empresas, 'message' => 'Empresa actualizada correctamente.', 'status' => 'success']);
             return redirect()->route('empresas.edit', $empresas->id)->with(['empresas' => $empresas, 'update' => 'Empresa actualizada correctamente.', 'status' => 'success']);
         }
@@ -314,10 +316,10 @@ class EmpresasController extends Controller
 
         // Ambiente de trabajo
         $Atrabajo = Calificaciones::select('c_cat_1')->where('id_empresa', $id)->get();
-        
+
         // Factores propios de la actividad
         $Fpropios = Calificaciones::select('c_cat_2')->where('id_empresa', $id)->get();
-        
+
         // Organización del tiempo de trabajo
         $Otiempo = Calificaciones::select('c_cat_3')->where('id_empresa', $id)->get();
 
@@ -329,7 +331,7 @@ class EmpresasController extends Controller
 
         // Condiciones en el ambiente de trabajo
         $Cambiente = Calificaciones::select('c_dominio_1')->where('id_empresa', $id)->get();
-        
+
         // Carga de trabajo
         $Ctrabajo = Calificaciones::select('c_dominio_2')->where('id_empresa', $id)->get();
 
@@ -337,61 +339,61 @@ class EmpresasController extends Controller
         // Eventos traumáticos severos
         $ets_1Si = Registro::select('ets_1')->where('ets_1', 'Sí')->where('id_empresa', $id)->count();
         $ets_1No = Registro::select('ets_1')->where('ets_1', 'No')->where('id_empresa', $id)->count();
-        
+
         $ets_2Si = Registro::select('ets_2')->where('ets_2', 'Sí')->where('id_empresa', $id)->count();
         $ets_2No = Registro::select('ets_2')->where('ets_2', 'No')->where('id_empresa', $id)->count();
-        
+
         $ets_3Si = Registro::select('ets_3')->where('ets_3', 'Sí')->where('id_empresa', $id)->count();
         $ets_3No = Registro::select('ets_3')->where('ets_3', 'No')->where('id_empresa', $id)->count();
-        
+
         $ets_4Si = Registro::select('ets_4')->where('ets_4', 'Sí')->where('id_empresa', $id)->count();
         $ets_4No = Registro::select('ets_4')->where('ets_4', 'No')->where('id_empresa', $id)->count();
-        
+
         $ets_5Si = Registro::select('ets_5')->where('ets_5', 'Sí')->where('id_empresa', $id)->count();
         $ets_5No = Registro::select('ets_5')->where('ets_5', 'No')->where('id_empresa', $id)->count();
-        
+
         $ets_6Si = Registro::select('ets_6')->where('ets_6', 'Sí')->where('id_empresa', $id)->count();
         $ets_6No = Registro::select('ets_6')->where('ets_6', 'No')->where('id_empresa', $id)->count();
-        
+
         $ets_7Si = Registro::select('ets_7')->where('ets_7', 'Sí')->where('id_empresa', $id)->count();
         $ets_7No = Registro::select('ets_7')->where('ets_7', 'No')->where('id_empresa', $id)->count();
-        
+
         $ets_8Si = Registro::select('ets_8')->where('ets_8', 'Sí')->where('id_empresa', $id)->count();
         $ets_8No = Registro::select('ets_8')->where('ets_8', 'No')->where('id_empresa', $id)->count();
-        
+
         $ets_9Si = Registro::select('ets_9')->where('ets_9', 'Sí')->where('id_empresa', $id)->count();
         $ets_9No = Registro::select('ets_9')->where('ets_9', 'No')->where('id_empresa', $id)->count();
-        
+
         $ets_10Si = Registro::select('ets_10')->where('ets_10', 'Sí')->where('id_empresa', $id)->count();
         $ets_10No = Registro::select('ets_10')->where('ets_10', 'No')->where('id_empresa', $id)->count();
-        
+
         $ets_11Si = Registro::select('ets_11')->where('ets_11', 'Sí')->where('id_empresa', $id)->count();
         $ets_11No = Registro::select('ets_11')->where('ets_11', 'No')->where('id_empresa', $id)->count();
-        
+
         $ets_12Si = Registro::select('ets_12')->where('ets_12', 'Sí')->where('id_empresa', $id)->count();
         $ets_12No = Registro::select('ets_12')->where('ets_12', 'No')->where('id_empresa', $id)->count();
-        
+
         $ets_13Si = Registro::select('ets_13')->where('ets_13', 'Sí')->where('id_empresa', $id)->count();
         $ets_13No = Registro::select('ets_13')->where('ets_13', 'No')->where('id_empresa', $id)->count();
-        
+
         $ets_14Si = Registro::select('ets_14')->where('ets_14', 'Sí')->where('id_empresa', $id)->count();
         $ets_14No = Registro::select('ets_14')->where('ets_14', 'No')->where('id_empresa', $id)->count();
-        
+
         $ets_15Si = Registro::select('ets_15')->where('ets_15', 'Sí')->where('id_empresa', $id)->count();
         $ets_15No = Registro::select('ets_15')->where('ets_15', 'No')->where('id_empresa', $id)->count();
-        
+
         $ets_16Si = Registro::select('ets_16')->where('ets_16', 'Sí')->where('id_empresa', $id)->count();
         $ets_16No = Registro::select('ets_16')->where('ets_16', 'No')->where('id_empresa', $id)->count();
-        
+
         $ets_17Si = Registro::select('ets_17')->where('ets_17', 'Sí')->where('id_empresa', $id)->count();
         $ets_17No = Registro::select('ets_17')->where('ets_17', 'No')->where('id_empresa', $id)->count();
-        
+
         $ets_18Si = Registro::select('ets_18')->where('ets_18', 'Sí')->where('id_empresa', $id)->count();
         $ets_18No = Registro::select('ets_18')->where('ets_18', 'No')->where('id_empresa', $id)->count();
-        
+
         $ets_19Si = Registro::select('ets_19')->where('ets_19', 'Sí')->where('id_empresa', $id)->count();
         $ets_19No = Registro::select('ets_19')->where('ets_19', 'No')->where('id_empresa', $id)->count();
-        
+
         $ets_20Si = Registro::select('ets_20')->where('ets_20', 'Sí')->where('id_empresa', $id)->count();
         $ets_20No = Registro::select('ets_20')->where('ets_20', 'No')->where('id_empresa', $id)->count();
 
@@ -401,115 +403,115 @@ class EmpresasController extends Controller
 
         // Falta de control sobre el trabajo
         $Fcontrol = Calificaciones::select('c_dominio_3')->where('id_empresa', $id)->get();
-        
+
         // Jornada de trabajo
         $Jtrabajo = Calificaciones::select('c_dominio_4')->where('id_empresa', $id)->get();
-        
+
         // Interferencia en la relación trabajo-familia
         $Irelacion = Calificaciones::select('c_dominio_5')->where('id_empresa', $id)->get();
-        
+
         // Liderazgo
         $Liderazgo = Calificaciones::select('c_dominio_6')->where('id_empresa', $id)->get();
-        
-        // Relaciones en el trabajo	
+
+        // Relaciones en el trabajo
         $Rtrabajo = Calificaciones::select('c_dominio_7')->where('id_empresa', $id)->get();
-        
+
         // Violencia
         $Violencia = Calificaciones::select('c_dominio_8')->where('id_empresa', $id)->get();
-        
+
         // Reconocimiento del desempeño
         $Rdesempeño = Calificaciones::select('c_dominio_9')->where('id_empresa', $id)->get();
-        
+
         // Insuficiente sentido de pertenencia e, inestabilidad
         $Ipertenencia = Calificaciones::select('c_dominio_10')->where('id_empresa', $id)->get();
-        
+
         // Condiciones peligrosas e inseguras
         $Cpeligrosas = Calificaciones::select('c_dimension_1')->where('id_empresa', $id)->get();
-        
+
         // Condiciones deficientes e insalubres
         $Cdeficientes = Calificaciones::select('c_dimension_2')->where('id_empresa', $id)->get();
-        
-        // Trabajos peligrosos	
+
+        // Trabajos peligrosos
         $Tpeligrosos = Calificaciones::select('c_dimension_3')->where('id_empresa', $id)->get();
-        
-        // Cargas cuantitativas	
+
+        // Cargas cuantitativas
         $Ccuantitativa = Calificaciones::select('c_dimension_4')->where('id_empresa', $id)->get();
-        
-        // Ritmos de trabajo acelerado	
+
+        // Ritmos de trabajo acelerado
         $Rtrabajoacelerado = Calificaciones::select('c_dimension_5')->where('id_empresa', $id)->get();
-        
+
         // Carga Mental
         $Cmental = Calificaciones::select('c_dimension_6')->where('id_empresa', $id)->get();
-        
-        // Cargas psicológicas emocionales	
+
+        // Cargas psicológicas emocionales
         $Cpsicologica = Calificaciones::select('c_dimension_7')->where('id_empresa', $id)->get();
-        
+
         // Cargas de alta responsabilidad
         $Calta = Calificaciones::select('c_dimension_8')->where('id_empresa', $id)->get();
-        
+
         // Cargas contradictorias o inconsistentes
         $Ccontradictorias = Calificaciones::select('c_dimension_9')->where('id_empresa', $id)->get();
-        
+
         // Falta de control y autonomía sobre el trabajo
         $Fcontrolautonomia = Calificaciones::select('c_dimension_10')->where('id_empresa', $id)->get();
-        
+
         // Limitada o nula posibilidad de desarrollo
         $Ldesarrollo = Calificaciones::select('c_dimension_11')->where('id_empresa', $id)->get();
-        
-        // Insuficiente participación y manejo del cambio	
+
+        // Insuficiente participación y manejo del cambio
         $Iparticipacion = Calificaciones::select('c_dimension_12')->where('id_empresa', $id)->get();
-        
+
         // Limitada o inexistente capacitación
         $Lcapacitacion = Calificaciones::select('c_dimension_13')->where('id_empresa', $id)->get();
-        
-        // Jornadas de trabajo extensas	
+
+        // Jornadas de trabajo extensas
         $Jextensas = Calificaciones::select('c_dimension_14')->where('id_empresa', $id)->get();
-        
+
         // Influencia del trabajo fuera del centro laboral
         $Itrabajofuera = Calificaciones::select('c_dimension_15')->where('id_empresa', $id)->get();
-        
+
         // Influencia de las responsabilidades familiares
         $Iresponsabilidades = Calificaciones::select('c_dimension_16')->where('id_empresa', $id)->get();
-        
-        // Escaza claridad de funciones	
+
+        // Escaza claridad de funciones
         $Eclaridad = Calificaciones::select('c_dimension_17')->where('id_empresa', $id)->get();
-        
+
         // Características del liderazgo
         $Caracteristicas = Calificaciones::select('c_cat_6')->where('id_empresa', $id)->get();
-        
+
         // Relaciones sociales en el trabajo
         $Rsociales = Calificaciones::select('c_cat_7')->where('id_empresa', $id)->get();
-        
+
         // Deficiente relación con los colaboradores que supervisa
         $Drelaciones = Calificaciones::select('c_dimension_18')->where('id_empresa', $id)->get();
-        
+
         // Violencia laboral
         $ViolenciaLaboral = Calificaciones::select('c_dimension_19')->where('id_empresa', $id)->get();
-        
+
         // Escasa o nula retroalimentación del desempeño
         $Eretroalimentacion = Calificaciones::select('c_dimension_20')->where('id_empresa', $id)->get();
-        
-        // Escaso o nulo reconocimiento y compensación	
+
+        // Escaso o nulo reconocimiento y compensación
         $Ereconocimiento = Calificaciones::select('c_dimension_21')->where('id_empresa', $id)->get();
-        
+
         // Limitado sentido de pertenencia
         $Lpertenencia = Calificaciones::select('c_dimension_22')->where('id_empresa', $id)->get();
-        
+
         // Inestabilidad laboral
         $Iestabilidad = Calificaciones::select('c_dimension_23')->where('id_empresa', $id)->get();
-        
+
         return view('admin.empresas.graficas', compact(
             'empresa',
-            'etsTotalSi', 
-            'etsTotalNo', 
-            'estudios', 
-            'registros', 
-            'NombreEmpresa', 
-            'c_final', 
-            'Atrabajo', 
-            'Fpropios', 
-            'Otiempo', 
-            'Lrelaciones', 
+            'etsTotalSi',
+            'etsTotalNo',
+            'estudios',
+            'registros',
+            'NombreEmpresa',
+            'c_final',
+            'Atrabajo',
+            'Fpropios',
+            'Otiempo',
+            'Lrelaciones',
             'Eorganizacional',
             'Cambiente',
             'Ctrabajo',

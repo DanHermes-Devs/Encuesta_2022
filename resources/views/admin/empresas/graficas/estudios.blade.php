@@ -1,4 +1,4 @@
-<div class="col-12 col-md-4>
+<div class="col-12 col-md-4">
     <canvas id="estudios" width="400" height="400"></canvas>
 </div>
 
@@ -6,10 +6,10 @@
     error_reporting(0);
     $arrayEstudios = array();
     $sumEstudios = array();
-    
+
     foreach ($estudios as $key => $value){
         $estudio = $value->estudios;
-        
+
         // Introducir los estudios en el arreglo arrayEstudios
         array_push($arrayEstudios, $estudio);
 

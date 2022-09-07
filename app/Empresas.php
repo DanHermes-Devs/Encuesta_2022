@@ -18,12 +18,11 @@ class Empresas extends Model
         'descripcion',
         'activo',
         'aviso',
-        'tipo_puesto',
         'area',
         'tipo_contratacion',
+        'tipo_contratacion_two',
         'jornada_trabajo',
         'rotacion_turnos',
-        'rotacion_personal',
     ];
 
     public function registros()
